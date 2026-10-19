@@ -1,0 +1,12 @@
+# Deny direct browser access to sensitive PHP files
+<Files "db.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

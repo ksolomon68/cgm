@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter — Common Ground Ministries</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="analytics.js" defer></script>
+<style>
+:root { --teal:#1BC4C4; --orange:#FF6633; --navy:#1a1a2e; --purple:#9933CC; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Nunito Sans',sans-serif;
+  background:var(--navy);
+  color:white;
+  min-height:100vh;
+  padding:40px 32px 60px;
+}
+
+.top-bar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:36px;
+}
+.cgm-label {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--purple);
+}
+
+h1 {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:30px;
+  line-height:1.2;
+  margin-bottom:8px;
+}
+h1 span { color:var(--teal); }
+
+.sub {
+  font-size:14px;
+  color:rgba(255,255,255,0.6);
+  margin-bottom:32px;
+  line-height:1.7;
+}
+
+/* What you'll get */
+.preview-cards {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:32px;
+}
+
+.preview-card {
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:14px;
+  padding:18px 20px;
+  transition:background .2s;
+}
+.preview-card:hover { background:rgba(255,255,255,0.08); }
+
+.p-icon {
+  font-size:28px;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+.p-text strong {
+  display:block;
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:15px;
+  margin-bottom:3px;
+}
+.p-text span {
+  font-size:13px;
+  color:rgba(255,255,255,0.5);
+  line-height:1.5;
+}
+
+.freq-note {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(27,196,196,0.1);
+  border:1px solid rgba(27,196,196,0.2);
+  border-radius:30px;
+  padding:8px 16px;
+  font-size:12px;
+  color:var(--teal);
+  font-weight:700;
+  letter-spacing:1px;
+  margin-bottom:28px;
+}
+
+.divider { height:1px; background:rgba(255,255,255,0.07); margin:24px 0; }
+
+.section-title {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:14px;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:16px;
+}
+
+.form-row { margin-bottom:14px; }
+.form-row label {
+  display:block;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.4);
+  margin-bottom:6px;
+}
+.form-row input, .form-row select {
+  width:100%;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  padding:13px 16px;
+  color:white;
+  font-family:'Nunito Sans',sans-serif;
+  font-size:14px;
+  outline:none;
+  transition:border-color .2s;
+}
+.form-row input::placeholder { color:rgba(255,255,255,0.25); }
+.form-row input:focus, .form-row select:focus { border-color:var(--teal); }
+.form-row select { background:#2a2d45; cursor:pointer; }
+.form-row select option { background:#2a2d45; color:white; }
+
+.form-row-2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+/* Interest checkboxes */
+.interest-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:24px;
+}
+
+.interest-item {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:10px;
+  padding:12px 14px;
+  cursor:pointer;
+  transition:all .2s;
+  font-size:13px;
+  color:rgba(255,255,255,0.6);
+  user-select:none;
+}
+
+.interest-item.checked {
+  background:rgba(27,196,196,0.1);
+  border-color:rgba(27,196,196,0.3);
+  color:white;
+}
+
+.interest-item .check {
+  width:18px; height:18px;
+  border-radius:4px;
+  border:2px solid rgba(255,255,255,0.2);
+  flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px;
+  transition:all .2s;
+}
+
+.interest-item.checked .check {
+  background:var(--teal);
+  border-color:var(--teal);
+}
+
+.subscribe-btn {
+  width:100%;
+  background:var(--purple);
+  color:white;
+  border:none;
+  border-radius:14px;
+  padding:18px;
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:8px;
+  transition:background .2s, transform .15s;
+}
+.subscribe-btn:hover { background:#7a22aa; transform:translateY(-1px); }
+
+.fine-print {
+  text-align:center;
+  font-size:11px;
+  color:rgba(255,255,255,0.25);
+  margin-top:14px;
+  line-height:1.6;
+}
+
+.success-state {
+  display:none;
+  text-align:center;
+  padding:40px 20px;
+}
+.success-state .s-icon { font-size:60px; margin-bottom:20px; }
+.success-state h2 { font-family:'Nunito',sans-serif; font-weight:900; font-size:26px; margin-bottom:12px; }
+.success-state p { color:rgba(255,255,255,0.6); font-size:15px; line-height:1.7; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <img src="CGM_Logo_Transparent.png" alt="Common Ground Ministries" style="height:52px;width:auto;display:block;object-fit:contain;background:rgba(255,255,255,0.9);border-radius:10px;padding:6px 12px;">
+  <div style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px;">Newsletter</div>
+</div>
+
+<div id="formState">
+  <h1>Stay Connected to <span>Common Ground</span></h1>
+  <p class="sub">Get real stories from the kids we serve, building fund updates, volunteer opportunities, and event announcements — delivered monthly.</p>
+
+  <div class="freq-note">📬 Monthly · No spam · Unsubscribe anytime</div>
+
+  <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);font-weight:700;margin-bottom:12px;">What's Inside Every Issue</div>
+
+  <div class="preview-cards">
+    <div class="preview-card">
+      <div class="p-icon">👧</div>
+      <div class="p-text">
+        <strong>A Child's Story</strong>
+        <span>One real story of a child whose life is being shaped by Common Ground — with their guardian's permission.</span>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="p-icon">🏗️</div>
+      <div class="p-text">
+        <strong>Building Fund Update</strong>
+        <span>Current fundraising progress, milestones, and what your donations are making possible.</span>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="p-icon">📅</div>
+      <div class="p-text">
+        <strong>Events & Opportunities</strong>
+        <span>Upcoming events, volunteer needs, and ways to get involved in the community.</span>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="p-icon">🙏</div>
+      <div class="p-text">
+        <strong>Prayer & Inspiration</strong>
+        <span>A word of encouragement and specific ways to pray for the children and staff.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Your Information</div>
+
+  <div class="form-row-2">
+    <div class="form-row">
+      <label>First Name</label>
+      <input type="text" id="firstName" placeholder="First">
+    </div>
+    <div class="form-row">
+      <label>Last Name</label>
+      <input type="text" placeholder="Last">
+    </div>
+  </div>
+  <div class="form-row">
+    <label>Email Address</label>
+    <input type="email" id="emailInput" placeholder="your@email.com">
+  </div>
+  <div class="form-row">
+    <label>Connection to CGM</label>
+    <select>
+      <option>I'm a supporter / donor</option>
+      <option>I'm a volunteer or staff</option>
+      <option>I'm a parent or family member</option>
+      <option>I'm a church or org partner</option>
+      <option>I'm just learning about CGM</option>
+    </select>
+  </div>
+
+  <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);font-weight:700;margin-bottom:12px;">I'm most interested in</div>
+  <div class="interest-grid">
+    <div class="interest-item checked" onclick="toggleInterest(this)">
+      <div class="check">✓</div> Building Fund
+    </div>
+    <div class="interest-item checked" onclick="toggleInterest(this)">
+      <div class="check">✓</div> Volunteer Opps
+    </div>
+    <div class="interest-item" onclick="toggleInterest(this)">
+      <div class="check"></div> Events
+    </div>
+    <div class="interest-item" onclick="toggleInterest(this)">
+      <div class="check"></div> Child Stories
+    </div>
+  </div>
+
+  <button class="subscribe-btn" onclick="handleSubscribe(this)">📬 Subscribe to the Newsletter</button>
+  <p class="fine-print">You'll be redirected to confirm your subscription via Mailchimp · We respect your privacy</p>
+</div>
+
+<div class="success-state" id="successState">
+  <div class="s-icon">🎉</div>
+  <h2>You're In!</h2>
+  <p>Check your inbox for a confirmation email.<br>Welcome to the Common Ground community!</p>
+</div>
+
+<script>
+function toggleInterest(el) {
+  el.classList.toggle('checked');
+  el.querySelector('.check').textContent = el.classList.contains('checked') ? '✓' : '';
+}
+
+function handleSubscribe(btn) {
+  btn.textContent = '✓ Redirecting to confirm…';
+  btn.style.background = '#44BB33';
+  setTimeout(() => {
+    window.open('http://eepurl.com/hQdC_z', '_blank');
+    document.getElementById('formState').style.display = 'none';
+    document.getElementById('successState').style.display = 'block';
+  }, 900);
+}
+</script>
+</body>
+</html>

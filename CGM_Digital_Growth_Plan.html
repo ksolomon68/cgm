@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGM Digital Growth Plan — Javon Solomon</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family:'Nunito Sans',Arial,sans-serif;
+  background:#e8e5e0;
+  padding:32px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+
+.print-btn {
+  background:#1a1a2e;
+  color:white;
+  border:none;
+  padding:11px 28px;
+  border-radius:30px;
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:14px;
+  cursor:pointer;
+  letter-spacing:.5px;
+}
+.print-btn:hover { background:#1BC4C4; color:#1a1a2e; }
+
+.page {
+  width:850px;
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 8px 48px rgba(0,0,0,.14);
+}
+
+/* Rainbow stripe */
+.stripe {
+  height:7px;
+  background:linear-gradient(90deg,
+    #FF3399 14.28%, #FFCC00 14.28% 28.57%,
+    #FF6633 28.57% 42.85%, #1BC4C4 42.85% 57.14%,
+    #44BB33 57.14% 71.42%, #2299EE 71.42% 85.71%,
+    #9933CC 85.71%);
+}
+.stripe-bot {
+  height:5px;
+  background:linear-gradient(90deg,
+    #9933CC 14.28%, #2299EE 14.28% 28.57%,
+    #44BB33 28.57% 42.85%, #1BC4C4 42.85% 57.14%,
+    #FF6633 57.14% 71.42%, #FFCC00 71.42% 85.71%,
+    #FF3399 85.71%);
+}
+
+/* Header */
+.header {
+  background:#1a1a2e;
+  padding:22px 36px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.header-left .presenter {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:20px;
+  color:white;
+  line-height:1.2;
+}
+.header-left .cred {
+  font-size:11px;
+  color:rgba(255,255,255,.4);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-top:4px;
+}
+.header-right {
+  text-align:right;
+}
+.header-right .doc-title {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:17px;
+  color:white;
+  line-height:1.2;
+}
+.header-right .doc-sub {
+  font-size:11px;
+  color:rgba(255,255,255,.35);
+  letter-spacing:1px;
+  margin-top:3px;
+}
+.logo-badge {
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;
+  padding:6px 12px;
+  margin-right:20px;
+}
+.logo-badge img { height:32px; width:auto; display:block; }
+
+/* Teal bar */
+.teal-bar { height:3px; background:#1BC4C4; }
+
+/* Body */
+.body { padding:20px 36px 18px; }
+
+/* Two-column grid */
+.two-col {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-bottom:14px;
+}
+.three-col {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+/* Section cards */
+.card {
+  border-radius:10px;
+  padding:14px 16px;
+  border-top:3px solid #1BC4C4;
+  background:#f8f7f4;
+}
+.card.orange { border-top-color:#FF6633; }
+.card.navy   { border-top-color:#1a1a2e; background:#1a1a2e; }
+.card.green  { border-top-color:#44BB33; }
+.card.purple { border-top-color:#9933CC; }
+.card.yellow { border-top-color:#FFCC00; }
+.card.full   { grid-column:1/-1; }
+
+.card-label {
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#1BC4C4;
+  margin-bottom:5px;
+}
+.card.orange .card-label { color:#FF6633; }
+.card.navy   .card-label { color:rgba(255,255,255,.4); }
+.card.green  .card-label { color:#44BB33; }
+.card.purple .card-label { color:#9933CC; }
+.card.yellow .card-label { color:#a07000; }
+
+.card-title {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:13px;
+  color:#1a1a2e;
+  margin-bottom:6px;
+  line-height:1.3;
+}
+.card.navy .card-title { color:white; }
+
+.card-body {
+  font-size:10.5px;
+  color:#555;
+  line-height:1.65;
+}
+.card.navy .card-body { color:rgba(255,255,255,.6); }
+
+/* Bullet list */
+.bullet-list {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.bullet-list li {
+  display:flex;
+  align-items:flex-start;
+  gap:7px;
+  font-size:10.5px;
+  color:#555;
+  line-height:1.5;
+}
+.bullet-list li .dot {
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  flex-shrink:0;
+  margin-top:4px;
+}
+
+/* Ask boxes */
+.ask-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:14px;
+}
+.ask-box {
+  background:#1a1a2e;
+  border-radius:10px;
+  padding:12px 12px;
+  text-align:center;
+}
+.ask-num {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:22px;
+  color:#1BC4C4;
+  line-height:1;
+  margin-bottom:4px;
+}
+.ask-text {
+  font-size:9.5px;
+  color:rgba(255,255,255,.6);
+  line-height:1.5;
+}
+
+/* Cost row */
+.cost-row {
+  display:flex;
+  gap:10px;
+  margin-bottom:14px;
+}
+.cost-item {
+  flex:1;
+  background:#f8f7f4;
+  border-radius:10px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-left:3px solid #1BC4C4;
+}
+.cost-item.last { border-left-color:#FF6633; background:#fff8f5; }
+.cost-name { font-size:10px; color:#555; font-weight:600; }
+.cost-val  { font-family:'Nunito',sans-serif; font-weight:900; font-size:13px; color:#1a1a2e; }
+.cost-item.last .cost-val { color:#FF6633; }
+
+/* Big highlight stat */
+.highlight-stat {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(255,102,51,.08);
+  border:1.5px solid rgba(255,102,51,.2);
+  border-radius:8px;
+  padding:8px 14px;
+  margin-bottom:10px;
+}
+.hs-num { font-family:'Nunito',sans-serif; font-weight:900; font-size:20px; color:#FF6633; }
+.hs-lbl { font-size:10px; color:#888; line-height:1.4; }
+
+/* Footer */
+.footer {
+  background:#1a1a2e;
+  padding:12px 36px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.footer-left {
+  font-size:10px;
+  color:rgba(255,255,255,.3);
+  line-height:1.8;
+}
+.footer-right {
+  text-align:right;
+  font-size:10px;
+  color:rgba(255,255,255,.3);
+  line-height:1.8;
+}
+
+/* Print */
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  body { padding: 16px 12px; gap: 12px; }
+
+  .page { width: 100%; border-radius: 8px; }
+
+  /* Header stacks vertically */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+  .header-right { text-align: left; }
+  .logo-badge { margin-right: 12px; }
+
+  /* All multi-column grids collapse to single column */
+  .two-col,
+  .three-col,
+  .ask-grid { grid-template-columns: 1fr; }
+
+  /* Cost row wraps */
+  .cost-row { flex-wrap: wrap; }
+  .cost-item { flex: 1 1 calc(50% - 10px); min-width: 140px; }
+
+  /* Cards */
+  .card { padding: 12px 14px; }
+  .card-title { font-size: 13px; }
+  .card-body { font-size: 10.5px; }
+
+  /* Ask boxes */
+  .ask-grid { grid-template-columns: 1fr 1fr; }
+  .ask-box { padding: 12px 10px; }
+  .ask-num { font-size: 22px; }
+
+  /* Footer stacks */
+  .footer {
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 20px;
+    text-align: center;
+  }
+  .footer-right { text-align: center; }
+
+  /* Body padding */
+  .body { padding: 14px 20px 14px; }
+
+  /* Highlight stat */
+  .highlight-stat { width: 100%; justify-content: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .ask-grid { grid-template-columns: 1fr; }
+  .cost-item { flex: 1 1 100%; }
+  .header-left .presenter { font-size: 17px; }
+  .header-right .doc-title { font-size: 15px; }
+}
+
+@media print {
+  body { background:white; padding:0; }
+  .print-btn { display:none; }
+  .page { width:100%; border-radius:0; box-shadow:none; }
+  @page { size:letter; margin:0; }
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+<div class="page">
+  <div class="stripe"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div style="display:flex;align-items:center;">
+      <div class="logo-badge">
+        <img src="CGM_Logo_Transparent.png" alt="CGM"
+             onerror="this.parentElement.innerHTML='<span style=\'font-family:Arial Black;font-weight:900;font-size:14px;color:#1BC4C4;\'>c·g·m</span>'">
+      </div>
+      <div class="header-left">
+        <div class="presenter">Javon Solomon</div>
+        <div class="cred">HubSpot Certified · Digital Marketing and Advertising · CGM Volunteer</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="doc-title">CGM Digital Growth Plan</div>
+      <div class="doc-sub">Board Presentation · September 2026</div>
+    </div>
+  </div>
+  <div class="teal-bar"></div>
+
+  <!-- Body -->
+  <div class="body">
+
+    <!-- Top: Opportunity highlight + Google Grant -->
+    <div class="two-col">
+
+      <div class="card orange">
+        <div class="card-label">The Opportunity</div>
+        <div class="card-title">CGM has a powerful new brand. Now we build the audience.</div>
+        <div class="card-body" style="margin-bottom:10px;">The new website, logo, and social media templates are live and ready. What we need now is a consistent, strategic system to reach donors, families, and community partners every week without adding cost to the organization.</div>
+        <ul class="bullet-list">
+          <li><div class="dot" style="background:#1BC4C4;"></div>New website live at cgmhachie.org</li>
+          <li><div class="dot" style="background:#FF6633;"></div>Branded social media templates built</li>
+          <li><div class="dot" style="background:#9933CC;"></div>NTX Giving Day profile updated</li>
+          <li><div class="dot" style="background:#44BB33;"></div>10 weeks of scripture content ready to post</li>
+          <li><div class="dot" style="background:#FFCC00;"></div>Building Campaign at $10,000 of $500,000</li>
+        </ul>
+      </div>
+
+      <div class="card navy">
+        <div class="card-label">Biggest Opportunity Most Nonprofits Miss</div>
+        <div class="card-title">Google Ad Grant for Nonprofits</div>
+        <div class="highlight-stat">
+          <div class="hs-num">$10,000</div>
+          <div class="hs-lbl">Per month in FREE<br>Google advertising</div>
+        </div>
+        <div class="card-body">Google gives eligible 501(c)(3) organizations $10,000 every month in free search advertising. That is $120,000 per year at no cost to CGM.</div>
+        <div style="margin-top:8px;">
+          <ul class="bullet-list">
+            <li><div class="dot" style="background:#1BC4C4;"></div>"After-school programs Waxahachie"</li>
+            <li><div class="dot" style="background:#1BC4C4;"></div>"Childcare Waxahachie TX"</li>
+            <li><div class="dot" style="background:#1BC4C4;"></div>"Donate to children Ellis County"</li>
+            <li><div class="dot" style="background:#1BC4C4;"></div>"NTX Giving Day Common Ground"</li>
+          </ul>
+        </div>
+        <div style="margin-top:8px;font-size:10px;color:rgba(255,255,255,.4);">Application requires EIN 75-2416743 and 501(c)(3) documentation. Javon will complete the process as a volunteer at no cost to CGM.</div>
+      </div>
+
+    </div>
+
+    <!-- Middle row: 3 strategy cards -->
+    <div class="three-col">
+
+      <div class="card">
+        <div class="card-label">Social Media Strategy</div>
+        <div class="card-title">3 Posts Per Week. Consistent. On Brand.</div>
+        <ul class="bullet-list" style="margin-bottom:8px;">
+          <li><div class="dot" style="background:#1BC4C4;"></div><strong>Monday:</strong> Scripture template</li>
+          <li><div class="dot" style="background:#FF6633;"></div><strong>Wednesday:</strong> Program spotlight</li>
+          <li><div class="dot" style="background:#9933CC;"></div><strong>Friday:</strong> Donate or Volunteer CTA</li>
+        </ul>
+        <div class="card-body"><strong>90-day goal:</strong> 40% engagement growth and 500 Facebook followers.<br><strong>Tool:</strong> Meta Business Suite (free)</div>
+      </div>
+
+      <div class="card green">
+        <div class="card-label">Email Newsletter</div>
+        <div class="card-title">Monthly CGM Insider Newsletter</div>
+        <div class="card-body" style="margin-bottom:7px;">A monthly email to families, donors, churches, and community partners keeping everyone connected to the mission.</div>
+        <ul class="bullet-list">
+          <li><div class="dot" style="background:#44BB33;"></div>Student spotlight</li>
+          <li><div class="dot" style="background:#44BB33;"></div>Upcoming events</li>
+          <li><div class="dot" style="background:#44BB33;"></div>Building campaign update</li>
+          <li><div class="dot" style="background:#44BB33;"></div>Scripture of the month</li>
+          <li><div class="dot" style="background:#44BB33;"></div>How to help this month</li>
+        </ul>
+        <div style="margin-top:7px;font-size:10px;color:#888;">Platform: Mailchimp (free up to 500 contacts)</div>
+      </div>
+
+      <div class="card purple">
+        <div class="card-label">Building Campaign Push</div>
+        <div class="card-title">Dedicated 4-Post Campaign Series</div>
+        <ul class="bullet-list" style="margin-bottom:7px;">
+          <li><div class="dot" style="background:#9933CC;"></div>Week 1: Story of the portable building</li>
+          <li><div class="dot" style="background:#9933CC;"></div>Week 2: What a new building means</li>
+          <li><div class="dot" style="background:#9933CC;"></div>Week 3: Progress update with thermometer</li>
+          <li><div class="dot" style="background:#9933CC;"></div>Week 4: Direct ask with QR code</li>
+        </ul>
+        <div class="card-body">If Google Ad Grant is approved, targeted ads will also drive Ellis County donors directly to the NTX Giving Day donation page.</div>
+      </div>
+
+    </div>
+
+    <!-- Cost row -->
+    <div class="cost-row">
+      <div class="cost-item"><span class="cost-name">Google Ad Grant Application</span><span class="cost-val">$0</span></div>
+      <div class="cost-item"><span class="cost-name">Social Media Scheduling (Meta Suite)</span><span class="cost-val">$0</span></div>
+      <div class="cost-item"><span class="cost-name">Content Creation (templates built)</span><span class="cost-val">$0</span></div>
+      <div class="cost-item"><span class="cost-name">Mailchimp Newsletter (up to 500)</span><span class="cost-val">$0</span></div>
+      <div class="cost-item"><span class="cost-name">Javon's Time as Volunteer</span><span class="cost-val">$0</span></div>
+      <div class="cost-item last"><span class="cost-name">Total Monthly Cost to CGM</span><span class="cost-val">$0</span></div>
+    </div>
+
+    <!-- What we're asking -->
+    <div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#888;margin-bottom:8px;">Board Approvals Requested</div>
+    <div class="ask-grid">
+      <div class="ask-box">
+        <div class="ask-num">01</div>
+        <div class="ask-text">Approve Google Ad Grant application on CGM's behalf</div>
+      </div>
+      <div class="ask-box">
+        <div class="ask-num">02</div>
+        <div class="ask-text">Approve building an email list and sending a monthly newsletter</div>
+      </div>
+      <div class="ask-box">
+        <div class="ask-num">03</div>
+        <div class="ask-text">90-day trial to manage social media with monthly board report</div>
+      </div>
+      <div class="ask-box">
+        <div class="ask-num">04</div>
+        <div class="ask-text">Admin access to CGM Facebook page to schedule and post content</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="stripe-bot"></div>
+  <div class="footer">
+    <div class="footer-left">
+      Common Ground Ministries · cgmhachie.org · info@cgmhachie.org · (972) 923-2224<br>
+      604 E Parks Ave, Waxahachie TX 75165 · P.O. Box 444, Waxahachie TX 75168
+    </div>
+    <div class="footer-right">
+      Prepared by Javon Solomon<br>
+      HubSpot Certified · Digital Marketing and Advertising<br>
+      September 2026
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

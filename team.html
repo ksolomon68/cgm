@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leadership & Board of Directors — Common Ground Ministries</title>
+  <meta name="description" content="Meet the executive leadership, staff, and Board of Directors guiding Common Ground Ministries in Waxahachie, Texas.">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="analytics.js" defer></script>
+  <style>
+    /* ═══════════════════════════════════════
+       DESIGN TOKENS & PALETTE
+    ═══════════════════════════════════════ */
+    :root {
+      --teal: #1BC4C4;
+      --teal-dark: #14a8a8;
+      --teal-light: rgba(27, 196, 196, 0.12);
+      --orange: #FF6633;
+      --orange-dark: #e5551f;
+      --orange-light: rgba(255, 102, 51, 0.12);
+      --navy: #1a1a2e;
+      --navy-light: #252542;
+      --purple: #9933CC;
+      --purple-light: rgba(153, 51, 204, 0.12);
+      --yellow: #FFCC00;
+      --yellow-light: rgba(255, 204, 0, 0.15);
+      --green: #44BB33;
+      --green-light: rgba(68, 187, 51, 0.12);
+      --pink: #FF3399;
+      --blue: #2299EE;
+      --offwhite: #faf8f4;
+      --white: #ffffff;
+      --light: #f0eeea;
+      --border: #e8e5e0;
+      --mid: #777788;
+      --dark: #2d2d3a;
+      --font-display: 'Nunito', sans-serif;
+      --font-body: 'Nunito Sans', sans-serif;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+      --shadow-sm: 0 4px 16px rgba(26, 26, 46, 0.05);
+      --shadow-md: 0 8px 30px rgba(26, 26, 46, 0.08);
+      --shadow-lg: 0 16px 45px rgba(26, 26, 46, 0.12);
+      --radius-card: 20px;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--offwhite);
+      color: var(--navy);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ═══════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(250, 248, 244, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 80px;
+      transition: box-shadow .3s, background .3s;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.10);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      padding: 6px 0;
+    }
+
+    .nav-logo img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      transition: transform .2s ease;
+    }
+
+    .nav-logo img:hover {
+      transform: scale(1.02);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a, .nav-dropdown-trigger {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--navy);
+      transition: color .2s, transform .2s;
+      position: relative;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a:hover, .nav-dropdown-trigger:hover {
+      color: var(--teal);
+    }
+
+    .nav-links a.active-link {
+      color: var(--teal);
+    }
+
+    .nav-links a.active-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+
+    /* ── DROPDOWN MENUS ── */
+    .nav-item-dropdown {
+      position: relative;
+      padding: 10px 0;
+    }
+
+    .nav-dropdown-trigger svg {
+      transition: transform .2s ease;
+      color: var(--mid);
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown-trigger svg,
+    .nav-item-dropdown.open .nav-dropdown-trigger svg {
+      transform: rotate(180deg);
+      color: var(--teal);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--offwhite);
+      border: 1.5px solid var(--teal);
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+      min-width: 230px;
+      padding: 8px;
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s var(--ease), transform .2s var(--ease), visibility .2s;
+      z-index: 200;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown-menu,
+    .nav-item-dropdown.open .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-menu li {
+      width: 100%;
+    }
+
+    .nav-dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy) !important;
+      text-transform: none;
+      letter-spacing: 0.2px;
+      transition: background .15s, color .15s, transform .15s;
+      white-space: nowrap;
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: rgba(27, 196, 196, 0.12);
+      color: var(--teal) !important;
+      transform: translateX(3px);
+    }
+
+    .nav-links a:not(.nav-donate):not(.nav-cta), .nav-dropdown-trigger {
+      background: none;
+    }
+
+    /* ── CTA BUTTONS IN NAV ── */
+    a.nav-donate, .nav-links a.nav-donate, .nav-donate {
+      background: var(--teal) !important;
+      color: #ffffff !important;
+      padding: 10px 22px !important;
+      border-radius: 30px !important;
+      font-weight: 800 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 4px 14px rgba(27, 196, 196, 0.35) !important;
+      transition: background .2s, transform .2s, box-shadow .2s !important;
+      border: none !important;
+    }
+
+    a.nav-donate:hover, .nav-links a.nav-donate:hover, .nav-donate:hover {
+      background: #14a8a8 !important;
+      color: #ffffff !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 8px 20px rgba(27, 196, 196, 0.5) !important;
+    }
+
+    a.nav-cta, .nav-links a.nav-cta, .nav-cta {
+      background: var(--orange) !important;
+      color: #ffffff !important;
+      padding: 10px 22px !important;
+      border-radius: 30px !important;
+      font-weight: 800 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 4px 14px rgba(255, 102, 51, 0.35) !important;
+      transition: background .2s, transform .2s, box-shadow .2s !important;
+      border: none !important;
+    }
+
+    a.nav-cta:hover, .nav-links a.nav-cta:hover, .nav-cta:hover {
+      background: #e5551f !important;
+      color: #ffffff !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 8px 20px rgba(255, 102, 51, 0.5) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 110;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--navy);
+      border-radius: 3px;
+      transition: transform .3s var(--ease), opacity .3s var(--ease);
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* ═══════════════════════════════════════
+       HERO BANNER
+    ═══════════════════════════════════════ */
+    .hero-team {
+      padding-top: 130px;
+      padding-bottom: 50px;
+      background: linear-gradient(180deg, #ffffff 0%, #f4f2ee 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-team::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(27, 196, 196, 0.12) 0%, rgba(27, 196, 196, 0) 70%);
+      pointer-events: none;
+    }
+
+    .hero-team::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -60px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 102, 51, 0.10) 0%, rgba(255, 102, 51, 0) 70%);
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge-wrap {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(27, 196, 196, 0.12);
+      color: var(--navy);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(27, 196, 196, 0.3);
+    }
+
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+    }
+
+    .hero-team h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.15;
+      text-align: center;
+      color: var(--navy);
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-team h1 span.gradient-text {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--blue) 50%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-team p.subtitle {
+      max-width: 760px;
+      margin: 0 auto 36px;
+      font-size: clamp(16px, 2vw, 18px);
+      color: var(--mid);
+      text-align: center;
+      line-height: 1.65;
+    }
+
+    .accent-stripe {
+      height: 5px;
+      max-width: 240px;
+      margin: 0 auto 36px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--yellow), var(--orange), var(--teal), var(--green), var(--purple));
+    }
+
+    /* ═══════════════════════════════════════
+       QUICK STATS BAR
+    ═══════════════════════════════════════ */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 980px;
+      margin: 0 auto 40px;
+    }
+
+    .stat-pill {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 14px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .stat-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-pill .stat-number {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 24px;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .stat-pill .stat-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    /* ═══════════════════════════════════════
+       FILTER & SEARCH BAR
+    ═══════════════════════════════════════ */
+    .filter-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--white);
+      padding: 14px 22px;
+      border-radius: 18px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      background: transparent;
+      border: 1.5px solid transparent;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .filter-tab:hover {
+      background: var(--light);
+      color: var(--navy);
+    }
+
+    .filter-tab.active {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 240px;
+      flex: 1;
+      max-width: 340px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 9px 14px 9px 38px;
+      border-radius: 30px;
+      border: 1.5px solid var(--border);
+      background: #fafaf8;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--navy);
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--teal);
+      background: var(--white);
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--mid);
+      pointer-events: none;
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION HEADERS
+    ═══════════════════════════════════════ */
+    .section-block {
+      margin-bottom: 64px;
+    }
+
+    .section-title-wrap {
+      margin-bottom: 32px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-title-wrap .title-area h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(24px, 3.5vw, 32px);
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title-wrap .title-area h2 .section-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--teal-light);
+      color: var(--teal);
+      font-size: 20px;
+    }
+
+    .section-title-wrap .title-area h2 .section-icon.orange {
+      background: var(--orange-light);
+      color: var(--orange);
+    }
+
+    .section-title-wrap .title-area p {
+      font-size: 14px;
+      color: var(--mid);
+      margin-top: 4px;
+    }
+
+    .section-badge-counter {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--navy);
+      background: var(--light);
+      padding: 6px 14px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+    }
+
+    /* ═══════════════════════════════════════
+       TEAM CARDS GRID
+    ═══════════════════════════════════════ */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 28px;
+    }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
+      position: relative;
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(27, 196, 196, 0.4);
+    }
+
+    /* Card Top Accent Line */
+    .team-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--teal);
+      opacity: 0;
+      transition: opacity .3s;
+      z-index: 2;
+    }
+
+    .team-card.leadership-card::before {
+      background: linear-gradient(90deg, var(--teal), var(--orange));
+      opacity: 1;
+    }
+
+    .team-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Photo Container */
+    .card-photo-box {
+      position: relative;
+      width: 100%;
+      padding-top: 105%; /* Clean square/portrait ratio */
+      background: #eef1f4;
+      overflow: hidden;
+    }
+
+    .leadership-card .card-photo-box {
+      padding-top: 100%;
+    }
+
+    .card-photo-box img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform .4s var(--ease);
+    }
+
+    .team-card:hover .card-photo-box img {
+      transform: scale(1.04);
+    }
+
+    .card-category-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(26, 26, 46, 0.88);
+      backdrop-filter: blur(8px);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 2;
+    }
+
+    .card-category-tag.officer {
+      background: rgba(255, 102, 51, 0.92);
+      color: white;
+      border-color: transparent;
+    }
+
+    .card-category-tag.director {
+      background: rgba(27, 196, 196, 0.95);
+      color: var(--navy);
+      border-color: transparent;
+    }
+
+    /* Card Content */
+    .card-body {
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 20px;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .card-title {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--teal);
+      letter-spacing: 0.3px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .card-title.officer-title {
+      color: var(--orange);
+    }
+
+    .card-bio {
+      font-size: 13.5px;
+      color: var(--mid);
+      line-height: 1.55;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .card-footer-meta {
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: #9999aa;
+      font-weight: 600;
+    }
+
+    .card-org-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .card-org-tag svg {
+      width: 13px;
+      height: 13px;
+      color: var(--teal);
+    }
+
+    /* ═══════════════════════════════════════
+       VALUES & MISSION HIGHLIGHT
+    ═══════════════════════════════════════ */
+    .team-mission-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, #20203a 100%);
+      border-radius: 28px;
+      padding: 48px 40px;
+      color: white;
+      margin: 60px 0;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-mission-banner::after {
+      content: '';
+      position: absolute;
+      right: -60px;
+      bottom: -60px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(27, 196, 196, 0.25) 0%, rgba(27, 196, 196, 0) 70%);
+      border-radius: 50%;
+    }
+
+    .tmb-content {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tmb-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+
+    .tmb-content h3 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(22px, 3.5vw, 32px);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .tmb-content p {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .tmb-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all .2s;
+      border: none;
+    }
+
+    .btn-teal {
+      background: var(--teal);
+      color: var(--navy);
+    }
+    .btn-teal:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: white;
+    }
+    .btn-orange:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+    }
+    .btn-outline-white:hover {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--navy);
+      color: white;
+      padding: 56px 48px 36px;
+      border-top: 4px solid var(--teal);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand img {
+      height: 52px;
+      width: auto;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand .name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 18px;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .footer-brand .sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links-list a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color .2s;
+    }
+
+    .footer-links-list a:hover {
+      color: var(--teal);
+    }
+
+    .footer-social-wrap {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all .2s;
+    }
+
+    .social-btn:hover {
+      background: var(--teal);
+      color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ═══════════════════════════════════════
+       MODAL IFRAME OVERLAY
+    ═══════════════════════════════════════ */
+    #cgmModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10, 10, 20, 0.85);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-box-inner {
+      background: #1a1a2e;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 560px;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      animation: modalIn .3s ease;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(12px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      flex-shrink: 0;
+    }
+
+    .modal-title-text {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .modal-close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 102, 51, 0.4);
+    }
+
+    #cgmIframe {
+      width: 100%;
+      height: 72vh;
+      border: none;
+      background: #1a1a2e;
+    }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE DESIGN
+    ═══════════════════════════════════════ */
+    @media (max-width: 992px) {
+      nav {
+        padding: 0 24px;
+      }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: var(--navy);
+        flex-direction: column;
+        padding: 16px 20px 24px;
+        gap: 0;
+        border-bottom: 3px solid var(--teal);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .nav-links li {
+        width: 100%;
+      }
+      .nav-links a, .nav-dropdown-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 14px;
+        width: 100%;
+        text-align: left;
+        padding: 12px 16px;
+        border-left: 3px solid transparent;
+      }
+      .nav-links a:hover, .nav-dropdown-trigger:hover {
+        color: var(--teal);
+        border-left-color: var(--teal);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .nav-dropdown-menu {
+        position: static;
+        transform: none !important;
+        box-shadow: none;
+        border: none;
+        border-left: 2px solid var(--teal);
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 0 10px 10px 0;
+        margin: 2px 10px 8px 24px;
+        padding: 4px 0;
+        opacity: 1;
+        visibility: visible;
+        display: block;
+        min-width: unset;
+      }
+      .nav-dropdown-menu a {
+        color: rgba(255, 255, 255, 0.75) !important;
+        padding: 9px 14px;
+        font-size: 13px;
+        border-left: none;
+      }
+      .nav-dropdown-menu a:hover {
+        color: var(--teal) !important;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .nav-links .nav-donate {
+        margin-top: 10px;
+        text-align: center;
+        justify-content: center;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 20px;
+      }
+      .hero-team {
+        padding-top: 110px;
+        padding-bottom: 40px;
+      }
+      .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-box {
+        max-width: 100%;
+      }
+      .stats-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .stat-pill {
+        padding: 12px 8px;
+      }
+      .stat-pill .stat-number {
+        font-size: 20px;
+      }
+      .team-grid, .leadership-grid {
+        grid-template-columns: 1fr;
+      }
+      .team-mission-banner {
+        padding: 36px 24px;
+      }
+      footer {
+        padding: 40px 24px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo" aria-label="Common Ground Ministries Home">
+      <img src="CGM_Logo_Transparent.png" alt="Common Ground Ministries">
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-item-dropdown">
+        <a href="index.html#mission" class="nav-dropdown-trigger">
+          About
+          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="index.html#mission">🎯 Mission & Faith</a></li>
+          <li><a href="team.html" style="color:var(--teal) !important;">👥 Leadership & Board</a></li>
+          <li><a href="index.html#campaign">🏗️ Building Campaign</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#program">Program</a></li>
+      <li><a href="index.html#calendar">Calendar</a></li>
+      <li class="nav-item-dropdown">
+        <a href="index.html#volunteer" class="nav-dropdown-trigger">
+          Get Involved
+          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="index.html#volunteer">🤝 Volunteer Mentorship</a></li>
+          <li><a href="#" onclick="openModal('CGM_Sponsor.html','Become a Sponsor');return false;">★ Become a Sponsor</a></li>
+          <li><a href="index.html#christmas">🎁 Christmas with Dignity</a></li>
+          <li><a href="index.html#contact">📍 Contact & Location</a></li>
+        </ul>
+      </li>
+      <li><a href="board.html" style="color:var(--teal);font-size:12px;letter-spacing:1px;">🔒 Board</a></li>
+      <li><a href="#" onclick="openModal('CGM_Donate.html','Donate');return false;" class="nav-donate">❤️ Donate</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       HERO BANNER
+  ═══════════════════════════════════════ -->
+  <section class="hero-team">
+    <div class="container">
+      <div class="hero-badge-wrap">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Common Ground Ministries · Leadership
+        </div>
+      </div>
+
+      <h1>
+        Meet Our <span class="gradient-text">Leadership & Board</span>
+      </h1>
+      
+      <p class="subtitle">
+        United in faith and committed to servant leadership — providing a safe haven, academic enrichment, and Christ-centered hope for the youth and families of East Waxahachie since 1991.
+      </p>
+
+      <div class="accent-stripe"></div>
+
+      <!-- Quick Stats -->
+      <div class="stats-strip">
+        <div class="stat-pill">
+          <div class="stat-number">33+</div>
+          <div class="stat-label">Years of Impact</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Dedicated Board</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-number">13</div>
+          <div class="stat-label">Leaders & Directors</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Shared Mission</div>
+        </div>
+      </div>
+
+      <!-- Search and Filter Bar -->
+      <div class="filter-controls">
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">All Members (13)</button>
+          <button class="filter-tab" data-filter="leadership">Leadership & Officers (7)</button>
+          <button class="filter-tab" data-filter="board">Board of Directors (6)</button>
+        </div>
+
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="memberSearch" placeholder="Search by name or title..." aria-label="Search members">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       MAIN CONTENT: LEADERSHIP & BOARD
+  ═══════════════════════════════════════ -->
+  <main class="container" style="padding-bottom: 60px;">
+
+    <!-- ── SECTION 1: LEADERSHIP & OFFICERS (ON TOP) ── -->
+    <section class="section-block" id="leadershipSection">
+      <div class="section-title-wrap">
+        <div class="title-area">
+          <h2>
+            <span class="section-icon">★</span>
+            Executive Leadership & Officers
+          </h2>
+          <p>Directing daily operations, ministry programs, governance, and organizational development.</p>
+        </div>
+        <div class="section-badge-counter">Leadership Team</div>
+      </div>
+
+      <div class="leadership-grid" id="leadershipGrid">
+
+        <!-- DeShawn Moore -->
+        <article class="team-card leadership-card" data-category="leadership" data-name="deshawn moore" data-title="director executive director">
+          <div class="card-photo-box">
+            <img src="team/DeShAWN MOORE - Director.webp" alt="DeShawn Moore - Director" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag director">Executive Leadership</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">DeShawn Moore</h3>
+            <div class="card-title">
+              <span>Director</span>
+            </div>
+            <p class="card-bio">
+              Guiding Common Ground Ministries with dedicated servant leadership, fostering spiritual growth, academic mentorship, and community care for every child.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Executive Leadership
+              </span>
+              <span>Waxahachie, TX</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Anita Barnes -->
+        <article class="team-card leadership-card" data-category="leadership" data-name="anita barnes" data-title="assistant director">
+          <div class="card-photo-box">
+            <img src="team/Anita Barnes- Assistant Director.webp" alt="Anita Barnes - Assistant Director" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag director">Ministry Staff</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Anita Barnes</h3>
+            <div class="card-title">
+              <span>Assistant Director</span>
+            </div>
+            <p class="card-bio">
+              Supporting daily youth programs, after-school coordination, curriculum facilitation, and nurturing care for children throughout the year.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Ministry Leadership
+              </span>
+              <span>Waxahachie, TX</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cheryl Loper -->
+        <article class="team-card leadership-card" data-category="leadership" data-name="cheryl loper" data-title="president of the board board president">
+          <div class="card-photo-box">
+            <img src="team/Cheryl_Loper President of the Board.webp" alt="Cheryl Loper - President of the Board" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag officer">Board Officer</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Cheryl Loper</h3>
+            <div class="card-title officer-title">
+              <span>President of the Board</span>
+            </div>
+            <p class="card-bio">
+              Leading the Board of Directors with strategic vision, governance excellence, and an unwavering commitment to the children and mission of CGM.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Board Executive
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Helen Wagner -->
+        <article class="team-card leadership-card" data-category="leadership" data-name="helen wagner" data-title="vice president board vice president">
+          <div class="card-photo-box">
+            <img src="team/Helen_Wagner Vice President.webp" alt="Helen Wagner - Vice President" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag officer">Board Officer</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Helen Wagner</h3>
+            <div class="card-title officer-title">
+              <span>Vice President</span>
+            </div>
+            <p class="card-bio">
+              Assisting in board governance, committee leadership, and long-term organizational planning to expand CGM's community outreach.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Board Executive
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Judy Helm -->
+        <article class="team-card leadership-card" data-category="leadership" data-name="judy helm" data-title="treasurer board treasurer">
+          <div class="card-photo-box">
+            <img src="team/Judy_Helm Treasurer.jpg" alt="Judy Helm - Treasurer" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag officer">Board Officer</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Judy Helm</h3>
+            <div class="card-title officer-title">
+              <span>Treasurer</span>
+            </div>
+            <p class="card-bio">
+              Overseeing financial stewardship, fiscal accountability, donor reporting, and transparent resource management for ministry sustainability.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Board Executive
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Christie Berger -->
+        <article class="team-card leadership-card" data-category="leadership" data-name="christie berger" data-title="secretary board secretary">
+          <div class="card-photo-box">
+            <img src="team/Christie Berger - Secretary.webp" alt="Christie Berger - Secretary" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag officer">Board Officer</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Christie Berger</h3>
+            <div class="card-title officer-title">
+              <span>Secretary</span>
+            </div>
+            <p class="card-bio">
+              Managing board records, meeting proceedings, regulatory documentation, and communication across the ministry organization.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Board Executive
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Jill Wadsworth -->
+        <article class="team-card leadership-card" data-category="leadership" data-name="jill wadsworth" data-title="grant writer board member">
+          <div class="card-photo-box">
+            <img src="team/Jill_Wadsworth Grant Writer.webp" alt="Jill Wadsworth - Grant Writer" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag">Leadership & Board</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Jill Wadsworth</h3>
+            <div class="card-title">
+              <span>Grant Writer & Board Member</span>
+            </div>
+            <p class="card-bio">
+              Securing vital foundation grants, philanthropic funding, and community partnerships to fuel CGM's building campaign and youth programs.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Development & Board
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── SECTION 2: BOARD OF DIRECTORS ── -->
+    <section class="section-block" id="boardSection">
+      <div class="section-title-wrap">
+        <div class="title-area">
+          <h2>
+            <span class="section-icon orange">♦</span>
+            Board of Directors
+          </h2>
+          <p>Community champions providing fiduciary oversight, strategic counsel, and passionate volunteer advocacy.</p>
+        </div>
+        <div class="section-badge-counter">Board Governance</div>
+      </div>
+
+      <div class="team-grid" id="boardGrid">
+
+        <!-- Ashley Spurlock -->
+        <article class="team-card" data-category="board" data-name="ashley spurlock" data-title="board member">
+          <div class="card-photo-box">
+            <img src="team/Ashley Spurlock.webp" alt="Ashley Spurlock - Board Member" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag">Board Member</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Ashley Spurlock</h3>
+            <div class="card-title">
+              <span>Board Member</span>
+            </div>
+            <p class="card-bio">
+              Championing youth empowerment, community outreach, and volunteer engagement to support the families of Common Ground Ministries.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Community Advocate
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Keisha Solomon -->
+        <article class="team-card" data-category="board" data-name="keisha solomon" data-title="board member digital strategist">
+          <div class="card-photo-box">
+            <img src="team/Keisha Solomon Board Member.png" alt="Keisha Solomon - Board Member" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag">Board Member</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Keisha Solomon</h3>
+            <div class="card-title">
+              <span>Board Member / Digital Strategist</span>
+            </div>
+            <p class="card-bio">
+              Guiding digital strategy, branding, web technologies, and community engagement to amplify CGM's mission and visibility.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Digital Strategy
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Candace Sanders -->
+        <article class="team-card" data-category="board" data-name="candace sanders" data-title="board member">
+          <div class="card-photo-box">
+            <img src="team/Candace Sanders.jpg" alt="Candace Sanders - Board Member" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag">Board Member</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Candace Sanders</h3>
+            <div class="card-title">
+              <span>Board Member</span>
+            </div>
+            <p class="card-bio">
+              Passionate advocate for child development, family resources, and creating a joyful, Christ-centered environment for young learners.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Board Governance
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Julie Ballard -->
+        <article class="team-card" data-category="board" data-name="julie ballard" data-title="board member">
+          <div class="card-photo-box">
+            <img src="team/photo-not-available.jpg" alt="Julie Ballard - Board Member" loading="lazy">
+            <span class="card-category-tag">Board Member</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Julie Ballard</h3>
+            <div class="card-title">
+              <span>Board Member</span>
+            </div>
+            <p class="card-bio">
+              Committed to supporting youth enrichment, educational opportunities, and strengthening the spiritual foundation of CGM children.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Board Governance
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Jonathan King -->
+        <article class="team-card" data-category="board" data-name="jonathan king" data-title="board member pastor">
+          <div class="card-photo-box">
+            <img src="team/Jonathan King Board Member.webp" alt="Jonathan King - Board Member" loading="lazy" onerror="this.src='team/photo-not-available.jpg';">
+            <span class="card-category-tag">Board Member</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Jonathan King</h3>
+            <div class="card-title">
+              <span>Board Member</span>
+            </div>
+            <p class="card-bio">
+              Bringing pastoral guidance, spiritual mentorship, and active faith leadership to the ministry's mission and youth community.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Spiritual Leadership
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Christi Kubin -->
+        <article class="team-card" data-category="board" data-name="christi kubin" data-title="board member">
+          <div class="card-photo-box">
+            <img src="team/photo-not-available.jpg" alt="Christi Kubin - Board Member" loading="lazy">
+            <span class="card-category-tag">Board Member</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">Christi Kubin</h3>
+            <div class="card-title">
+              <span>Board Member</span>
+            </div>
+            <p class="card-bio">
+              Dedicated to community collaboration, event support, and helping ensure every child receives the tools to thrive and succeed.
+            </p>
+            <div class="card-footer-meta">
+              <span class="card-org-tag">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Board Governance
+              </span>
+              <span>Board of Directors</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── CALL TO ACTION & MISSION BANNER ── -->
+    <div class="team-mission-banner">
+      <div class="tmb-content">
+        <span class="tmb-badge">Make An Impact Together</span>
+        <h3>Partner With Our Leadership in Transforming Lives</h3>
+        <p>
+          Every program, tutoring session, hot meal, and summer activity is made possible through the generous support of our community, church partners, and donors. Join hands with us today!
+        </p>
+        <div class="tmb-btns">
+          <a href="#" onclick="openModal('CGM_Donate.html','Donate to CGM');return false;" class="btn btn-teal">
+            ❤️ Donate to the Mission
+          </a>
+          <a href="#" onclick="openModal('CGM_Sponsor.html','Become a Sponsor');return false;" class="btn btn-orange">
+            ★ Become a Sponsor
+          </a>
+          <a href="index.html#volunteer" class="btn btn-outline-white">
+            🤝 Volunteer With Us
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="CGM_Logo_Transparent.png" alt="Common Ground Ministries">
+        <div class="name">Common Ground Ministries</div>
+        <div class="sub">
+          604 E Parks Ave · Waxahachie, TX 75165<br>
+          Phone: (972) 923-2224 · Email: info@cgmhachie.org
+        </div>
+        <div class="footer-social-wrap">
+          <a href="https://www.facebook.com/Common-Ground-Ministries-321287526730/" target="_blank" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/cgmhachie/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="mailto:info@cgmhachie.org" class="social-btn" aria-label="Email">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore CGM</h4>
+        <ul class="footer-links-list">
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="team.html" style="color:var(--teal); font-weight:700;">Leadership & Team</a></li>
+          <li><a href="index.html#mission">Our Mission & Faith</a></li>
+          <li><a href="index.html#program">Youth Programs & Tutoring</a></li>
+          <li><a href="index.html#campaign">Building Fund Campaign</a></li>
+          <li><a href="index.html#calendar">Events Calendar</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <ul class="footer-links-list">
+          <li><a href="index.html#volunteer">Volunteer Mentorship</a></li>
+          <li><a href="#" onclick="openModal('CGM_Donate.html','Donate to CGM');return false;">Make a Tax-Deductible Gift</a></li>
+          <li><a href="#" onclick="openModal('CGM_Sponsor.html','Become a Sponsor');return false;">Sponsor a Student / Program</a></li>
+          <li><a href="index.html#contact">Contact & Location</a></li>
+          <li><a href="board.html" style="color:var(--teal); font-weight:700;">🔒 Board Portal Login</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Common Ground Ministries · 501(c)(3) Nonprofit Organization · Waxahachie, Texas</div>
+      <div>Designed by EVOBRAND Concepts</div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       MODAL IFRAME OVERLAY
+  ═══════════════════════════════════════ -->
+  <div id="cgmModal">
+    <div class="modal-box-inner">
+      <div class="modal-header-bar">
+        <span class="modal-title-text" id="modalTitle">CGM Action</span>
+        <button class="modal-close-btn" onclick="closeModal()" aria-label="Close modal">✕</button>
+      </div>
+      <iframe id="cgmIframe" src="" title="Modal Content"></iframe>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       INTERACTIVE JAVASCRIPT
+  ═══════════════════════════════════════ -->
+  <script>
+    // ── Navigation Scroll Effect ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // ── Mobile Drawer ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Mobile dropdown toggle & close
+    document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        if (window.innerWidth <= 992) {
+          e.preventDefault();
+          trigger.closest('.nav-item-dropdown').classList.toggle('open');
+        }
+      });
+    });
+
+    // Close on any final nav link click
+    document.querySelectorAll('.nav-links a:not(.nav-dropdown-trigger)').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target) && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // ── Search & Filter Functionality ──
+    const searchInput = document.getElementById('memberSearch');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const allCards = document.querySelectorAll('.team-card');
+    const leadershipSection = document.getElementById('leadershipSection');
+    const boardSection = document.getElementById('boardSection');
+
+    let currentFilter = 'all';
+
+    function applyFilterAndSearch() {
+      const query = (searchInput.value || '').trim().toLowerCase();
+      let visibleLeadership = 0;
+      let visibleBoard = 0;
+
+      allCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const name = (card.getAttribute('data-name') || '').toLowerCase();
+        const title = (card.getAttribute('data-title') || '').toLowerCase();
+        const textContent = card.innerText.toLowerCase();
+
+        const matchesFilter = (currentFilter === 'all') || (currentFilter === category);
+        const matchesSearch = !query || name.includes(query) || title.includes(query) || textContent.includes(query);
+
+        if (matchesFilter && matchesSearch) {
+          card.style.display = 'flex';
+          if (category === 'leadership') visibleLeadership++;
+          if (category === 'board') visibleBoard++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Manage section visibility
+      leadershipSection.style.display = (visibleLeadership > 0) ? 'block' : 'none';
+      boardSection.style.display = (visibleBoard > 0) ? 'block' : 'none';
+    }
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentFilter = tab.getAttribute('data-filter');
+        applyFilterAndSearch();
+      });
+    });
+
+    searchInput.addEventListener('input', applyFilterAndSearch);
+
+    // ── Modal Actions ──
+    function openModal(page, title) {
+      const modal = document.getElementById('cgmModal');
+      document.getElementById('cgmIframe').src = page;
+      document.getElementById('modalTitle').textContent = title;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('cgmModal');
+      modal.style.display = 'none';
+      document.getElementById('cgmIframe').src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('cgmModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>

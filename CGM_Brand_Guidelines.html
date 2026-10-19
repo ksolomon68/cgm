@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Ground Ministries — Brand Guidelines 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<script src="analytics.js" defer></script>
+<style>
+/* ════════════════════════════════════════
+   TOKENS
+════════════════════════════════════════ */
+:root {
+  --teal:    #1BC4C4;
+  --orange:  #FF6633;
+  --navy:    #1a1a2e;
+  --purple:  #9933CC;
+  --yellow:  #FFCC00;
+  --green:   #44BB33;
+  --pink:    #FF3399;
+  --blue:    #2299EE;
+  --offwhite:#F4F2EE;
+  --light:   #F9F8F5;
+  --mid:     #888;
+  --dark:    #2d2d2d;
+  --F:       'Nunito', sans-serif;
+  --FB:      'Nunito Sans', sans-serif;
+  --page-w:  900px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:var(--FB);
+  background:var(--offwhite);
+  color:var(--dark);
+  font-size:15px;
+  line-height:1.7;
+}
+
+/* ════════════════════════════════════════
+   NAV / STICKY TOC — HAMBURGER MOBILE
+════════════════════════════════════════ */
+.sticky-nav {
+  position:sticky; top:0; z-index:200;
+  background:var(--navy);
+  border-bottom:3px solid var(--teal);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  height:56px;
+}
+
+.nav-brand {
+  font-family:var(--F);
+  font-weight:900;
+  font-size:13px;
+  color:var(--teal);
+  letter-spacing:1px;
+  white-space:nowrap;
+  flex-shrink:0;
+  padding:0;
+}
+
+/* Desktop link row */
+.nav-links {
+  display:flex;
+  align-items:center;
+  gap:0;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.nav-link {
+  display:block;
+  padding:18px 16px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+  text-decoration:none;
+  white-space:nowrap;
+  transition:color .2s, background .2s;
+  border-bottom:3px solid transparent;
+  margin-bottom:-3px;
+}
+.nav-link:hover { color:white; background:rgba(255,255,255,.04); }
+.nav-link.active { color:var(--teal); border-bottom-color:var(--teal); }
+
+/* Hamburger button — hidden on desktop */
+.nav-hamburger {
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  width:40px; height:40px;
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+  border-radius:8px;
+  transition:background .2s;
+  flex-shrink:0;
+}
+.nav-hamburger:hover { background:rgba(255,255,255,.08); }
+.nav-hamburger span {
+  display:block;
+  width:22px; height:2px;
+  background:white;
+  border-radius:2px;
+  transition:transform .3s ease, opacity .3s ease;
+  transform-origin:center;
+}
+
+/* Hamburger → X animation */
+.nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+/* Mobile dropdown */
+.nav-dropdown {
+  display:none;
+  position:absolute;
+  top:56px; left:0; right:0;
+  background:var(--navy);
+  border-bottom:3px solid var(--teal);
+  box-shadow:0 12px 40px rgba(0,0,0,.4);
+  flex-direction:column;
+  padding:8px 0 16px;
+  z-index:199;
+}
+.nav-dropdown.open { display:flex; }
+
+.nav-dropdown .nav-link {
+  padding:14px 24px;
+  border-bottom:none;
+  border-left:3px solid transparent;
+  margin-bottom:0;
+  font-size:13px;
+  color:rgba(255,255,255,.6);
+}
+.nav-dropdown .nav-link:hover { border-left-color:var(--teal); color:white; background:rgba(255,255,255,.04); }
+.nav-dropdown .nav-link.active { border-left-color:var(--teal); color:var(--teal); }
+
+/* ── RESPONSIVE BREAKPOINT ── */
+@media (max-width:768px) {
+  .sticky-nav { position:sticky; }
+  .nav-links { display:none; }
+  .nav-hamburger { display:flex; }
+}
+
+/* ════════════════════════════════════════
+   COVER
+════════════════════════════════════════ */
+.cover {
+  background:var(--navy);
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:80px 80px 80px;
+  gap:60px;
+  position:relative;
+  overflow:hidden;
+}
+
+.cover::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(27,196,196,.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(255,102,51,.09) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 40% at 90% 10%, rgba(153,51,204,.07) 0%, transparent 60%);
+}
+
+.cover-rainbow {
+  position:absolute;
+  top:0; left:0; right:0;
+  height:6px;
+  background:linear-gradient(90deg,
+    var(--pink) 0%, var(--yellow) 14%, var(--orange) 28%,
+    var(--teal) 42%, var(--green) 57%, var(--blue) 71%,
+    var(--purple) 85%, var(--pink) 100%);
+}
+
+.cover-text { position:relative; z-index:1; }
+
+.cover-kicker {
+  font-size:10px; letter-spacing:5px; text-transform:uppercase;
+  color:rgba(255,255,255,.35); margin-bottom:16px; font-weight:700;
+}
+
+.cover-text h1 {
+  font-family:var(--F); font-weight:900;
+  font-size:clamp(36px,4.5vw,62px);
+  color:white; line-height:1.1; margin-bottom:20px;
+}
+.cover-text h1 em { font-style:normal; color:var(--teal); }
+
+.cover-text p {
+  font-size:15px; color:rgba(255,255,255,.5);
+  line-height:1.8; max-width:420px; margin-bottom:32px;
+}
+
+.cover-meta {
+  display:flex; gap:0;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;
+  overflow:hidden;
+  display:inline-flex;
+}
+.cover-meta-item {
+  padding:12px 20px;
+  border-right:1px solid rgba(255,255,255,.1);
+  font-size:11px; color:rgba(255,255,255,.4);
+  line-height:1.5;
+}
+.cover-meta-item:last-child { border-right:none; }
+.cover-meta-item strong { display:block; color:white; font-size:12px; margin-bottom:1px; }
+
+.cover-logo-side {
+  position:relative; z-index:1; flex-shrink:0;
+}
+.cover-logo-wrap {
+  background:transparent;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
+}
+.cover-logo-wrap img { height:90px; width:auto; display:block; }
+
+/* ════════════════════════════════════════
+   SHARED SECTION LAYOUT
+════════════════════════════════════════ */
+.section {
+  max-width:var(--page-w);
+  margin:0 auto;
+  padding:72px 40px;
+  border-bottom:1px solid rgba(0,0,0,.07);
+}
+.section:last-child { border-bottom:none; }
+
+.section-alt { background:var(--light); }
+.section-dark { background:var(--navy); }
+
+/* Section heading */
+.sec-kicker {
+  font-size:9px; letter-spacing:6px; text-transform:uppercase;
+  font-weight:700; color:var(--teal); margin-bottom:8px;
+}
+.sec-kicker.orange { color:var(--orange); }
+.sec-kicker.purple { color:var(--purple); }
+.sec-kicker.green  { color:var(--green); }
+
+.sec-title {
+  font-family:var(--F); font-weight:900;
+  font-size:clamp(24px,3vw,36px); color:var(--navy);
+  line-height:1.15; margin-bottom:8px;
+}
+.section-dark .sec-title { color:white; }
+.sec-title em { font-style:normal; color:var(--teal); }
+
+.sec-desc {
+  font-size:14px; color:var(--mid);
+  line-height:1.8; max-width:600px; margin-bottom:44px;
+}
+.section-dark .sec-desc { color:rgba(255,255,255,.45); }
+
+.rule-line {
+  height:3px; width:48px; border-radius:2px;
+  background:var(--teal); margin-bottom:20px;
+}
+.rule-line.orange { background:var(--orange); }
+.rule-line.purple { background:var(--purple); }
+
+/* ════════════════════════════════════════
+   1. BRAND STORY
+════════════════════════════════════════ */
+.story-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.story-card {
+  border-radius:16px;
+  padding:28px;
+  background:white;
+  box-shadow:0 2px 16px rgba(0,0,0,.05);
+  border-top:4px solid var(--teal);
+}
+.story-card.orange { border-top-color:var(--orange); }
+.story-card.purple { border-top-color:var(--purple); }
+.story-card.green  { border-top-color:var(--green); }
+
+.story-card h3 {
+  font-family:var(--F); font-weight:900; font-size:15px;
+  color:var(--navy); margin-bottom:10px;
+  display:flex; align-items:center; gap:10px;
+}
+.story-card p { font-size:13px; color:#555; line-height:1.8; }
+
+.brand-pillars {
+  display:flex; gap:16px; margin-top:24px;
+}
+.pillar {
+  flex:1; text-align:center; padding:24px 16px;
+  background:white; border-radius:14px;
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+}
+.pillar .pi { font-size:36px; margin-bottom:10px; }
+.pillar .pt {
+  font-family:var(--F); font-weight:900;
+  font-size:15px; color:var(--navy); margin-bottom:6px;
+}
+.pillar .pd { font-size:12px; color:var(--mid); line-height:1.6; }
+
+/* ════════════════════════════════════════
+   2. LOGO
+════════════════════════════════════════ */
+.logo-primary {
+  background:white;
+  border-radius:20px;
+  padding:52px;
+  text-align:center;
+  margin-bottom:24px;
+  box-shadow:0 2px 20px rgba(0,0,0,.06);
+}
+.logo-primary img { height:120px; width:auto; }
+
+.logo-backgrounds {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:32px;
+}
+
+.logo-bg-card {
+  border-radius:14px;
+  padding:32px 20px 16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+.logo-bg-card img { height:60px; width:auto; }
+.logo-bg-label {
+  font-size:9px; letter-spacing:3px;
+  text-transform:uppercase; font-weight:700;
+}
+
+/* Clearspace diagram */
+.clearspace-demo {
+  background:white;
+  border-radius:16px;
+  padding:40px;
+  text-align:center;
+  box-shadow:0 2px 16px rgba(0,0,0,.06);
+  margin-bottom:24px;
+}
+.clearspace-inner {
+  display:inline-block;
+  position:relative;
+  padding:28px;
+  border:2px dashed var(--teal);
+  border-radius:4px;
+}
+.clearspace-inner img { height:70px; width:auto; display:block; }
+.cs-label {
+  font-size:10px; color:var(--teal); letter-spacing:2px;
+  text-transform:uppercase; margin-top:14px;
+  font-weight:700;
+}
+.cs-rule { font-size:12px; color:var(--mid); margin-top:6px; }
+
+/* Logo don'ts grid */
+.donts-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.dont-card {
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+}
+.dont-preview {
+  height:110px;
+  display:flex; align-items:center; justify-content:center;
+  border-bottom:1px solid #f0f0f0;
+  position:relative;
+}
+.dont-preview::after {
+  content:'✕';
+  position:absolute;
+  top:8px; right:10px;
+  width:24px; height:24px;
+  background:#ff4444;
+  color:white;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:900; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+}
+.dont-text {
+  padding:12px 14px;
+  font-size:11px; color:#555; line-height:1.5;
+}
+.dont-text strong { display:block; color:var(--navy); font-size:12px; margin-bottom:3px; }
+
+/* ════════════════════════════════════════
+   3. COLOR SYSTEM
+════════════════════════════════════════ */
+.color-primary-row {
+  display:flex; gap:12px; margin-bottom:20px;
+}
+
+.swatch {
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.1);
+  flex:1;
+}
+.swatch-color {
+  height:120px;
+}
+.swatch-info {
+  background:white;
+  padding:14px 16px;
+}
+.swatch-name {
+  font-family:var(--F); font-weight:900;
+  font-size:14px; color:var(--navy); margin-bottom:4px;
+}
+.swatch-role {
+  font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--mid); margin-bottom:8px;
+}
+.swatch-codes { display:flex; flex-direction:column; gap:3px; }
+.swatch-codes span {
+  font-family:monospace; font-size:11px; color:#666;
+}
+
+.color-accent-row {
+  display:flex; gap:10px; margin-bottom:32px;
+}
+.accent-swatch {
+  flex:1;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+.accent-swatch .ac { height:72px; }
+.accent-swatch .ai {
+  background:white;
+  padding:10px 12px;
+  font-size:10px; color:var(--mid); line-height:1.5;
+}
+.accent-swatch .ai strong { display:block; font-family:monospace; color:var(--navy); font-size:11px; }
+
+/* Color usage rules */
+.color-usage {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.cu-card {
+  background:white;
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+}
+.cu-card h4 {
+  font-family:var(--F); font-weight:900; font-size:13px;
+  color:var(--navy); margin-bottom:10px;
+  display:flex; gap:8px; align-items:center;
+}
+.cu-card ul {
+  list-style:none; font-size:12px; color:#555; line-height:2;
+}
+.cu-card ul li::before { content:'→ '; color:var(--teal); font-weight:700; }
+
+/* ════════════════════════════════════════
+   4. TYPOGRAPHY
+════════════════════════════════════════ */
+.type-specimens {
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  margin-bottom:36px;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.06);
+}
+
+.type-row {
+  background:white;
+  padding:24px 28px;
+  display:flex;
+  align-items:baseline;
+  gap:32px;
+  border-bottom:1px solid #f0f0f0;
+}
+.type-row:last-child { border-bottom:none; }
+
+.type-label-col {
+  width:160px;
+  flex-shrink:0;
+}
+.type-label {
+  font-size:9px; letter-spacing:3px;
+  text-transform:uppercase; color:var(--mid);
+  font-weight:700; margin-bottom:3px;
+}
+.type-spec {
+  font-family:monospace; font-size:10px; color:#aaa; line-height:1.6;
+}
+
+.type-sample { flex:1; }
+
+.type-scale {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:32px;
+}
+
+.scale-item {
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+.scale-label {
+  font-size:9px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--mid); font-weight:700; margin-bottom:10px;
+}
+
+.pair-demo {
+  background:var(--navy);
+  border-radius:16px;
+  padding:36px;
+  color:white;
+}
+.pair-demo h2 {
+  font-family:var(--F); font-weight:900; font-size:28px;
+  line-height:1.2; margin-bottom:12px;
+}
+.pair-demo h2 em { font-style:normal; color:var(--teal); }
+.pair-demo p { font-size:14px; color:rgba(255,255,255,.6); line-height:1.8; }
+
+/* ════════════════════════════════════════
+   5. SPACING & GRID
+════════════════════════════════════════ */
+.spacing-scale {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:36px;
+}
+.spacing-row {
+  display:flex; align-items:center; gap:20px;
+}
+.spacing-bar-wrap {
+  flex:1;
+  background:#eee;
+  border-radius:4px;
+  height:28px;
+  overflow:hidden;
+}
+.spacing-bar {
+  height:100%;
+  background:linear-gradient(90deg, var(--teal), var(--blue));
+  border-radius:4px;
+  display:flex; align-items:center; padding-left:10px;
+  font-size:11px; font-weight:700; color:white;
+}
+.spacing-label {
+  font-family:monospace; font-size:12px;
+  color:var(--navy); width:80px; flex-shrink:0; font-weight:700;
+}
+.spacing-use {
+  font-size:11px; color:var(--mid); width:200px; flex-shrink:0;
+}
+
+/* ════════════════════════════════════════
+   6. VOICE & TONE
+════════════════════════════════════════ */
+.voice-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-bottom:36px;
+}
+
+.voice-card {
+  border-radius:16px;
+  padding:24px;
+}
+.voice-card.do-card {
+  background:rgba(68,187,51,.07);
+  border:1px solid rgba(68,187,51,.2);
+}
+.voice-card.dont-voice {
+  background:rgba(255,68,68,.05);
+  border:1px solid rgba(255,68,68,.15);
+}
+.voice-card h3 {
+  font-family:var(--F); font-weight:900; font-size:14px;
+  margin-bottom:12px; display:flex; gap:8px; align-items:center;
+}
+.voice-card.do-card h3 { color:var(--green); }
+.voice-card.dont-voice h3 { color:#dd4444; }
+
+.voice-card ul { list-style:none; font-size:13px; color:#444; line-height:2.1; }
+.voice-card.do-card ul li::before { content:'✓  '; color:var(--green); font-weight:700; }
+.voice-card.dont-voice ul li::before { content:'✕  '; color:#dd4444; font-weight:700; }
+
+.example-posts {
+  display:flex; flex-direction:column; gap:14px;
+}
+
+.ex-post {
+  background:white;
+  border-radius:14px;
+  padding:20px 22px;
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+  border-left:4px solid transparent;
+}
+.ex-post.good  { border-left-color:var(--green); }
+.ex-post.bad   { border-left-color:#dd4444; }
+.ex-post .ep-label {
+  font-size:9px; letter-spacing:3px; text-transform:uppercase;
+  font-weight:700; margin-bottom:8px;
+}
+.ex-post.good .ep-label { color:var(--green); }
+.ex-post.bad  .ep-label { color:#dd4444; }
+.ex-post p { font-size:13px; color:#444; line-height:1.7; }
+
+/* ════════════════════════════════════════
+   8. QUICK REF TABLE
+════════════════════════════════════════ */
+.qr-table {
+  width:100%; border-collapse:collapse;
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.06);
+}
+.qr-table th {
+  background:var(--navy); color:white;
+  font-family:var(--F); font-weight:900;
+  font-size:11px; letter-spacing:2px;
+  text-transform:uppercase; padding:14px 20px;
+  text-align:left;
+}
+.qr-table td {
+  padding:12px 20px;
+  font-size:13px; color:#444;
+  border-bottom:1px solid #f0f0f0;
+  vertical-align:top;
+}
+.qr-table tr:last-child td { border-bottom:none; }
+.qr-table tr:nth-child(even) td { background:#fafaf8; }
+.qr-table td:first-child {
+  font-weight:700; color:var(--navy);
+  width:180px; font-size:12px;
+}
+.qr-table td code {
+  font-family:monospace; font-size:12px;
+  background:#f0f0f0; padding:2px 6px;
+  border-radius:4px; color:var(--navy);
+}
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+.doc-footer {
+  background:var(--navy);
+  padding:48px 80px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+  flex-wrap:wrap;
+  border-top:3px solid var(--teal);
+}
+.df-left .df-logo { height:50px; width:auto; background:transparent; border-radius:0; padding:0; margin-bottom:12px; }
+.df-left p { font-size:12px; color:rgba(255,255,255,.35); line-height:1.7; max-width:340px; }
+.df-right { text-align:right; }
+.df-right .version {
+  font-family:var(--F); font-weight:900;
+  font-size:13px; color:var(--teal); margin-bottom:6px;
+}
+.df-right .date { font-size:12px; color:rgba(255,255,255,.3); }
+.df-right .credit { font-size:11px; color:rgba(255,255,255,.2); margin-top:10px; letter-spacing:1px; }
+
+/* ════════════════════════════════════════
+   UTILS
+════════════════════════════════════════ */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+
+.info-box {
+  background:rgba(27,196,196,.07);
+  border:1px solid rgba(27,196,196,.2);
+  border-radius:12px;
+  padding:18px 22px;
+  font-size:13px; color:#444;
+  display:flex; gap:14px; align-items:flex-start;
+  margin-bottom:24px;
+}
+.info-box .ib-icon { font-size:20px; flex-shrink:0; margin-top:1px; }
+
+.warn-box {
+  background:rgba(255,102,51,.07);
+  border:1px solid rgba(255,102,51,.2);
+  border-radius:12px;
+  padding:18px 22px;
+  font-size:13px; color:#444;
+  display:flex; gap:14px; align-items:flex-start;
+  margin-bottom:24px;
+}
+
+@media (max-width:768px) {
+  /* Cover */
+  .cover { padding:52px 20px 44px; flex-direction:column; gap:32px; min-height:auto; }
+  .cover-text h1 { font-size:34px; }
+  .cover-logo-side { width:100%; display:flex; justify-content:center; }
+  .cover-meta { flex-direction:column; gap:0; border-radius:10px; }
+  .cover-meta-item { border-right:none; border-bottom:1px solid rgba(255,255,255,.1); }
+  .cover-meta-item:last-child { border-bottom:none; }
+
+  /* Sections */
+  .section { padding:44px 20px; }
+  .sec-title { font-size:26px; }
+
+  /* Grids → single column */
+  .story-grid,
+  .two-col,
+  .three-col,
+  .logo-backgrounds,
+  .color-usage,
+  .type-scale,
+  .voice-grid,
+  .donts-grid,
+  .options-grid { grid-template-columns:1fr !important; }
+
+  /* Flex rows → wrap */
+  .color-primary-row,
+  .color-accent-row,
+  .brand-pillars,
+  .spacing-row,
+  .logo-links-row { flex-wrap:wrap; }
+
+  /* Swatch row: 2 across on mobile */
+  .color-primary-row { gap:12px; }
+  .swatch { min-width:calc(50% - 6px); }
+
+  /* Accent swatches: 3 across */
+  .accent-swatch { min-width:calc(33% - 8px); }
+
+  /* Type specimens */
+  .type-row { flex-direction:column; gap:10px; padding:18px 20px; }
+  .type-label-col { width:100%; }
+
+  /* Spacing scale */
+  .spacing-row { flex-wrap:wrap; gap:8px; }
+  .spacing-label { width:auto; }
+  .spacing-bar-wrap { width:100%; order:3; }
+  .spacing-use { width:100%; order:4; font-size:10px; }
+
+  /* Quick ref table — make it scroll on mobile */
+  .qr-table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .qr-table td:first-child { width:130px; min-width:130px; }
+
+  /* Footer */
+  .doc-footer { padding:40px 20px; flex-direction:column; gap:28px; }
+  .df-right { text-align:left; }
+
+  /* Cover meta */
+  .cover-meta { display:flex; flex-direction:column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ STICKY NAV ════════ -->
+<nav class="sticky-nav">
+  <div class="nav-brand">CGM Brand Guidelines</div>
+
+  <!-- Desktop links -->
+  <ul class="nav-links">
+    <li><a href="#brand-story" class="nav-link">Brand Story</a></li>
+    <li><a href="#logo"        class="nav-link">Logo</a></li>
+    <li><a href="#color"       class="nav-link">Color</a></li>
+    <li><a href="#typography"  class="nav-link">Typography</a></li>
+    <li><a href="#spacing"     class="nav-link">Spacing</a></li>
+    <li><a href="#voice"       class="nav-link">Voice &amp; Tone</a></li>
+    <li><a href="#quick-ref"   class="nav-link">Quick Ref</a></li>
+  </ul>
+
+  <!-- Hamburger button -->
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile dropdown -->
+<div class="nav-dropdown" id="navDropdown">
+  <a href="#brand-story" class="nav-link">01 · Brand Story</a>
+  <a href="#logo"        class="nav-link">02 · Logo</a>
+  <a href="#color"       class="nav-link">03 · Color</a>
+  <a href="#typography"  class="nav-link">04 · Typography</a>
+  <a href="#spacing"     class="nav-link">05 · Spacing</a>
+  <a href="#voice"       class="nav-link">06 · Voice &amp; Tone</a>
+  <a href="#quick-ref"   class="nav-link">07 · Quick Ref</a>
+</div>
+
+<!-- ════════ COVER ════════ -->
+<div class="cover">
+  <div class="cover-rainbow"></div>
+  <div class="cover-text">
+    <div class="cover-kicker">Brand Identity System · Version 1.0</div>
+    <h1>Common Ground<br><em>Brand Guidelines</em></h1>
+    <p>A complete reference for everyone who creates, communicates, or designs on behalf of Common Ground Ministries. Follow these standards so our brand looks and sounds consistent everywhere it appears.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><strong>Version</strong>1.0 · 2026</div>
+      <div class="cover-meta-item"><strong>Prepared By</strong>EVOBRAND Concepts</div>
+      <div class="cover-meta-item"><strong>Audience</strong>Creative Team</div>
+    </div>
+  </div>
+  <div class="cover-logo-side">
+    <div class="cover-logo-wrap">
+      <img src="CGM_Logo_Transparent.png" alt="Common Ground Ministries">
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     1. BRAND STORY
+════════════════════════════════════════ -->
+<section class="section" id="brand-story">
+  <div class="sec-kicker">01 — Foundation</div>
+  <div class="rule-line"></div>
+  <h2 class="sec-title">Brand Story &amp; Identity</h2>
+  <p class="sec-desc">Before you design anything, understand who we are and what we stand for. Every creative decision should reflect these truths.</p>
+
+  <div class="story-grid" style="margin-bottom:32px;">
+    <div class="story-card">
+      <h3>🏛️ Who We Are</h3>
+      <p>Common Ground Ministries is a Christian after-school program that has served at-risk children in East Waxahachie, Texas since 1991. We operate out of a donated portable building and provide homework help, Biblical teaching, recreation, and daily snacks to children who need a safe place to land every afternoon.</p>
+    </div>
+    <div class="story-card orange">
+      <h3>🎯 Our Mission</h3>
+      <p>To provide a structured after-school and summer program with educational, physical, and spiritual benefits to at-risk children in East Waxahachie — in a safe, Christian environment. We exist to give every child a foundation for a life of purpose, faith, and confidence.</p>
+    </div>
+    <div class="story-card purple">
+      <h3>👁️ Brand Personality</h3>
+      <p>CGM is <strong>warm</strong> without being soft. <strong>Joyful</strong> without being shallow. <strong>Faith-rooted</strong> without being exclusive. Our brand feels like a caring community — vibrant, welcoming, credible, and full of genuine love for the children we serve.</p>
+    </div>
+    <div class="story-card green">
+      <h3>🎯 Who We're Talking To</h3>
+      <p>Parents and families in Ellis County. Donors, churches, and civic organizations. Volunteers. Corporate sponsors. Grant-making foundations. Our brand must speak credibly to all of them — approachable for families, professional for funders.</p>
+    </div>
+  </div>
+
+  <div class="brand-pillars">
+    <div class="pillar"><div class="pi">🛡️</div><div class="pt">Safe</div><div class="pd">Every child feels protected, welcomed, and valued the moment they arrive.</div></div>
+    <div class="pillar"><div class="pi">📋</div><div class="pt">Structured</div><div class="pd">Consistent routines that give children stability, focus, and healthy habits.</div></div>
+    <div class="pillar"><div class="pi">✝️</div><div class="pt">Spirit-Led</div><div class="pd">Grounded in Biblical teaching that shapes character for life, not just childhood.</div></div>
+    <div class="pillar"><div class="pi">❤️</div><div class="pt">Community</div><div class="pd">Deep roots in East Waxahachie — we are neighbors serving neighbors since 1991.</div></div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     2. LOGO
+════════════════════════════════════════ -->
+<section class="section section-alt" id="logo">
+  <div class="sec-kicker orange">02 — Identity Mark</div>
+  <div class="rule-line orange"></div>
+  <h2 class="sec-title">The Logo</h2>
+  <p class="sec-desc">The CGM logo is a bold, colorful paint splatter mark with the lowercase "c·g·m" letterforms. It reflects the energy, joy, and creative spirit of the children we serve. Treat it with care.</p>
+
+  <!-- Primary -->
+  <div class="logo-primary">
+    <img src="CGM_Logo_Transparent.png" alt="Common Ground Ministries Logo">
+    <div style="margin-top:20px;font-size:11px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;">Primary Mark — Use on white or light backgrounds</div>
+  </div>
+
+  <!-- On color backgrounds -->
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:14px;">Logo on Color Backgrounds</div>
+  <div class="logo-backgrounds" style="margin-bottom:36px;">
+    <div class="logo-bg-card" style="background:var(--navy);">
+      <img src="CGM_Logo_Transparent.png" style="">
+      <div class="logo-bg-label" style="color:rgba(255,255,255,.4);">On Navy — White pill</div>
+    </div>
+    <div class="logo-bg-card" style="background:var(--teal);">
+      <img src="CGM_Logo_Transparent.png" style="">
+      <div class="logo-bg-label" style="color:rgba(26,26,46,.5);">On Teal — White pill</div>
+    </div>
+    <div class="logo-bg-card" style="background:var(--orange);">
+      <img src="CGM_Logo_Transparent.png" style="">
+      <div class="logo-bg-label" style="color:rgba(255,255,255,.6);">On Orange — White pill</div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="ib-icon">💡</div>
+    <div>When placing the logo on a dark or colored background, always use a white or near-white pill/card behind it. The logo's black letterforms must remain visible at all times. Never invert or recolor the logo itself.</div>
+  </div>
+
+  <!-- Clearspace -->
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:14px;">Clear Space</div>
+  <div class="clearspace-demo">
+    <div class="clearspace-inner">
+      <img src="CGM_Logo_Transparent.png" style="height:70px;width:auto;">
+    </div>
+    <div class="cs-label">Minimum clear space = height of the letter "m" on all sides</div>
+    <div class="cs-rule">Never crowd the logo. Give it room to breathe on every side.</div>
+  </div>
+
+  <!-- Minimum size -->
+  <div class="two-col" style="margin-bottom:32px;">
+    <div class="story-card">
+      <h3>📏 Minimum Sizes</h3>
+      <p style="font-size:13px;line-height:2;">
+        <strong>Print:</strong> 1 inch wide minimum<br>
+        <strong>Digital:</strong> 120px wide minimum<br>
+        <strong>Favicon/App:</strong> Use splatter mark only at small sizes<br>
+        <strong>Embroidery/Physical:</strong> 2 inches wide minimum
+      </p>
+    </div>
+    <div class="story-card orange">
+      <h3>📁 File Formats</h3>
+      <p style="font-size:13px;line-height:2;">
+        <strong>PNG (transparent):</strong> Web, social, digital overlays<br>
+        <strong>PDF/SVG:</strong> Print, large format, signage<br>
+        <strong>JPG (white bg):</strong> Email signatures, Word docs<br>
+        <strong>Always request originals from EVOBRAND</strong>
+      </p>
+    </div>
+  </div>
+
+  <!-- Logo Don'ts -->
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:14px;">Logo Don'ts — Never Do These</div>
+  <div class="donts-grid">
+    <div class="dont-card">
+      <div class="dont-preview" style="background:#f0f0f0;">
+        <img src="CGM_Logo_Transparent.png" style="height:50px;width:auto;transform:rotate(25deg);opacity:.8;">
+      </div>
+      <div class="dont-text"><strong>Don't rotate the logo</strong>Always display horizontally at 0°.</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:#f0f0f0;">
+        <img src="CGM_Logo_Transparent.png" style="height:30px;width:auto;transform:scaleX(1.6);opacity:.8;">
+      </div>
+      <div class="dont-text"><strong>Don't stretch or distort</strong>Lock the aspect ratio when resizing.</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:#f0f0f0;">
+        <img src="CGM_Logo_Transparent.png" style="height:50px;width:auto;filter:grayscale(1);opacity:.7;">
+      </div>
+      <div class="dont-text"><strong>Don't use in grayscale</strong>The full color splatter is essential to the brand.</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:linear-gradient(135deg,#ff00ff,#00ffff);">
+        <img src="CGM_Logo_Transparent.png" style="height:50px;width:auto;">
+      </div>
+      <div class="dont-text"><strong>Don't place on busy backgrounds</strong>Always ensure contrast and legibility.</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:#f0f0f0;">
+        <img src="CGM_Logo_Transparent.png" style="height:50px;width:auto;opacity:.3;">
+      </div>
+      <div class="dont-text"><strong>Don't use faded or low-opacity</strong>Logo must always appear at full opacity.</div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:#f0f0f0;display:flex;flex-direction:column;gap:2px;align-items:center;justify-content:center;">
+        <img src="CGM_Logo_Transparent.png" style="height:28px;width:auto;">
+        <span style="font-size:8px;color:#bbb;font-family:'Nunito Sans',sans-serif;letter-spacing:1px;margin-top:2px;">COMMON GROUND MINISTRIES</span>
+        <span style="font-size:7px;color:#ccc;font-family:Arial;">A Christian Ministry</span>
+      </div>
+      <div class="dont-text"><strong>Don't add extra text or taglines</strong>Use the logo as-is without additions.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     3. COLOR
+════════════════════════════════════════ -->
+<section class="section" id="color">
+  <div class="sec-kicker">03 — Color System</div>
+  <div class="rule-line"></div>
+  <h2 class="sec-title">Color <em>Palette</em></h2>
+  <p class="sec-desc">Our colors are bold, vibrant, and intentional. Three primary colors anchor the system. Five accent colors live inside the logo splatter and add energy to secondary elements.</p>
+
+  <!-- Primary -->
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:14px;">Primary Colors</div>
+  <div class="color-primary-row">
+    <div class="swatch">
+      <div class="swatch-color" style="background:var(--teal);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Teal</div>
+        <div class="swatch-role">Primary · Trust · Hope</div>
+        <div class="swatch-codes">
+          <span>HEX #1BC4C4</span>
+          <span>RGB 27, 196, 196</span>
+          <span>CMYK 86, 0, 0, 23</span>
+        </div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:var(--orange);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Orange</div>
+        <div class="swatch-role">Energy · Action · CTA</div>
+        <div class="swatch-codes">
+          <span>HEX #FF6633</span>
+          <span>RGB 255, 102, 51</span>
+          <span>CMYK 0, 60, 80, 0</span>
+        </div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:var(--navy);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Navy</div>
+        <div class="swatch-role">Anchor · Text · Authority</div>
+        <div class="swatch-codes">
+          <span>HEX #1A1A2E</span>
+          <span>RGB 26, 26, 46</span>
+          <span>CMYK 43, 43, 0, 82</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accent -->
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);font-weight:700;margin:28px 0 14px;">Accent Colors — Used inside the logo splatter and as secondary accents</div>
+  <div class="color-accent-row">
+    <div class="accent-swatch"><div class="ac" style="background:var(--purple);"></div><div class="ai"><strong>#9933CC</strong>Purple · Spirit</div></div>
+    <div class="accent-swatch"><div class="ac" style="background:var(--yellow);"></div><div class="ai"><strong>#FFCC00</strong>Yellow · Joy</div></div>
+    <div class="accent-swatch"><div class="ac" style="background:var(--green);"></div><div class="ai"><strong>#44BB33</strong>Green · Growth</div></div>
+    <div class="accent-swatch"><div class="ac" style="background:var(--pink);"></div><div class="ai"><strong>#FF3399</strong>Pink · Play</div></div>
+    <div class="accent-swatch"><div class="ac" style="background:var(--blue);"></div><div class="ai"><strong>#2299EE</strong>Blue · Faith</div></div>
+  </div>
+
+  <!-- Usage rules -->
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:14px;">Color Usage Rules</div>
+  <div class="color-usage">
+    <div class="cu-card">
+      <h4 style="color:var(--teal);">🟦 Teal #1BC4C4</h4>
+      <ul>
+        <li>Primary buttons and interactive elements</li>
+        <li>Section headers and eyebrow labels</li>
+        <li>Links and hover states</li>
+        <li>Progress indicators and highlights</li>
+        <li>Accent lines, dividers, borders</li>
+      </ul>
+    </div>
+    <div class="cu-card">
+      <h4 style="color:var(--orange);">🟧 Orange #FF6633</h4>
+      <ul>
+        <li>Primary call-to-action buttons</li>
+        <li>Donate / Give prompts</li>
+        <li>Event announcements</li>
+        <li>Warm highlights and feature callouts</li>
+        <li>Footer bar accents</li>
+      </ul>
+    </div>
+    <div class="cu-card">
+      <h4 style="color:var(--navy);">🟦 Navy #1A1A2E</h4>
+      <ul>
+        <li>Primary background (dark sections)</li>
+        <li>All headline text on light backgrounds</li>
+        <li>Navigation backgrounds</li>
+        <li>Logo backgrounds on dark surfaces</li>
+        <li>Footer backgrounds</li>
+      </ul>
+    </div>
+    <div class="cu-card">
+      <h4 style="color:var(--purple);">🟣 Accents (5 colors)</h4>
+      <ul>
+        <li>Inside the logo splatter only (standard)</li>
+        <li>Section color-coding in the brand kit</li>
+        <li>Rainbow stripe decorative elements</li>
+        <li>Tag and pill components</li>
+        <li>Never as a dominant background color</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn-box" style="margin-top:24px;">
+    <div class="ib-icon">⚠️</div>
+    <div><strong>Accessibility:</strong> Always verify text color contrast. White on Teal passes AA for large text only — use Navy on Teal for body text. Navy on White, White on Navy, and White on Orange all pass WCAG AA at all sizes.</div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     4. TYPOGRAPHY
+════════════════════════════════════════ -->
+<section class="section section-alt" id="typography">
+  <div class="sec-kicker purple">04 — Type System</div>
+  <div class="rule-line purple"></div>
+  <h2 class="sec-title">Typography</h2>
+  <p class="sec-desc">Two fonts. One system. Nunito for everything that commands attention. Nunito Sans for everything that communicates. Never deviate from these choices.</p>
+
+  <!-- Type specimens -->
+  <div class="type-specimens">
+    <div class="type-row">
+      <div class="type-label-col">
+        <div class="type-label">Display / Headlines</div>
+        <div class="type-spec">Nunito Black<br>Weight: 900<br>Google Fonts</div>
+      </div>
+      <div class="type-sample">
+        <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:48px;color:var(--navy);line-height:1;">Every Child Matters</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-label-col">
+        <div class="type-label">Subheadings</div>
+        <div class="type-spec">Nunito ExtraBold<br>Weight: 800<br>Google Fonts</div>
+      </div>
+      <div class="type-sample">
+        <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:28px;color:var(--navy);">Building Something Permanent</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-label-col">
+        <div class="type-label">Section Labels / Nav</div>
+        <div class="type-spec">Nunito Bold<br>Weight: 700<br>Google Fonts</div>
+      </div>
+      <div class="type-sample">
+        <div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:16px;color:var(--navy);letter-spacing:1px;">Program Overview · Building Campaign</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-label-col">
+        <div class="type-label">Body Copy</div>
+        <div class="type-spec">Nunito Sans Regular<br>Weight: 400<br>Size: 14–16px</div>
+      </div>
+      <div class="type-sample">
+        <div style="font-family:'Nunito Sans',sans-serif;font-size:15px;color:#555;line-height:1.8;">Common Ground Ministries has served the children of East Waxahachie since 1991. Every afternoon, kids arrive to a warm snack, a dedicated tutor, and a community that genuinely believes in their future.</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-label-col">
+        <div class="type-label">Captions / Labels</div>
+        <div class="type-spec">Nunito Sans<br>Weight: 700<br>All caps, tracked</div>
+      </div>
+      <div class="type-sample">
+        <div style="font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:10px;color:var(--teal);letter-spacing:5px;text-transform:uppercase;">Building Campaign · Est. 1991 · Waxahachie, TX</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-label-col">
+        <div class="type-label">Pull Quotes / Testimonials</div>
+        <div class="type-spec">Nunito Sans Italic<br>Weight: 400–600<br>Larger size</div>
+      </div>
+      <div class="type-sample">
+        <div style="font-family:'Nunito Sans',sans-serif;font-style:italic;font-size:18px;color:var(--navy);line-height:1.5;">"She teaches ME things she learns at Common Ground."</div>
+        <div style="font-family:'Nunito Sans',sans-serif;font-size:12px;color:var(--mid);margin-top:6px;font-weight:700;">— Holly Jordan, CGM Parent</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Type scale -->
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);font-weight:700;margin:32px 0 14px;">Type Scale</div>
+  <div class="type-scale">
+    <div class="scale-item"><div class="scale-label">Hero / Cover Title</div><div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:52px;color:var(--navy);line-height:1;">52px / 900</div></div>
+    <div class="scale-item"><div class="scale-label">Page Title</div><div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:36px;color:var(--navy);line-height:1.1;">36px / 900</div></div>
+    <div class="scale-item"><div class="scale-label">Section Heading</div><div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:24px;color:var(--navy);">24px / 900</div></div>
+    <div class="scale-item"><div class="scale-label">Card Title</div><div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--navy);">18px / 900</div></div>
+    <div class="scale-item"><div class="scale-label">Body Copy</div><div style="font-family:'Nunito Sans',sans-serif;font-size:15px;color:#555;">15px / 400 · line-height 1.7–1.8</div></div>
+    <div class="scale-item"><div class="scale-label">Small / Caption</div><div style="font-family:'Nunito Sans',sans-serif;font-size:11px;color:#888;letter-spacing:2px;text-transform:uppercase;font-weight:700;">11px / 700 · ALL CAPS + tracking</div></div>
+  </div>
+
+  <!-- Font pairing demo -->
+  <div class="pair-demo">
+    <h2>Common Ground Ministries<br>Has Been <em>Changing Lives</em> Since 1991.</h2>
+    <p>For over three decades, we have provided a safe, structured, and spirit-led after-school program for at-risk children in East Waxahachie. This is what the two-font system looks like in practice — Nunito Black for the headline, Nunito Sans for the body.</p>
+  </div>
+
+  <div class="info-box" style="margin-top:20px;">
+    <div class="ib-icon">🔤</div>
+    <div><strong>Where to get the fonts:</strong> Both fonts are free on Google Fonts (fonts.google.com). In Canva, search "Nunito" — both weights are available. In Word or PowerPoint, install via Google Fonts for Desktop. For print, always embed fonts in your PDF exports.</div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     5. SPACING & GRID
+════════════════════════════════════════ -->
+<section class="section" id="spacing">
+  <div class="sec-kicker">05 — Layout System</div>
+  <div class="rule-line"></div>
+  <h2 class="sec-title">Spacing &amp; Grid</h2>
+  <p class="sec-desc">Consistent spacing creates visual rhythm. Use these values across all materials — digital and print — so layouts feel related and intentional.</p>
+
+  <div class="spacing-scale">
+    <div class="spacing-row">
+      <div class="spacing-label">4px / 0.25rem</div>
+      <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:2%;"></div></div>
+      <div class="spacing-use">Icon gap, tight inline spacing</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">8px / 0.5rem</div>
+      <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:4%;"></div></div>
+      <div class="spacing-use">Between label and value</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">12px / 0.75rem</div>
+      <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:6%;"></div></div>
+      <div class="spacing-use">Paragraph spacing, card gap</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">16px / 1rem</div>
+      <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:10%;"></div></div>
+      <div class="spacing-use">Default grid gap, element padding</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">24px / 1.5rem</div>
+      <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:18%;"></div></div>
+      <div class="spacing-use">Section padding, card inner padding</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">40px / 2.5rem</div>
+      <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:32%;"></div></div>
+      <div class="spacing-use">Major section separation</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">64px / 4rem</div>
+      <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:52%;"></div></div>
+      <div class="spacing-use">Page section padding, hero padding</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">80px / 5rem</div>
+      <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:72%;"></div></div>
+      <div class="spacing-use">Full-bleed section padding</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="story-card">
+      <h3>📐 Border Radius Scale</h3>
+      <div style="font-size:13px;color:#555;line-height:2.2;">
+        <div style="display:flex;gap:12px;align-items:center;"><div style="width:32px;height:32px;background:var(--teal);border-radius:4px;flex-shrink:0;"></div> <code style="background:#f0f0f0;padding:2px 8px;border-radius:4px;font-size:11px;">4px</code> — Subtle, print / formal</div>
+        <div style="display:flex;gap:12px;align-items:center;"><div style="width:32px;height:32px;background:var(--orange);border-radius:8px;flex-shrink:0;"></div> <code style="background:#f0f0f0;padding:2px 8px;border-radius:4px;font-size:11px;">8px</code> — Tags, small buttons</div>
+        <div style="display:flex;gap:12px;align-items:center;"><div style="width:32px;height:32px;background:var(--purple);border-radius:12px;flex-shrink:0;"></div> <code style="background:#f0f0f0;padding:2px 8px;border-radius:4px;font-size:11px;">12px</code> — Cards, inputs</div>
+        <div style="display:flex;gap:12px;align-items:center;"><div style="width:32px;height:32px;background:var(--navy);border-radius:16px;flex-shrink:0;"></div> <code style="background:#f0f0f0;padding:2px 8px;border-radius:4px;font-size:11px;">16px</code> — Feature cards</div>
+        <div style="display:flex;gap:12px;align-items:center;"><div style="width:32px;height:32px;background:var(--teal);border-radius:30px;flex-shrink:0;"></div> <code style="background:#f0f0f0;padding:2px 8px;border-radius:4px;font-size:11px;">30px+</code> — Pills, CTA buttons</div>
+      </div>
+    </div>
+    <div class="story-card orange">
+      <h3>🖨️ Print Margins</h3>
+      <div style="font-size:13px;color:#555;line-height:2.2;">
+        <strong>Letterhead (8.5×11):</strong><br>Margins: 1" top/bottom, 0.75" sides<br><br>
+        <strong>Postcard (4×6):</strong><br>Bleed: 0.125" all sides<br>Safe zone: 0.25" from edge<br><br>
+        <strong>Brochure (11×8.5):</strong><br>Panel width: 3.667"<br>Bleed: 0.125" outside edges<br><br>
+        <strong>Business Card (3.5×2):</strong><br>Bleed: 0.125" all sides<br>Safe zone: 0.125" from trim
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     6. VOICE & TONE
+════════════════════════════════════════ -->
+<section class="section section-alt" id="voice">
+  <div class="sec-kicker purple">06 — Communication</div>
+  <div class="rule-line purple"></div>
+  <h2 class="sec-title">Voice &amp; Tone</h2>
+  <p class="sec-desc">Our words are as important as our visuals. Every sentence should feel like it came from a caring neighbor — not a corporation, and not a charity begging for pity.</p>
+
+  <div class="voice-grid" style="margin-bottom:32px;">
+    <div class="voice-card do-card">
+      <h3>✅ Our Voice Is…</h3>
+      <ul>
+        <li>Warm and genuine — like a trusted neighbor</li>
+        <li>Hopeful and forward-looking</li>
+        <li>Proud of the children and community</li>
+        <li>Grounded in faith without being preachy</li>
+        <li>Clear and direct — no jargon</li>
+        <li>Grateful, not desperate</li>
+        <li>Confident in the impact we make</li>
+        <li>Inclusive — speaks to donors AND families</li>
+      </ul>
+    </div>
+    <div class="voice-card dont-voice">
+      <h3>❌ Our Voice Is NOT…</h3>
+      <ul>
+        <li>Corporate or overly formal</li>
+        <li>Guilt-tripping or shame-based</li>
+        <li>Overly religious or exclusionary</li>
+        <li>Desperate or needy-sounding</li>
+        <li>Generic nonprofit-speak ("synergize")</li>
+        <li>Condescending toward the families we serve</li>
+        <li>Vague — always be specific about impact</li>
+        <li>Passive voice — be active and direct</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Example posts -->
+  <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:16px;">Writing Examples — Good vs. Off-Brand</div>
+  <div class="example-posts">
+    <div class="ex-post good">
+      <div class="ep-label">✅ On-Brand</div>
+      <p>"For 33 years, kids have walked through our doors carrying the weight of a hard day — and left with lighter backpacks and fuller hearts. That's Common Ground. Help us keep these doors open. ❤️"</p>
+    </div>
+    <div class="ex-post bad">
+      <div class="ep-label">❌ Off-Brand</div>
+      <p>"These poor underprivileged children have nowhere to go. Without your money they will have nothing. Please donate today to help these desperate kids in need."</p>
+    </div>
+    <div class="ex-post good">
+      <div class="ep-label">✅ On-Brand</div>
+      <p>"$50 per semester. That's what it costs for one child to receive daily tutoring, snacks, Biblical teaching, and a community that believes in them. Enrollment is open."</p>
+    </div>
+    <div class="ex-post bad">
+      <div class="ep-label">❌ Off-Brand</div>
+      <p>"We need your help ASAP! We are struggling to keep our ministry running. Time is running out. Can you please help us today before it's too late??"</p>
+    </div>
+  </div>
+
+  <!-- Power words -->
+  <div style="margin-top:32px;background:var(--navy);border-radius:20px;padding:32px 36px;">
+    <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:16px;">Power Words — Use These Often</div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Safe</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Structured</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Spirit-Led</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Belong</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Together</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Build</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Community</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Faith</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Home</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Every child</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Since 1991</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Permanent</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Future</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">Potential</span>
+      <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;color:white;">East Waxahachie</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     7. QUICK REFERENCE
+════════════════════════════════════════ -->
+<section class="section section-alt" id="quick-ref">
+  <div class="sec-kicker green">07 — At a Glance</div>
+  <div class="rule-line green"></div>
+  <h2 class="sec-title">Quick Reference</h2>
+  <p class="sec-desc">Everything in one table. Pin this. Screenshot it. Share it with anyone who touches CGM's brand.</p>
+
+  <table class="qr-table">
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Specification</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Primary Color</td><td><code>#1BC4C4</code> Teal</td><td>Buttons, links, headers, accents, progress bars</td></tr>
+      <tr><td>Action Color</td><td><code>#FF6633</code> Orange</td><td>Donate CTAs, event callouts, warm highlights</td></tr>
+      <tr><td>Anchor Color</td><td><code>#1A1A2E</code> Navy</td><td>Backgrounds, headline text on light, nav bars</td></tr>
+      <tr><td>Display Font</td><td>Nunito Black · Weight 900</td><td>All headlines, stats, logo text, card titles</td></tr>
+      <tr><td>Body Font</td><td>Nunito Sans · Weight 400–700</td><td>Body copy, captions, labels, UI text</td></tr>
+      <tr><td>Font Source</td><td>fonts.google.com → "Nunito"</td><td>Free forever; available in Canva</td></tr>
+      <tr><td>Logo Format</td><td>PNG with transparent background</td><td>Always on white/light pill on dark backgrounds</td></tr>
+      <tr><td>Logo Min Size</td><td>120px digital · 1" print</td><td>Never smaller — splatter becomes unreadable</td></tr>
+      <tr><td>Clear Space</td><td>Height of "m" character on all sides</td><td>No other elements inside this boundary</td></tr>
+      <tr><td>Org Name</td><td>Common Ground Ministries</td><td>Always full name; CGM acceptable in repeated refs</td></tr>
+      <tr><td>Tagline</td><td>Safe · Structured · Spirit-Led</td><td>Use in footers, email signatures, print materials</td></tr>
+      <tr><td>Address</td><td>604 E Parks Ave, Waxahachie, TX 75165</td><td>Physical address for all print materials</td></tr>
+      <tr><td>Mailing</td><td>P.O. Box 444, Waxahachie, TX 75168</td><td>Return address for mailings and letters</td></tr>
+      <tr><td>Phone</td><td>(972) 923-2224</td><td>Include on all print; link as tel: on digital</td></tr>
+      <tr><td>Website</td><td>cgmhachie.org</td><td>Lowercase, no www needed</td></tr>
+      <tr><td>Founded</td><td>Est. 1991</td><td>Always include — 33+ years builds credibility</td></tr>
+      <tr><td>Program Cost</td><td>$50 per child per semester</td><td>Do not say "free" — accurate cost is $50/semester</td></tr>
+      <tr><td>Primary Hashtag</td><td>#CommonGroundMinistries</td><td>Use on every social post</td></tr>
+      <tr><td>Campaign Hashtag</td><td>#BuildingOnCommonGround</td><td>Use on all building fund content</td></tr>
+      <tr><td>Photo Rule</td><td>Signed release required for all minors</td><td>Non-negotiable — protect the children and org</td></tr>
+      <tr><td>Prepared by</td><td>EVOBRAND Concepts</td><td>evobrand.net · Questions: contact Keisha</td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+<!-- ════════ FOOTER ════════ -->
+<div class="doc-footer">
+  <div class="df-left">
+    <img src="CGM_Logo_Transparent.png" class="df-logo">
+    <p>These guidelines are the single source of truth for the CGM brand. When in doubt, refer back to this document before creating anything new. Contact EVOBRAND Concepts with questions.</p>
+  </div>
+  <div class="df-right">
+    <div class="version">Brand Guidelines v1.0</div>
+    <div class="date">Common Ground Ministries · 2026</div>
+    <div class="credit">Prepared by EVOBRAND Concepts · evobrand.net</div>
+  </div>
+</div>
+
+<script>
+// ── Hamburger toggle ──
+const hamburger = document.getElementById('navHamburger');
+const dropdown  = document.getElementById('navDropdown');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = dropdown.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+
+// Close dropdown when a link is clicked
+dropdown.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    dropdown.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+  });
+});
+
+// Close dropdown on outside click
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !dropdown.contains(e.target)) {
+    dropdown.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+  }
+});
+
+// ── Active nav on scroll ──
+const sections = document.querySelectorAll('section[id]');
+const allNavLinks = document.querySelectorAll('.nav-link');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      allNavLinks.forEach(l => l.classList.remove('active'));
+      document.querySelectorAll(`.nav-link[href="#${entry.target.id}"]`)
+        .forEach(l => l.classList.add('active'));
+    }
+  });
+}, { threshold: 0.25, rootMargin: '-56px 0px 0px 0px' });
+
+sections.forEach(s => sectionObserver.observe(s));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Ground Ministries — Statement of Financial Position — August 31, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1BC4C4;
+    --orange: #FF6633;
+    --navy: #1a1a2e;
+    --bg: #f4f2ee;
+    --white: #ffffff;
+    --border: #e8e5e0;
+    --mid: #888;
+    --dark: #2d2d2d;
+    --green: #44BB33;
+    --light-teal: rgba(27, 196, 196, 0.08);
+    --F: 'Nunito', sans-serif;
+    --FB: 'Nunito Sans', sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--FB);
+    background-color: var(--bg);
+    color: var(--dark);
+    padding: 40px 20px;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 50px 60px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .top-stripe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--teal), var(--navy), var(--orange));
+  }
+
+  .meta-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--mid);
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .report-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .org-name {
+    font-family: var(--F);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--navy);
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+  }
+
+  .report-title {
+    font-family: var(--F);
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--teal);
+    margin-bottom: 5px;
+  }
+
+  .report-date {
+    font-size: 16px;
+    color: var(--mid);
+    font-weight: 600;
+  }
+
+  .actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 15px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-family: var(--F);
+    font-weight: 800;
+    font-size: 13px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-print {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  .btn-print:hover {
+    background: var(--teal);
+    transform: translateY(-1px);
+  }
+
+  .btn-back {
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
+  }
+
+  .btn-back:hover {
+    background: rgba(26, 26, 46, 0.05);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  th {
+    font-family: var(--F);
+    font-weight: 800;
+    border-bottom: 2px solid var(--navy);
+    color: var(--navy);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .amount-col {
+    text-align: right;
+    width: 150px;
+  }
+
+  .category-header {
+    font-family: var(--F);
+    font-weight: 900;
+    color: var(--navy);
+    font-size: 15px;
+    padding-top: 20px;
+    padding-bottom: 6px;
+    letter-spacing: 0.2px;
+    border-bottom: 1.5px solid var(--navy);
+  }
+
+  .subcategory-header {
+    font-family: var(--F);
+    font-weight: 800;
+    color: var(--dark);
+    padding-left: 20px;
+    font-size: 14px;
+    padding-top: 15px;
+    padding-bottom: 6px;
+  }
+
+  .item-row td {
+    color: var(--dark);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.04);
+  }
+
+  .indent-1 td:first-child {
+    padding-left: 30px;
+  }
+
+  .indent-2 td:first-child {
+    padding-left: 45px;
+  }
+
+  .indent-3 td:first-child {
+    padding-left: 60px;
+  }
+
+  .subtotal-row {
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.01);
+  }
+
+  .subtotal-row td {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .subtotal-row.indent-1 td:first-child {
+    padding-left: 30px;
+  }
+
+  .subtotal-row.indent-2 td:first-child {
+    padding-left: 45px;
+  }
+
+  .total-row {
+    font-family: var(--F);
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--navy);
+    background: var(--light-teal);
+  }
+
+  .total-row td {
+    border-top: 1.5px solid var(--navy);
+    border-bottom: 1.5px solid var(--navy);
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .total-row.indent-1 td:first-child {
+    padding-left: 30px;
+  }
+
+  .double-total-row {
+    font-family: var(--F);
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--white);
+    background: var(--navy);
+  }
+
+  .double-total-row td {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 4px double var(--white);
+  }
+
+  .footnote-section {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 2px solid var(--navy);
+  }
+
+  .footnote-title {
+    font-family: var(--F);
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .footnote-body {
+    font-size: 13px;
+    color: var(--dark);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .footnote-table td:first-child {
+    padding-left: 20px;
+  }
+
+  .footnote-table .total-row td {
+    padding-left: 12px;
+  }
+
+  @media print {
+    body {
+      background-color: var(--white);
+      padding: 0;
+    }
+    .container {
+      box-shadow: none;
+      border: none;
+      padding: 0;
+    }
+    .actions-bar {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="top-stripe"></div>
+
+  <div class="meta-header">
+    <div>
+      2:34 PM<br>
+      09/11/26
+    </div>
+    <div style="text-align: right;">
+      Common Ground Ministries<br>
+      Cash Basis
+    </div>
+  </div>
+
+  <div class="report-header">
+    <div class="org-name">Common Ground Ministries</div>
+    <div class="report-title">Statement of Financial Position</div>
+    <div class="report-date">As of August 31, 2026</div>
+  </div>
+
+  <div class="actions-bar">
+    <button class="btn btn-back" onclick="history.back() || window.close()">← Return to Portal</button>
+    <button class="btn btn-print" onclick="window.print()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      Print Report
+    </button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Account / Description</th>
+        <th class="amount-col">Aug 31, 26</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ASSETS -->
+      <tr class="category-header">
+        <td colspan="2">ASSETS</td>
+      </tr>
+
+      <!-- Current Assets -->
+      <tr class="subcategory-header">
+        <td colspan="2">Current Assets</td>
+      </tr>
+      <tr class="item-row indent-1" style="font-weight: 700; color: var(--navy)">
+        <td colspan="2">Checking/Savings</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Common Ground Ministries</td>
+        <td class="amount-col">4,462.56</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Prepaid Debit Card</td>
+        <td class="amount-col">197.73</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Savings</td>
+        <td class="amount-col">25,912.27</td>
+      </tr>
+      <tr class="subtotal-row indent-1">
+        <td>Total Checking/Savings</td>
+        <td class="amount-col">30,572.56</td>
+      </tr>
+      <tr class="total-row indent-1">
+        <td>Total Current Assets</td>
+        <td class="amount-col">30,572.56</td>
+      </tr>
+
+      <!-- Fixed Assets -->
+      <tr class="subcategory-header">
+        <td colspan="2">Fixed Assets</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>2020 Van</td>
+        <td class="amount-col">46,000.00</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Building</td>
+        <td class="amount-col">7,000.00</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Furniture & Fixtures</td>
+        <td class="amount-col">1,252.96</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Land</td>
+        <td class="amount-col">10,000.00</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Vehicle 2008 Van</td>
+        <td class="amount-col">12,900.00</td>
+      </tr>
+      <tr class="total-row indent-1">
+        <td>Total Fixed Assets</td>
+        <td class="amount-col">77,152.96</td>
+      </tr>
+
+      <!-- Other Assets -->
+      <tr class="subcategory-header">
+        <td colspan="2">Other Assets</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Computer Lab</td>
+        <td class="amount-col">1,976.00</td>
+      </tr>
+      <tr class="total-row indent-1">
+        <td>Total Other Assets</td>
+        <td class="amount-col">1,976.00</td>
+      </tr>
+
+      <!-- Total Assets -->
+      <tr class="double-total-row">
+        <td>TOTAL ASSETS</td>
+        <td class="amount-col">109,701.52</td>
+      </tr>
+
+      <!-- LIABILITIES & EQUITY -->
+      <tr class="category-header" style="padding-top: 30px;">
+        <td colspan="2">LIABILITIES & EQUITY</td>
+      </tr>
+
+      <!-- Liabilities -->
+      <tr class="subcategory-header">
+        <td colspan="2">Liabilities</td>
+      </tr>
+      <tr class="item-row indent-1" style="font-weight: 700; color: var(--navy)">
+        <td colspan="2">Current Liabilities</td>
+      </tr>
+      <tr class="item-row indent-2" style="font-weight: 700; color: var(--navy)">
+        <td colspan="2">Other Current Liabilities</td>
+      </tr>
+      <tr class="item-row indent-3">
+        <td>Payroll Liabilities</td>
+        <td class="amount-col">17,302.34</td>
+      </tr>
+      <tr class="subtotal-row indent-2">
+        <td>Total Other Current Liabilities</td>
+        <td class="amount-col">17,302.34</td>
+      </tr>
+      <tr class="subtotal-row indent-1">
+        <td>Total Current Liabilities</td>
+        <td class="amount-col">17,302.34</td>
+      </tr>
+      <tr class="total-row indent-1">
+        <td>Total Liabilities</td>
+        <td class="amount-col">17,302.34</td>
+      </tr>
+
+      <!-- Equity -->
+      <tr class="subcategory-header">
+        <td colspan="2">Equity</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Fund Balance</td>
+        <td class="amount-col">14,844.71</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Open Balance Equity</td>
+        <td class="amount-col">-76.99</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Unrestricted Fund Balance</td>
+        <td class="amount-col">74,427.05</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Net Income</td>
+        <td class="amount-col">3,204.41</td>
+      </tr>
+      <tr class="total-row indent-1">
+        <td>Total Equity</td>
+        <td class="amount-col">92,399.18</td>
+      </tr>
+
+      <!-- Total Liabilities & Equity -->
+      <tr class="double-total-row">
+        <td>TOTAL LIABILITIES & EQUITY</td>
+        <td class="amount-col">109,701.52</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Footnote 1 -->
+  <div class="footnote-section">
+    <div class="footnote-title">Footnote 1</div>
+    <div class="footnote-body">
+      In the $25,912.27 total savings money in the bank, as of August 31, 2026, are restricted funds. These funds were granted or donated for specific purposes. The amount of the designated funds and their purposes are the following:
+    </div>
+    <table class="footnote-table">
+      <tbody>
+        <tr class="item-row">
+          <td>1. Building Fund</td>
+          <td class="amount-col">13,488.60</td>
+        </tr>
+        <tr class="item-row">
+          <td>2. Scholarship Fund</td>
+          <td class="amount-col">7,500.00</td>
+        </tr>
+        <tr class="item-row">
+          <td>3. First Baptist Church</td>
+          <td class="amount-col">4,240.50</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total designated savings funds at 8/31/2026</td>
+          <td class="amount-col">25,229.10</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td>Total undesignated savings funds at 8/31/2026</td>
+          <td class="amount-col">683.17</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

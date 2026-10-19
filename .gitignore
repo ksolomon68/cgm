@@ -1,0 +1,6 @@
+db.php
+error_log
+uploads/
+setup.php
+update_*_finance.php
+send-email.php

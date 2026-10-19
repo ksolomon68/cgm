@@ -1,0 +1,3873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Ground Ministries — Where Every Child is Celebrated for Who They Are</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <script src="analytics.js" defer></script>
+  <style>
+    /* ═══════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════ */
+    :root {
+      --teal: #1BC4C4;
+      --orange: #FF6633;
+      --navy: #1a1a2e;
+      --purple: #9933CC;
+      --yellow: #FFCC00;
+      --green: #44BB33;
+      --pink: #FF3399;
+      --blue: #2299EE;
+      --offwhite: #faf8f4;
+      --light: #f0eeea;
+      --mid: #888;
+      --font-display: 'Nunito', sans-serif;
+      --font-body: 'Nunito Sans', sans-serif;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    /* ═══════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--offwhite);
+      color: var(--navy);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ═══════════════════════════════════════
+   LOGO SVG — defined once, reused
+═══════════════════════════════════════ */
+    .logo-svg {
+      display: block;
+    }
+
+    /* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(250, 248, 244, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 80px;
+      transition: box-shadow .3s;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      overflow: visible;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a, .nav-dropdown-trigger {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--navy);
+      transition: color .2s;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a:not(.nav-donate):not(.nav-cta), .nav-dropdown-trigger {
+      background: none;
+    }
+
+    .nav-links a:hover, .nav-dropdown-trigger:hover {
+      color: var(--teal);
+    }
+
+    /* ── DROPDOWN MENUS ── */
+    .nav-item-dropdown {
+      position: relative;
+      padding: 10px 0;
+    }
+
+    .nav-dropdown-trigger svg {
+      transition: transform .2s ease;
+      color: var(--mid);
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown-trigger svg,
+    .nav-item-dropdown.open .nav-dropdown-trigger svg {
+      transform: rotate(180deg);
+      color: var(--teal);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--offwhite);
+      border: 1.5px solid var(--teal);
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+      min-width: 230px;
+      padding: 8px;
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s var(--ease), transform .2s var(--ease), visibility .2s;
+      z-index: 200;
+    }
+
+    .nav-item-dropdown:hover .nav-dropdown-menu,
+    .nav-item-dropdown.open .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-menu li {
+      width: 100%;
+    }
+
+    .nav-dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy) !important;
+      text-transform: none;
+      letter-spacing: 0.2px;
+      transition: background .15s, color .15s, transform .15s;
+      white-space: nowrap;
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: rgba(27, 196, 196, 0.12);
+      color: var(--teal) !important;
+      transform: translateX(3px);
+    }
+
+    /* ── CTA BUTTONS IN NAV ── */
+    a.nav-donate, .nav-links a.nav-donate, .nav-donate {
+      background: var(--teal) !important;
+      color: #ffffff !important;
+      padding: 10px 22px !important;
+      border-radius: 30px !important;
+      font-weight: 800 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 4px 14px rgba(27, 196, 196, 0.35) !important;
+      transition: background .2s, transform .2s, box-shadow .2s !important;
+      border: none !important;
+    }
+
+    a.nav-donate:hover, .nav-links a.nav-donate:hover, .nav-donate:hover {
+      background: #14a8a8 !important;
+      color: #ffffff !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 8px 20px rgba(27, 196, 196, 0.5) !important;
+    }
+
+    a.nav-cta, .nav-links a.nav-cta, .nav-cta {
+      background: var(--orange) !important;
+      color: #ffffff !important;
+      padding: 10px 22px !important;
+      border-radius: 30px !important;
+      font-weight: 800 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 4px 14px rgba(255, 102, 51, 0.35) !important;
+      transition: background .2s, transform .2s, box-shadow .2s !important;
+      border: none !important;
+    }
+
+    a.nav-cta:hover, .nav-links a.nav-cta:hover, .nav-cta:hover {
+      background: #e5551f !important;
+      color: #ffffff !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 8px 20px rgba(255, 102, 51, 0.5) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: transparent;
+      border: none;
+      transition: background .2s;
+      flex-shrink: 0;
+    }
+
+    .hamburger:hover {
+      background: rgba(26, 26, 46, .08);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease, width .3s ease;
+      transform-origin: center;
+    }
+
+    /* X state */
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ═══════════════════════════════════════
+   HERO — Concept D: Floating Particles
+═══════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      background: #f4f2ee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 32px 60px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* Full-bleed canvas for particles */
+    #heroCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+      width: 100%;
+    }
+
+    /* Logo gently bobs */
+    .hero-logo {
+      margin: 0 auto 32px;
+      overflow: visible;
+      animation: logoFadeIn .9s ease both, logoFloat 4s ease-in-out infinite 1s;
+    }
+
+    @keyframes logoFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes logoFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(36px, 5vw, 62px);
+      color: var(--navy);
+      line-height: 1.15;
+      animation: fadeUp .8s .3s ease both;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(26, 26, 46, 0.65);
+      margin: 20px auto;
+      max-width: 580px;
+      line-height: 1.7;
+      animation: fadeUp .8s .5s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      margin-bottom: 20px;
+      animation: fadeUp .8s .7s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 32px;
+      border-radius: 40px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: .5px;
+      cursor: pointer;
+      border: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: var(--teal);
+      color: white;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid rgba(26, 26, 46, 0.3);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--navy);
+      background: rgba(26, 26, 46, 0.06);
+    }
+
+    .btn-navy {
+      background: var(--navy);
+      color: white;
+    }
+
+    .btn-full {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Stat bar inside hero flow */
+    .hero-stats {
+      position: relative;
+      z-index: 2;
+      margin-top: 40px;
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(26, 26, 46, 0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+      animation: fadeUp .8s .7s ease both;
+    }
+
+    .hero-stat {
+      flex: 1;
+      text-align: center;
+      padding: 18px 16px;
+      border-right: 1px solid rgba(26, 26, 46, 0.08);
+    }
+
+    .hero-stat:last-child {
+      border-right: none;
+    }
+
+    .hero-stat .num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 28px;
+      color: var(--orange);
+    }
+
+    .hero-stat .lbl {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(26, 26, 46, 0.5);
+      margin-top: 2px;
+    }
+
+    /* ═══════════════════════════════════════
+   BUILDING CAMPAIGN BANNER
+═══════════════════════════════════════ */
+    .campaign-banner {
+      background: var(--orange);
+      padding: 72px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .campaign-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+    }
+
+    .campaign-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -40px;
+      width: 240px;
+      height: 240px;
+      background: rgba(0, 0, 0, 0.06);
+      border-radius: 50%;
+    }
+
+    .campaign-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .campaign-text .eyebrow {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 12px;
+    }
+
+    .campaign-text h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(30px, 3.5vw, 48px);
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .campaign-text p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .portable-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 32px;
+    }
+
+    .portable-note .icon {
+      font-size: 22px;
+    }
+
+    /* Thermometer progress -->*/
+    .thermometer-wrap {
+      background: white;
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .thermo-label {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 22px;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .thermo-goal {
+      font-size: 13px;
+      color: var(--mid);
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+
+    .thermo-bar-wrap {
+      background: #eee;
+      border-radius: 30px;
+      height: 28px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .thermo-bar {
+      height: 100%;
+      border-radius: 30px;
+      background: linear-gradient(90deg, var(--teal), var(--green));
+      width: 2%;
+      transition: width 2s ease;
+      position: relative;
+    }
+
+    .thermo-bar::after {
+      content: '2%';
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .thermo-amounts {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--mid);
+      margin-bottom: 28px;
+    }
+
+    .thermo-amounts strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .give-tiers {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tier {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--light);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--navy);
+      transition: background .2s;
+      cursor: default;
+    }
+
+    .tier:hover {
+      background: #e5e2dc;
+    }
+
+    .tier .tier-amt {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 17px;
+      color: var(--orange);
+      min-width: 60px;
+    }
+
+    .tier .tier-impact {
+      flex: 1;
+    }
+
+    /* ═══════════════════════════════════════
+   MISSION
+═══════════════════════════════════════ */
+    .mission {
+      padding: 100px 48px;
+      background: white;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(28px, 3.5vw, 46px);
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .mission-text p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .mission-quote {
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission-quote::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 24px;
+      font-size: 160px;
+      font-family: var(--font-display);
+      font-weight: 900;
+      color: rgba(27, 196, 196, 0.15);
+      line-height: 1;
+    }
+
+    .mission-quote blockquote {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      color: white;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mission-quote blockquote em {
+      font-style: normal;
+      color: var(--teal);
+    }
+
+    /* Program pillars */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 60px;
+    }
+
+    .pillar {
+      background: var(--light);
+      border-radius: 16px;
+      padding: 32px 28px;
+      border-top: 4px solid transparent;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .pillar:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .pillar:nth-child(1) {
+      border-color: var(--teal);
+    }
+
+    .pillar:nth-child(2) {
+      border-color: var(--orange);
+    }
+
+    .pillar:nth-child(3) {
+      border-color: var(--purple);
+    }
+
+    .pillar-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    .pillar h3 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: var(--navy);
+    }
+
+    .pillar p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════
+   DAILY SCHEDULE
+═══════════════════════════════════════ */
+    .schedule {
+      padding: 100px 48px;
+      background: var(--navy);
+    }
+
+    .schedule .eyebrow {
+      color: var(--teal);
+    }
+
+    .schedule .section-title {
+      color: white;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .schedule-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: background .2s;
+    }
+
+    .schedule-card:hover {
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .sched-time {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .sched-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 19px;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .sched-desc {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════
+   UPCOMING CALENDAR
+═══════════════════════════════════════ */
+    .calendar-section {
+      padding: 100px 48px;
+      background: white;
+    }
+
+    .calendar-section .eyebrow {
+      color: var(--teal);
+    }
+
+    .calendar-section .section-title {
+      color: var(--navy);
+    }
+
+    .calendar-container {
+      margin-top: 48px;
+      background: #ffffff;
+      border: 1px solid rgba(26, 26, 46, 0.08);
+      border-radius: 24px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
+      padding: 32px;
+      max-width: 100%;
+      overflow-x: hidden;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cal-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(26, 26, 46, 0.08);
+    }
+
+    .cal-month-title {
+      font-family: var(--F, inherit);
+      font-weight: 800;
+      font-size: 24px;
+      color: var(--navy);
+      min-width: 200px;
+      text-align: center;
+    }
+
+    .cal-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cal-nav-btn {
+      background: var(--light, #f4f6f8);
+      color: var(--navy);
+      border: 1px solid rgba(26, 26, 46, 0.1);
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cal-nav-btn:hover {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+    }
+
+    .portal-cal-wrapper {
+      border: 1px solid rgba(26, 26, 46, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fafbfc;
+    }
+
+    .portal-cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background: var(--navy);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .portal-cal-weekday {
+      padding: 12px 6px;
+    }
+
+    .portal-cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      background: rgba(26, 26, 46, 0.08);
+    }
+
+    .portal-cal-cell {
+      background: white;
+      min-height: 100px;
+      min-width: 0;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portal-cal-cell:hover {
+      background: #f0f7f7;
+    }
+
+    .portal-cal-cell.other-month {
+      background: #f9f9fb;
+      opacity: 0.45;
+      cursor: default;
+    }
+
+    .portal-cal-cell.today {
+      background: #eef9f9;
+    }
+
+    .portal-cal-cell.selected {
+      outline: 2px solid var(--teal);
+      outline-offset: -2px;
+      background: #e6f7f7;
+    }
+
+    .portal-cal-day-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+    }
+
+    .portal-cal-cell.today .portal-cal-day-num {
+      background: var(--teal);
+      color: white;
+    }
+
+    .portal-cal-event-dot {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 6px;
+      border-radius: 6px;
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+
+    .portal-events-section {
+      margin-top: 32px;
+    }
+
+    .portal-events-header {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .portal-event-card {
+      background: white;
+      border: 1px solid rgba(26, 26, 46, 0.08);
+      border-left: 4px solid var(--teal);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .portal-event-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    }
+
+    .portal-event-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .portal-event-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .portal-event-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .portal-event-desc {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    .portal-event-desc iframe,
+    .portal-event-desc video {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .portal-event-desc img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .portal-events-empty {
+      text-align: center;
+      padding: 40px 20px;
+      background: #f9f9fb;
+      border-radius: 16px;
+      color: #777;
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .calendar-container {
+        padding: 16px;
+      }
+
+      .portal-cal-cell {
+        min-height: 65px;
+        padding: 4px;
+      }
+
+      .portal-cal-day-num {
+        font-size: 11px;
+        width: 20px;
+        height: 20px;
+      }
+
+      .portal-cal-event-dot {
+        font-size: 9px;
+        padding: 2px 4px;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════ */
+    .testimonials {
+      padding: 100px 48px;
+      background: var(--light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative splatter bg */
+    .testimonials::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, var(--teal) 0%, transparent 70%);
+      opacity: 0.06;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .testi-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 32px;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .testi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10);
+    }
+
+    .testi-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 28px;
+      font-size: 80px;
+      font-family: var(--font-display);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--teal);
+      opacity: 0.2;
+    }
+
+    .testi-card p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+      padding-top: 16px;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 18px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--navy);
+    }
+
+    .testi-role {
+      font-size: 12px;
+      color: var(--mid);
+    }
+
+    /* ═══════════════════════════════════════
+   WAYS TO GIVE
+═══════════════════════════════════════ */
+    .give {
+      padding: 100px 48px;
+      background: white;
+    }
+
+    .give-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .give-card {
+      border-radius: 20px;
+      padding: 40px 32px;
+      text-align: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .give-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .give-card:nth-child(1) {
+      background: var(--navy);
+    }
+
+    .give-card:nth-child(2) {
+      background: var(--teal);
+    }
+
+    .give-card:nth-child(3) {
+      background: var(--orange);
+    }
+
+    .give-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .give-card h3 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 22px;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .give-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .give-card .btn {
+      display: inline-flex;
+    }
+
+    .give-card:nth-child(1) .btn-outline {
+      color: white;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .give-card:nth-child(1) .btn-outline:hover {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .give-card:nth-child(2) .btn-outline {
+      color: var(--navy);
+      border-color: rgba(26, 26, 46, 0.4);
+    }
+
+    .give-card:nth-child(2) .btn-outline:hover {
+      border-color: var(--navy);
+      background: rgba(26, 26, 46, 0.1);
+    }
+
+    .give-card:nth-child(3) .btn-outline {
+      color: white;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .give-card:nth-child(3) .btn-outline:hover {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ═══════════════════════════════════════
+   VOLUNTEER
+═══════════════════════════════════════ */
+    .volunteer {
+      padding: 100px 48px;
+      background: var(--teal);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .volunteer::before,
+    .volunteer::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .volunteer::before {
+      width: 400px;
+      height: 400px;
+      top: -150px;
+      left: -100px;
+    }
+
+    .volunteer::after {
+      width: 300px;
+      height: 300px;
+      bottom: -100px;
+      right: -80px;
+    }
+
+    .volunteer .eyebrow {
+      color: rgba(26, 26, 46, 0.6);
+    }
+
+    .volunteer .section-title {
+      color: var(--navy);
+    }
+
+    .volunteer>.section-inner>p {
+      font-size: 18px;
+      color: rgba(26, 26, 46, 0.75);
+      margin: 20px auto 40px;
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    .volunteer-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .role-tag {
+      background: rgba(26, 26, 46, 0.1);
+      color: var(--navy);
+      border-radius: 30px;
+      padding: 10px 22px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background .2s;
+    }
+
+    .role-tag:hover {
+      background: rgba(26, 26, 46, 0.2);
+    }
+
+    /* ═══════════════════════════════════════
+   SPONSORS
+═══════════════════════════════════════ */
+    .sponsors {
+      padding: 80px 0;
+      background: var(--light);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .logo-ticker {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      padding: 30px 0;
+      width: 100%;
+      height: 130px;
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Left and right soft edge gradients */
+    .logo-ticker::before,
+    .logo-ticker::after {
+      content: '';
+      height: 100%;
+      width: 150px;
+      position: absolute;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .logo-ticker::before {
+      left: 0;
+      top: 0;
+      background: linear-gradient(to right, var(--light), transparent);
+    }
+
+    .logo-ticker::after {
+      right: 0;
+      top: 0;
+      background: linear-gradient(to left, var(--light), transparent);
+    }
+
+    .logo-ticker-track {
+      display: flex;
+      width: max-content;
+      animation: scrollTicker 25s linear infinite;
+    }
+
+    .ticker-group {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      padding-right: 60px;
+    }
+
+    .ticker-group img {
+      height: 55px;
+      max-height: 55px;
+      max-width: 160px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.75;
+      filter: grayscale(100%);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .ticker-group img:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    @keyframes scrollTicker {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .ticker-text-logo {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 15px;
+      color: var(--navy);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      line-height: 1.25;
+      text-align: left;
+      opacity: 0.65;
+      filter: grayscale(100%);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+      user-select: none;
+    }
+
+    .ticker-text-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    /* ═══════════════════════════════════════
+   CHRISTMAS WITH DIGNITY
+═══════════════════════════════════════ */
+    .christmas {
+      padding: 100px 48px;
+      background: white;
+    }
+
+    .christmas-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .christmas-visual {
+      background: linear-gradient(160deg, #0d1b2e 0%, #1a1a2e 50%, #0d2b1a 100%);
+      border-radius: 24px;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Snow particles */
+    .xmas-snow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .xmas-flake {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: snowFall linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes snowFall {
+      0% {
+        transform: translateY(-10px) translateX(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.9;
+      }
+
+      90% {
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: translateY(390px) translateX(var(--sx, 20px));
+        opacity: 0;
+      }
+    }
+
+    /* Stars twinkling in background */
+    .xmas-star-bg {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: starTwinkle ease-in-out infinite;
+    }
+
+    @keyframes starTwinkle {
+
+      0%,
+      100% {
+        opacity: 0.15;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: scale(1.3);
+      }
+    }
+
+    /* SVG tree / scene */
+    .xmas-scene {
+      position: relative;
+      z-index: 2;
+      width: 280px;
+      height: 320px;
+    }
+
+    /* Tree sway */
+    .tree-group {
+      transform-origin: 140px 310px;
+      animation: treeSway 4s ease-in-out infinite;
+    }
+
+    @keyframes treeSway {
+
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(1.2deg);
+      }
+
+      75% {
+        transform: rotate(-1.2deg);
+      }
+    }
+
+    /* Ornaments bounce */
+    .ornament {
+      animation: ornamentBob ease-in-out infinite;
+      transform-origin: center top;
+    }
+
+    @keyframes ornamentBob {
+
+      0%,
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
+
+      50% {
+        transform: scale(1.08) rotate(4deg);
+      }
+    }
+
+    /* Star on top pulses */
+    .tree-star {
+      animation: starGlow 1.8s ease-in-out infinite;
+      transform-origin: 140px 28px;
+    }
+
+    @keyframes starGlow {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 4px #FFCC00) drop-shadow(0 0 8px #FFCC00);
+        opacity: 1;
+      }
+
+      50% {
+        filter: drop-shadow(0 0 10px #FFCC00) drop-shadow(0 0 20px #fff8c0);
+        opacity: 0.85;
+      }
+    }
+
+    /* Gifts pulse */
+    .gift {
+      animation: giftPulse ease-in-out infinite;
+      transform-origin: center center;
+    }
+
+    @keyframes giftPulse {
+
+      0%,
+      100% {
+        transform: scale(1) translateY(0);
+      }
+
+      50% {
+        transform: scale(1.04) translateY(-2px);
+      }
+    }
+
+    /* Lights flash */
+    .light-dot {
+      animation: lightFlash ease-in-out infinite alternate;
+    }
+
+    @keyframes lightFlash {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.25;
+      }
+    }
+
+    /* Ground shimmer */
+    @keyframes groundShimmer {
+
+      0%,
+      100% {
+        opacity: 0.7;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Floating "✨ Sale" badge */
+    .xmas-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: var(--orange);
+      color: white;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 8px 14px;
+      border-radius: 30px;
+      z-index: 3;
+      animation: badgePop 2.5s ease-in-out infinite;
+    }
+
+    @keyframes badgePop {
+
+      0%,
+      100% {
+        transform: scale(1) rotate(-2deg);
+      }
+
+      50% {
+        transform: scale(1.07) rotate(2deg);
+      }
+    }
+
+    .christmas-text p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* ═══════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════ */
+    .contact {
+      padding: 100px 48px;
+      background: var(--navy);
+    }
+
+    .contact .eyebrow {
+      color: var(--teal);
+    }
+
+    .contact .section-title {
+      color: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 56px;
+      align-items: start;
+    }
+
+    .contact-info {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+
+    .contact-item .c-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(27, 196, 196, 0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-item .c-text strong {
+      display: block;
+      color: white;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .contact-item .c-text span {
+      font-size: 14px;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .form-row {
+      margin-bottom: 20px;
+    }
+
+    .form-row label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 8px;
+    }
+
+    .form-row input,
+    .form-row textarea,
+    .form-row select {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: white;
+      font-family: var(--font-body);
+      font-size: 15px;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-row select {
+      background: #2a2d45;
+      color: white;
+      cursor: pointer;
+    }
+
+    .form-row select option {
+      background: #2a2d45;
+      color: white;
+      padding: 10px;
+    }
+
+    .form-row input::placeholder,
+    .form-row textarea::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus {
+      border-color: var(--teal);
+    }
+
+    .form-row textarea {
+      height: 110px;
+      resize: vertical;
+    }
+
+    /* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+    footer {
+      background: #f4f2ee;
+      padding: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-top: 3px solid var(--teal);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-logo-text .name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 16px;
+      color: var(--navy);
+    }
+
+    .footer-logo-text .sub {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: rgba(26, 26, 46, 0.4);
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(26, 26, 46, 0.55);
+      font-weight: 600;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--teal);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(26, 26, 46, 0.35);
+      letter-spacing: 1px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(26, 26, 46, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--navy);
+      transition: background .2s, color .2s;
+    }
+
+    .social-btn:hover {
+      background: var(--teal);
+      color: white;
+    }
+
+    /* ═══════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══════════════════════════════════════
+   PREMIUM POLISH
+═══════════════════════════════════════ */
+    ::selection {
+      background: var(--teal);
+      color: white;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--offwhite);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--teal), var(--purple));
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--orange);
+    }
+
+    nav {
+      animation: navDropIn .6s var(--ease) both;
+    }
+
+    @keyframes navDropIn {
+      from {
+        transform: translateY(-100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .nav-logo img {
+      transition: transform .4s var(--ease);
+    }
+
+    .nav-logo:hover img {
+      transform: scale(1.06) rotate(-2deg);
+    }
+
+    .nav-cta,
+    .nav-donate {
+      transition: background .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease) !important;
+    }
+
+    .nav-cta:hover {
+      box-shadow: 0 10px 24px rgba(255, 102, 51, .35);
+    }
+
+    .nav-donate:hover {
+      box-shadow: 0 10px 24px rgba(27, 196, 196, .35);
+    }
+
+    .reveal {
+      transition: opacity .9s var(--ease), transform .9s var(--ease);
+      transform: translateY(36px) scale(.97);
+    }
+
+    .reveal.visible {
+      transform: translateY(0) scale(1);
+    }
+
+    /* Buttons — shine sweep + colored glow */
+    .btn {
+      position: relative;
+      overflow: hidden;
+      transition: transform .45s var(--ease), box-shadow .45s var(--ease) !important;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .45), transparent);
+      transform: skewX(-20deg);
+      transition: left .65s var(--ease);
+      pointer-events: none;
+    }
+
+    .btn:hover::before {
+      left: 130%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 16px 36px rgba(255, 102, 51, .35);
+    }
+
+    .btn-secondary:hover {
+      box-shadow: 0 16px 36px rgba(27, 196, 196, .35);
+    }
+
+    .btn-navy:hover {
+      box-shadow: 0 16px 36px rgba(26, 26, 46, .35);
+    }
+
+    .btn-outline:hover {
+      box-shadow: 0 12px 28px rgba(26, 26, 46, .15);
+    }
+
+    /* Hero — gradient mesh blobs + cursor spotlight */
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .16;
+      z-index: 0;
+      pointer-events: none;
+      animation: heroBlobFloat 14s ease-in-out infinite;
+    }
+
+    .hero::before {
+      background: var(--teal);
+      top: -160px;
+      left: -160px;
+    }
+
+    .hero::after {
+      background: var(--orange);
+      bottom: -180px;
+      right: -160px;
+      animation-delay: -7s;
+    }
+
+    @keyframes heroBlobFloat {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(40px, -30px) scale(1.12);
+      }
+    }
+
+    .hero-spotlight {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(560px circle at var(--mx, 50%) var(--my, 20%), rgba(27, 196, 196, .12), transparent 60%);
+    }
+
+    .hero h1 em {
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-stat {
+      transition: transform .35s var(--ease);
+    }
+
+    .hero-stat:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Campaign banner — floating decorative circles */
+    .campaign-banner::before {
+      animation: floatSlow 10s ease-in-out infinite;
+    }
+
+    .campaign-banner::after {
+      animation: floatSlow 12s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatSlow {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Thermometer — shimmer sweep */
+    .thermo-bar {
+      background-image: linear-gradient(90deg, var(--teal), var(--green), var(--teal));
+      background-size: 200% 100%;
+      animation: thermoShimmer 3s linear infinite;
+    }
+
+    @keyframes thermoShimmer {
+      0% {
+        background-position: 0% 0;
+      }
+
+      100% {
+        background-position: 200% 0;
+      }
+    }
+
+    /* Cards — smoother easing + colored glow on hover */
+    .pillar,
+    .testi-card,
+    .schedule-card,
+    .give-card,
+    .sponsor-badge,
+    .mission-quote {
+      transition: transform .5s var(--ease), box-shadow .5s var(--ease), background .3s !important;
+    }
+
+    .pillar:nth-child(1):hover {
+      box-shadow: 0 20px 48px rgba(27, 196, 196, .20);
+    }
+
+    .pillar:nth-child(2):hover {
+      box-shadow: 0 20px 48px rgba(255, 102, 51, .20);
+    }
+
+    .pillar:nth-child(3):hover {
+      box-shadow: 0 20px 48px rgba(153, 51, 204, .20);
+    }
+
+    .pillar-icon {
+      display: inline-block;
+      transition: transform .4s var(--ease);
+    }
+
+    .pillar:hover .pillar-icon {
+      transform: scale(1.15) rotate(-4deg);
+    }
+
+    .testi-card:hover {
+      box-shadow: 0 20px 48px rgba(27, 196, 196, .16);
+    }
+
+    .testi-avatar {
+      transition: transform .4s var(--ease);
+    }
+
+    .testi-card:hover .testi-avatar {
+      transform: scale(1.1);
+    }
+
+    .schedule-card {
+      position: relative;
+    }
+
+    .schedule-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--teal);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform .45s var(--ease);
+      border-radius: 16px 0 0 16px;
+    }
+
+    .schedule-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .give-icon {
+      display: inline-block;
+      transition: transform .45s var(--ease);
+    }
+
+    .give-card:hover .give-icon {
+      transform: scale(1.15) translateY(-4px);
+    }
+
+    .sponsor-badge {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sponsor-badge::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(27, 196, 196, .18), transparent);
+      transform: skewX(-20deg);
+      transition: left .6s var(--ease);
+    }
+
+    .sponsor-badge:hover::before {
+      left: 130%;
+    }
+
+    .mission-quote:hover {
+      box-shadow: 0 20px 48px rgba(27, 196, 196, .15);
+    }
+
+    .role-tag {
+      transition: transform .3s var(--ease), background .2s;
+    }
+
+    .role-tag:hover {
+      transform: translateY(-2px) scale(1.04);
+    }
+
+    .social-btn {
+      transition: background .3s var(--ease), color .3s, transform .3s var(--ease);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-3px) scale(1.08);
+    }
+
+    .footer-links a {
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: var(--teal);
+      transition: width .3s var(--ease);
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus,
+    .form-row select:focus {
+      box-shadow: 0 0 0 3px rgba(27, 196, 196, .15);
+    }
+
+    /* ═══════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════ */
+    @media (max-width: 900px) {
+      nav {
+        padding: 0 20px;
+        height: 70px;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--navy);
+        padding: 12px 0 20px;
+        border-bottom: 3px solid var(--teal);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, .4);
+        gap: 0;
+        z-index: 999;
+        list-style: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a, .nav-dropdown-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 13px 24px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, .85) !important;
+        border-left: 3px solid transparent;
+        transition: color .2s, border-color .2s, background .2s;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .nav-links a:hover, .nav-dropdown-trigger:hover {
+        color: white !important;
+        border-left-color: var(--teal);
+        background: rgba(255, 255, 255, .04);
+      }
+
+      .nav-dropdown-menu {
+        position: static;
+        transform: none !important;
+        box-shadow: none;
+        border: none;
+        border-left: 2px solid var(--teal);
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 0 10px 10px 0;
+        margin: 2px 20px 8px 32px;
+        padding: 4px 0;
+        opacity: 1;
+        visibility: visible;
+        display: block;
+        min-width: unset;
+      }
+
+      .nav-dropdown-menu a {
+        color: rgba(255, 255, 255, 0.75) !important;
+        padding: 10px 16px;
+        font-size: 13px;
+        border-left: none;
+      }
+
+      .nav-dropdown-menu a:hover {
+        color: var(--teal) !important;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      /* Donate and Sponsor buttons in mobile menu */
+      .nav-links .nav-donate,
+      .nav-links .nav-cta {
+        margin: 8px 24px 0;
+        padding: 12px 20px !important;
+        border-radius: 10px !important;
+        text-align: center;
+        display: block;
+        border-left: none !important;
+      }
+
+      .nav-links .nav-donate {
+        background: var(--teal) !important;
+        color: var(--navy) !important;
+      }
+
+      .nav-links .nav-cta {
+        background: var(--orange) !important;
+        color: white !important;
+      }
+
+      .nav-links .nav-donate:hover {
+        background: #14a8a8 !important;
+      }
+
+      .nav-links .nav-cta:hover {
+        background: #e5551f !important;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        padding: 90px 20px 50px;
+      }
+
+      .hero-stats {
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .hero-stat {
+        min-width: 48%;
+        border-bottom: 1px solid rgba(26, 26, 46, 0.08);
+      }
+
+      .hero-stat:nth-child(2n) {
+        border-right: none;
+      }
+
+      .hero-stat:nth-last-child(-n+2) {
+        border-bottom: none;
+      }
+
+      .campaign-inner,
+      .mission-grid,
+      .christmas-inner,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .pillars,
+      .schedule-grid,
+      .testi-grid,
+      .give-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .campaign-banner,
+      .mission,
+      .schedule,
+      .testimonials,
+      .give,
+      .volunteer,
+      .sponsors,
+      .christmas,
+      .contact {
+        padding: 72px 24px;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 36px 24px;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- ═══════════════════════════════════════
+     NAV
+═══════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <img src="CGM_Logo_Transparent.png" alt="Common Ground Ministries"
+        style="height:62px; width:auto; display:block; object-fit:contain;">
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-item-dropdown">
+        <a href="#mission" class="nav-dropdown-trigger">
+          About
+          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="#mission">🎯 Mission & Faith</a></li>
+          <li><a href="team.html">👥 Leadership & Board</a></li>
+          <li><a href="#campaign">🏗️ Building Campaign</a></li>
+        </ul>
+      </li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#calendar">Calendar</a></li>
+      <li class="nav-item-dropdown">
+        <a href="#volunteer" class="nav-dropdown-trigger">
+          Get Involved
+          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="#volunteer">🤝 Volunteer Mentorship</a></li>
+          <li><a href="#" onclick="openModal('CGM_Sponsor.html','Become a Sponsor');return false;">★ Become a Sponsor</a></li>
+          <li><a href="#christmas">🎁 Christmas with Dignity</a></li>
+          <li><a href="#contact">📍 Contact & Location</a></li>
+        </ul>
+      </li>
+      <li><a href="board.html" style="color:var(--teal);font-size:12px;letter-spacing:1px;">🔒 Board</a></li>
+      <li><a href="#" onclick="openModal('CGM_Donate.html','Donate');return false;" class="nav-donate">❤️ Donate</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+  <section class="hero" id="home">
+
+    <!-- Floating particles canvas -->
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-spotlight" id="heroSpotlight"></div>
+
+    <div class="hero-content">
+      <!-- Logo — transparent, floats over particle field -->
+      <div class="hero-logo">
+        <img src="CGM_Logo_Transparent.png" alt="Common Ground Ministries"
+          style="height:150px; width:auto; display:block; margin:0 auto; object-fit:contain;">
+      </div>
+
+      <h1>Where Every Child<br>Is Celebrated for<br><em>Who They Are</em></h1>
+      <p>Serving at-risk children in East Waxahachie with faith, mentorship, and a safe place to grow — since 1991.</p>
+
+      <div class="hero-btns">
+        <a href="#campaign" class="btn btn-primary">🏗️ Building Campaign</a>
+        <a href="#" onclick="openModal('CGM_Donate.html','Donate');return false;" class="btn btn-secondary">❤️ Donate
+          Now</a>
+        <a href="#" onclick="openVideoModal();return false;" class="btn btn-outline">Learn Our Story</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">33+</div>
+        <div class="lbl">Years Serving</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">100s</div>
+        <div class="lbl">Lives Impacted</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">5</div>
+        <div class="lbl">Partner Organizations</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">$50</div>
+        <div class="lbl">Per Semester</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     BUILDING CAMPAIGN
+═══════════════════════════════════════ -->
+  <section class="campaign-banner" id="campaign">
+    <div class="campaign-inner">
+      <div class="campaign-text reveal">
+        <div class="eyebrow">🏗️ Building on Common Ground</div>
+        <h2>Our Kids Deserve More Than a 30-Year-Old Portable</h2>
+        <div class="portable-note">
+          <span class="icon">⚠️</span>
+          <span>Our children currently meet in a donated portable building that is over <strong>&nbsp;30 years
+              old</strong>. It's time for something permanent.</span>
+        </div>
+        <p>For over three decades, Common Ground Ministries has relied on a portable building generously donated to
+          serve East Waxahachie's children. We are grateful for every year it has served us — but the time has come to
+          build a permanent, safe, and dignified home for the next generation of children we serve.</p>
+        <a href="#" onclick="openModal('CGM_Donate.html','Donate');return false;" class="btn btn-navy">Give to the
+          Building Fund →</a>
+      </div>
+
+      <div class="thermometer-wrap reveal">
+        <div class="thermo-label">Building Fund Progress</div>
+        <div class="thermo-goal">Goal: $500,000 · Waxahachie, Texas</div>
+        <div class="thermo-bar-wrap">
+          <div class="thermo-bar" id="thermoBar"></div>
+        </div>
+        <div class="thermo-amounts">
+          <span><strong>$10,000</strong> raised · 2%</span>
+          <span>Goal: <strong>$500,000</strong></span>
+        </div>
+
+        <div class="give-tiers">
+          <div class="tier">
+            <span class="tier-amt">$25</span>
+            <span class="tier-impact">Supplies for one child for a month</span>
+          </div>
+          <div class="tier">
+            <span class="tier-amt">$100</span>
+            <span class="tier-impact">One month of nutritious after-school snacks</span>
+          </div>
+          <div class="tier">
+            <span class="tier-amt">$500</span>
+            <span class="tier-impact">A dedicated tutoring session series</span>
+          </div>
+          <div class="tier">
+            <span class="tier-amt">$1,000</span>
+            <span class="tier-impact">A named brick in the new building</span>
+          </div>
+          <div class="tier">
+            <span class="tier-amt">$5,000+</span>
+            <span class="tier-impact">Room sponsor — named recognition in perpetuity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     MISSION
+═══════════════════════════════════════ -->
+  <section class="mission" id="mission">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="eyebrow">Our Mission</div>
+        <h2 class="section-title">A Safe Place to Learn,<br>Grow, and Belong</h2>
+      </div>
+
+      <div class="mission-grid">
+        <div class="mission-text reveal">
+          <p>Common Ground Ministries is a Christian outreach to children and youth in East Waxahachie, Texas. Since
+            1991 we have provided a safe, structured environment where children can meet their spiritual, educational,
+            and physical needs — for only $50 per semester.</p>
+          <p>Our vision is to have a positive, lasting Christian influence on every at-risk child we serve — helping
+            them discover their potential, grow in confidence, and build the foundation they need to succeed in school
+            and in life.</p>
+          <a href="#program" class="btn btn-primary" style="margin-top:8px;">See Our Programs</a>
+        </div>
+        <div class="mission-quote reveal">
+          <blockquote>
+            To provide a structured after-school and summer program with <em>educational, physical, and spiritual</em>
+            benefits to at-risk children in East Waxahachie — in a safe, Christian environment.
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="pillars" id="program">
+        <div class="pillar reveal">
+          <div class="pillar-icon">📚</div>
+          <h3>Educational</h3>
+          <p>Supervised homework time and volunteer tutors who work one-on-one with students to keep them focused and on
+            track in school.</p>
+        </div>
+        <div class="pillar reveal" style="transition-delay:.1s">
+          <div class="pillar-icon">⚽</div>
+          <h3>Physical</h3>
+          <p>Indoor and outdoor recreational activities that build teamwork, confidence, and healthy habits every single
+            afternoon.</p>
+        </div>
+        <div class="pillar reveal" style="transition-delay:.2s">
+          <div class="pillar-icon">✝️</div>
+          <h3>Spiritual</h3>
+          <p>Biblical principles and teachings that help every young person realize the potential within them — because
+            they can do ALL things through Christ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     DAILY SCHEDULE
+═══════════════════════════════════════ -->
+  <section class="schedule">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="eyebrow" style="color:var(--teal)">A Typical Afternoon</div>
+        <h2 class="section-title" style="color:white">What Happens Every Day</h2>
+      </div>
+      <div class="schedule-grid">
+        <div class="schedule-card reveal">
+          <div class="sched-time">Arrival</div>
+          <div class="sched-title">🍎 Healthy Snack</div>
+          <div class="sched-desc">Every child arrives to a warm, nutritious snack and a welcome that tells them they
+            matter.</div>
+        </div>
+        <div class="schedule-card reveal" style="transition-delay:.1s">
+          <div class="sched-time">First Hour</div>
+          <div class="sched-title">📖 Homework Time</div>
+          <div class="sched-desc">Supervised study period with volunteer tutors working one-on-one with students who
+            need extra support.</div>
+        </div>
+        <div class="schedule-card reveal" style="transition-delay:.2s">
+          <div class="sched-time">Second Hour</div>
+          <div class="sched-title">✝️ Biblical Teaching</div>
+          <div class="sched-desc">Age-appropriate instruction grounded in faith — teaching children who they are and
+            what they're capable of.</div>
+        </div>
+        <div class="schedule-card reveal" style="transition-delay:.3s">
+          <div class="sched-time">Final Hour</div>
+          <div class="sched-title">🏃 Recreation</div>
+          <div class="sched-desc">Indoor and outdoor activities that build teamwork, burn energy, and keep kids healthy
+            in mind and body.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     UPCOMING CALENDAR
+═══════════════════════════════════════ -->
+  <section class="calendar-section" id="calendar">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="eyebrow">Upcoming Events</div>
+        <h2 class="section-title">Calendar & Activities</h2>
+      </div>
+      <div class="calendar-container reveal">
+        <!-- Month Navigation Header -->
+        <div class="cal-header-bar">
+          <div class="cal-btn-group">
+            <button class="cal-nav-btn" onclick="portalCalNav(-1)">← Prev</button>
+            <button class="cal-nav-btn" onclick="portalCalToday()">Today</button>
+            <button class="cal-nav-btn" onclick="portalCalNav(1)">Next →</button>
+          </div>
+          <div class="cal-month-title" id="portal-cal-month-label">Loading...</div>
+        </div>
+
+        <!-- Portal Calendar Grid Container -->
+        <div class="portal-cal-wrapper">
+          <div class="portal-cal-weekdays">
+            <div class="portal-cal-weekday">Sun</div>
+            <div class="portal-cal-weekday">Mon</div>
+            <div class="portal-cal-weekday">Tue</div>
+            <div class="portal-cal-weekday">Wed</div>
+            <div class="portal-cal-weekday">Thu</div>
+            <div class="portal-cal-weekday">Fri</div>
+            <div class="portal-cal-weekday">Sat</div>
+          </div>
+          <div class="portal-cal-grid" id="portal-cal-grid">
+            <!-- Calendar day cells dynamically rendered here -->
+          </div>
+        </div>
+
+        <!-- Events List / Detail View below calendar grid -->
+        <div class="portal-events-section">
+          <div class="portal-events-header">
+            <span id="portal-events-title">Events This Month</span>
+          </div>
+          <div id="portal-events-list">
+            <!-- Events list dynamically rendered here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════ -->
+  <section class="testimonials" id="stories">
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center">
+        <div class="eyebrow">Family Voices</div>
+        <h2 class="section-title">What Families Are Saying</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <p>When we first started going to Common Ground, I was so afraid to leave my kids in a public setting… Mrs.
+            Stacie assured me that they would be safe and protected like her own. I just love this ministry.</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:var(--teal)">J</div>
+            <div>
+              <div class="testi-name">Jennifer Fonseca</div>
+              <div class="testi-role">Parent</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:.1s">
+          <p>My daughter learns so much. She knows more about God now than I could have ever taught her. She teaches me
+            things she learns at Common Ground. CGM has helped my family personally when we had no clue what we would
+            do!</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:var(--orange)">H</div>
+            <div>
+              <div class="testi-name">Holly Jordan</div>
+              <div class="testi-role">Parent</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:.2s">
+          <p>Common Ground has a store during Christmas that sells name-brand, new and awesome items for a fraction of
+            the cost. That is also a blessing and a tremendous help to me and my family.</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:var(--purple)">R</div>
+            <div>
+              <div class="testi-name">Raquel Johnson</div>
+              <div class="testi-role">Community Member</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     CHRISTMAS WITH DIGNITY
+═══════════════════════════════════════ -->
+  <section class="christmas" id="christmas">
+    <div class="christmas-inner">
+      <div class="christmas-visual reveal">
+
+        <!-- Twinkling background stars -->
+        <div class="xmas-star-bg"
+          style="width:3px;height:3px;top:12%;left:15%;animation-duration:2.1s;animation-delay:0s;"></div>
+        <div class="xmas-star-bg"
+          style="width:2px;height:2px;top:20%;left:72%;animation-duration:1.7s;animation-delay:-.4s;"></div>
+        <div class="xmas-star-bg"
+          style="width:4px;height:4px;top:8%;left:48%;animation-duration:2.4s;animation-delay:-.8s;"></div>
+        <div class="xmas-star-bg"
+          style="width:2px;height:2px;top:30%;left:88%;animation-duration:1.9s;animation-delay:-.3s;"></div>
+        <div class="xmas-star-bg"
+          style="width:3px;height:3px;top:15%;left:32%;animation-duration:2.6s;animation-delay:-1.1s;"></div>
+        <div class="xmas-star-bg"
+          style="width:2px;height:2px;top:35%;left:10%;animation-duration:1.5s;animation-delay:-.6s;"></div>
+        <div class="xmas-star-bg"
+          style="width:3px;height:3px;top:22%;left:60%;animation-duration:2.2s;animation-delay:-.9s;"></div>
+
+        <!-- Falling snow -->
+        <div class="xmas-snow">
+          <div class="xmas-flake"
+            style="width:4px;height:4px;left:8%;animation-duration:5.2s;animation-delay:0s;--sx:15px;"></div>
+          <div class="xmas-flake"
+            style="width:3px;height:3px;left:18%;animation-duration:6.8s;animation-delay:-1.5s;--sx:-10px;"></div>
+          <div class="xmas-flake"
+            style="width:5px;height:5px;left:28%;animation-duration:4.9s;animation-delay:-3s;--sx:8px;"></div>
+          <div class="xmas-flake"
+            style="width:3px;height:3px;left:38%;animation-duration:7.1s;animation-delay:-.8s;--sx:-18px;"></div>
+          <div class="xmas-flake"
+            style="width:4px;height:4px;left:48%;animation-duration:5.5s;animation-delay:-2s;--sx:12px;"></div>
+          <div class="xmas-flake"
+            style="width:3px;height:3px;left:58%;animation-duration:6.2s;animation-delay:-4s;--sx:-8px;"></div>
+          <div class="xmas-flake"
+            style="width:5px;height:5px;left:68%;animation-duration:5.8s;animation-delay:-1s;--sx:20px;"></div>
+          <div class="xmas-flake"
+            style="width:3px;height:3px;left:78%;animation-duration:7.4s;animation-delay:-2.5s;--sx:-12px;"></div>
+          <div class="xmas-flake"
+            style="width:4px;height:4px;left:88%;animation-duration:5s;animation-delay:-.4s;--sx:6px;"></div>
+          <div class="xmas-flake"
+            style="width:2px;height:2px;left:22%;animation-duration:8s;animation-delay:-3.5s;--sx:-5px;"></div>
+          <div class="xmas-flake"
+            style="width:3px;height:3px;left:52%;animation-duration:6s;animation-delay:-5s;--sx:14px;"></div>
+          <div class="xmas-flake"
+            style="width:4px;height:4px;left:72%;animation-duration:5.3s;animation-delay:-1.8s;--sx:-16px;"></div>
+        </div>
+
+        <!-- "Big Event" badge -->
+        <div class="xmas-badge">🎁 Annual Event</div>
+
+        <!-- Main SVG scene -->
+        <svg class="xmas-scene" viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Snow ground -->
+          <ellipse cx="140" cy="305" rx="118" ry="16" fill="white" opacity="0.18"
+            style="animation:groundShimmer 3s ease-in-out infinite;" />
+          <ellipse cx="140" cy="308" rx="100" ry="10" fill="white" opacity="0.25" />
+
+          <!-- Tree group with sway -->
+          <g class="tree-group">
+
+            <!-- Tree layers — dark green with lighter edges -->
+            <polygon points="140,35 88,110 192,110" fill="#1a6b2a" />
+            <polygon points="140,35 92,106 188,106" fill="#22882f" />
+
+            <polygon points="140,70 76,160 204,160" fill="#1a6b2a" />
+            <polygon points="140,70 80,156 200,156" fill="#22882f" />
+
+            <polygon points="140,110 62,218 218,218" fill="#1a6b2a" />
+            <polygon points="140,110 66,214 214,214" fill="#22882f" />
+
+            <polygon points="140,155 50,280 230,280" fill="#155220" />
+            <polygon points="140,155 54,276 226,276" fill="#1a6b2a" />
+
+            <!-- Trunk -->
+            <rect x="128" y="278" width="24" height="28" rx="3" fill="#6b3a1f" />
+            <rect x="130" y="278" width="8" height="28" fill="#7d4422" opacity="0.5" />
+
+            <!-- ── String lights ── -->
+            <!-- Tier 1 -->
+            <circle class="light-dot" cx="112" cy="102" r="5" fill="#FF3399"
+              style="animation-delay:0s;animation-duration:1.1s;filter:drop-shadow(0 0 3px #FF3399);" />
+            <circle class="light-dot" cx="130" cy="98" r="5" fill="#FFCC00"
+              style="animation-delay:-.3s;animation-duration:1.4s;filter:drop-shadow(0 0 3px #FFCC00);" />
+            <circle class="light-dot" cx="150" cy="101" r="5" fill="#1BC4C4"
+              style="animation-delay:-.6s;animation-duration:1.2s;filter:drop-shadow(0 0 3px #1BC4C4);" />
+            <circle class="light-dot" cx="168" cy="104" r="5" fill="#FF6633"
+              style="animation-delay:-.9s;animation-duration:1.5s;filter:drop-shadow(0 0 3px #FF6633);" />
+
+            <!-- Tier 2 -->
+            <circle class="light-dot" cx="100" cy="150" r="5" fill="#FFCC00"
+              style="animation-delay:-.2s;animation-duration:1.3s;filter:drop-shadow(0 0 3px #FFCC00);" />
+            <circle class="light-dot" cx="118" cy="146" r="5" fill="#FF3399"
+              style="animation-delay:-.5s;animation-duration:1.1s;filter:drop-shadow(0 0 3px #FF3399);" />
+            <circle class="light-dot" cx="140" cy="143" r="5" fill="#44BB33"
+              style="animation-delay:-.8s;animation-duration:1.6s;filter:drop-shadow(0 0 3px #44BB33);" />
+            <circle class="light-dot" cx="162" cy="146" r="5" fill="#9933CC"
+              style="animation-delay:-1.1s;animation-duration:1.2s;filter:drop-shadow(0 0 3px #9933CC);" />
+            <circle class="light-dot" cx="180" cy="152" r="5" fill="#1BC4C4"
+              style="animation-delay:-.4s;animation-duration:1.4s;filter:drop-shadow(0 0 3px #1BC4C4);" />
+
+            <!-- Tier 3 -->
+            <circle class="light-dot" cx="86" cy="208" r="5" fill="#9933CC"
+              style="animation-delay:-.1s;animation-duration:1.5s;filter:drop-shadow(0 0 3px #9933CC);" />
+            <circle class="light-dot" cx="106" cy="204" r="5" fill="#FF6633"
+              style="animation-delay:-.4s;animation-duration:1.2s;filter:drop-shadow(0 0 3px #FF6633);" />
+            <circle class="light-dot" cx="126" cy="200" r="5" fill="#FFCC00"
+              style="animation-delay:-.7s;animation-duration:1.6s;filter:drop-shadow(0 0 3px #FFCC00);" />
+            <circle class="light-dot" cx="154" cy="200" r="5" fill="#FF3399"
+              style="animation-delay:-1s;animation-duration:1.1s;filter:drop-shadow(0 0 3px #FF3399);" />
+            <circle class="light-dot" cx="174" cy="203" r="5" fill="#44BB33"
+              style="animation-delay:-.3s;animation-duration:1.4s;filter:drop-shadow(0 0 3px #44BB33);" />
+            <circle class="light-dot" cx="194" cy="208" r="5" fill="#1BC4C4"
+              style="animation-delay:-.6s;animation-duration:1.3s;filter:drop-shadow(0 0 3px #1BC4C4);" />
+
+            <!-- Ornament balls -->
+            <circle class="ornament" cx="120" cy="122" r="9" fill="#FF3399"
+              style="animation-delay:0s;animation-duration:3.2s;filter:drop-shadow(0 0 2px #FF3399);" />
+            <circle class="ornament" cx="160" cy="128" r="9" fill="#1BC4C4"
+              style="animation-delay:-.6s;animation-duration:2.8s;filter:drop-shadow(0 0 2px #1BC4C4);" />
+            <circle class="ornament" cx="106" cy="175" r="10" fill="#FFCC00"
+              style="animation-delay:-1.1s;animation-duration:3.5s;filter:drop-shadow(0 0 2px #FFCC00);" />
+            <circle class="ornament" cx="174" cy="172" r="10" fill="#FF6633"
+              style="animation-delay:-.3s;animation-duration:3s;filter:drop-shadow(0 0 2px #FF6633);" />
+            <circle class="ornament" cx="140" cy="178" r="9" fill="#9933CC"
+              style="animation-delay:-.9s;animation-duration:2.6s;filter:drop-shadow(0 0 2px #9933CC);" />
+
+            <!-- Ornament string caps -->
+            <rect x="118" y="113" width="4" height="6" rx="1" fill="#888" opacity="0.8" />
+            <rect x="158" y="119" width="4" height="6" rx="1" fill="#888" opacity="0.8" />
+            <rect x="104" y="165" width="4" height="6" rx="1" fill="#888" opacity="0.8" />
+            <rect x="172" y="162" width="4" height="6" rx="1" fill="#888" opacity="0.8" />
+            <rect x="138" y="169" width="4" height="6" rx="1" fill="#888" opacity="0.8" />
+
+            <!-- Top star -->
+            <g class="tree-star">
+              <polygon points="140,12 143,23 154,23 145,30 148,41 140,34 132,41 135,30 126,23 137,23" fill="#FFCC00" />
+            </g>
+
+          </g><!-- /tree-group -->
+
+          <!-- Gifts on ground -->
+          <!-- Gift 1 — red with gold ribbon -->
+          <g class="gift" style="animation-delay:0s;animation-duration:2.8s;">
+            <rect x="54" y="268" width="40" height="32" rx="4" fill="#CC1122" />
+            <rect x="72" y="268" width="6" height="32" fill="#FFCC00" opacity="0.85" />
+            <rect x="54" y="280" width="40" height="6" fill="#FFCC00" opacity="0.85" />
+            <circle cx="75" cy="270" r="6" fill="#FFCC00" opacity="0.9" />
+          </g>
+
+          <!-- Gift 2 — teal with pink ribbon -->
+          <g class="gift" style="animation-delay:-.5s;animation-duration:3.1s;">
+            <rect x="100" y="274" width="34" height="26" rx="4" fill="#1BC4C4" />
+            <rect x="115" y="274" width="5" height="26" fill="#FF3399" opacity="0.85" />
+            <rect x="100" y="284" width="34" height="5" fill="#FF3399" opacity="0.85" />
+            <circle cx="117" cy="275" r="5" fill="#FF3399" opacity="0.9" />
+          </g>
+
+          <!-- Gift 3 — purple with orange ribbon -->
+          <g class="gift" style="animation-delay:-.9s;animation-duration:2.5s;">
+            <rect x="182" y="270" width="44" height="30" rx="4" fill="#9933CC" />
+            <rect x="201" y="270" width="6" height="30" fill="#FF6633" opacity="0.85" />
+            <rect x="182" y="282" width="44" height="6" fill="#FF6633" opacity="0.85" />
+            <circle cx="204" cy="271" r="6" fill="#FF6633" opacity="0.9" />
+          </g>
+
+          <!-- Small gift 4 -->
+          <g class="gift" style="animation-delay:-.3s;animation-duration:3.4s;">
+            <rect x="146" y="278" width="28" height="22" rx="3" fill="#44BB33" />
+            <rect x="158" y="278" width="4" height="22" fill="#FFCC00" opacity="0.85" />
+            <rect x="146" y="287" width="28" height="4" fill="#FFCC00" opacity="0.85" />
+            <circle cx="160" cy="279" r="4" fill="#FFCC00" opacity="0.9" />
+          </g>
+
+        </svg>
+
+      </div>
+      <div class="christmas-text reveal">
+        <div class="eyebrow">Annual Event</div>
+        <h2 class="section-title">Christmas with Dignity</h2>
+        <p>Every year, Common Ground Ministries hosts our beloved Christmas with Dignity event — a pop-up store stocked
+          with name-brand, new items available at a fraction of retail cost. Every family in our community deserves to
+          celebrate the season with dignity and joy.</p>
+        <p>This event has become one of the most impactful things we do — not just giving families practical help, but
+          reminding every parent and child that they are valued, seen, and worthy of good things.</p>
+        <a href="#contact" class="btn btn-primary" style="margin-top:8px;">Learn More & Get Involved</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     WAYS TO GIVE
+═══════════════════════════════════════ -->
+  <section class="give" id="give">
+    <div class="section-inner">
+      <div class="reveal" style="text-align:center">
+        <div class="eyebrow">Support the Mission</div>
+        <h2 class="section-title">Three Ways to Make a Difference</h2>
+      </div>
+      <div class="give-grid">
+        <div class="give-card reveal">
+          <div class="give-icon">❤️</div>
+          <h3>Make a Donation</h3>
+          <p>Every dollar goes directly to serving children — snacks, tutoring resources, activities, and the building
+            fund.</p>
+          <a href="#" onclick="openModal('CGM_Donate.html','Donate');return false;" class="btn btn-outline">Donate
+            Securely →</a>
+        </div>
+        <div class="give-card reveal" style="transition-delay:.1s">
+          <div class="give-icon">🤝</div>
+          <h3>Become a Sponsor</h3>
+          <p>Corporate and church partners receive recognition across our materials and events while investing in the
+            next generation.</p>
+          <a href="#" onclick="openModal('CGM_Sponsor.html','Become a Sponsor');return false;"
+            class="btn btn-navy">Sponsor CGM →</a>
+        </div>
+        <div class="give-card reveal" style="transition-delay:.2s">
+          <div class="give-icon">📬</div>
+          <h3>Stay Connected</h3>
+          <p>Join our newsletter for monthly updates, stories from the kids, event announcements, and building fund
+            progress.</p>
+          <a href="#" onclick="openModal('CGM_Newsletter.html','Newsletter');return false;"
+            class="btn btn-navy">Subscribe →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     VOLUNTEER
+═══════════════════════════════════════ -->
+  <section class="volunteer" id="volunteer">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="eyebrow">Get Involved</div>
+        <h2 class="section-title">Your Time Changes Lives</h2>
+      </div>
+      <p class="reveal">Volunteer tutors, mentors, and event helpers are the heartbeat of Common Ground Ministries. If
+        you have a few hours and a willing heart, there is a place for you here.</p>
+      <div class="volunteer-roles reveal">
+        <span class="role-tag">📚 Homework Tutor</span>
+        <span class="role-tag">🍎 Snack Prep</span>
+        <span class="role-tag">⚽ Recreation Leader</span>
+        <span class="role-tag">🎅 Christmas with Dignity</span>
+        <span class="role-tag">🖥️ Administrative Help</span>
+        <span class="role-tag">📷 Photography / Media</span>
+        <span class="role-tag">🏗️ Building Project</span>
+      </div>
+      <a href="#contact" class="btn btn-navy reveal">Sign Up to Volunteer →</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     SPONSORS
+═══════════════════════════════════════ -->
+  <section class="sponsors">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="eyebrow" style="text-align:center">Our Partners</div>
+        <h2 class="section-title" style="text-align:center">Thank You to Our Supporters</h2>
+      </div>
+      <div class="logo-ticker reveal">
+        <div class="logo-ticker-track">
+          <!-- Group 1 -->
+          <div class="ticker-group">
+            <img src="sponsor_1.jpg" alt="First Baptist Waxahachie">
+            <img src="sponsor_2.jpg" alt="Waxahachie Bible Church">
+            <img src="sponsor_3.jpg" alt="United Way West Ellis County">
+            <img src="sponsor_evobrand.png" alt="Evo Brand">
+            <div class="ticker-text-logo">Waxahachie<br><span
+                style="font-size:10px; font-weight:700; color:#888; letter-spacing:1px;">Senior Center</span></div>
+            <div class="ticker-text-logo">Waxahachie<br><span
+                style="font-size:9px; font-weight:700; color:var(--teal); letter-spacing:0.5px;">Chamber of
+                Commerce</span></div>
+          </div>
+          <!-- Group 2 (Duplicate for seamless loop) -->
+          <div class="ticker-group">
+            <img src="sponsor_1.jpg" alt="First Baptist Waxahachie">
+            <img src="sponsor_2.jpg" alt="Waxahachie Bible Church">
+            <img src="sponsor_3.jpg" alt="United Way West Ellis County">
+            <img src="sponsor_evobrand.png" alt="Evo Brand">
+            <div class="ticker-text-logo">Waxahachie<br><span
+                style="font-size:10px; font-weight:700; color:#888; letter-spacing:1px;">Senior Center</span></div>
+            <div class="ticker-text-logo">Waxahachie<br><span
+                style="font-size:9px; font-weight:700; color:var(--teal); letter-spacing:0.5px;">Chamber of
+                Commerce</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:40px;" class="reveal">
+        <p style="color:#888;font-size:15px;margin-bottom:20px;">Interested in becoming a partner organization?</p>
+        <a href="#" onclick="openModal('CGM_Sponsor.html','Become a Sponsor');return false;"
+          class="btn btn-primary">Become a Sponsor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════ -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="eyebrow">Get in Touch</div>
+        <h2 class="section-title">We'd Love to Hear From You</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="contact-item">
+            <div class="c-icon">📬</div>
+            <div class="c-text">
+              <strong>Mailing Address</strong>
+              <span>P.O. Box 444<br>Waxahachie, TX 75168</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">📍</div>
+            <div class="c-text">
+              <strong>Physical Address</strong>
+              <span>604 E Parks Ave<br>Waxahachie, TX 75165</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">📞</div>
+            <div class="c-text">
+              <strong>Phone</strong>
+              <span><a href="tel:+19729232224" style="color:inherit;text-decoration:none;">(972) 923-2224</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">🌐</div>
+            <div class="c-text">
+              <strong>Website</strong>
+              <span>cgmhachie.org</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">✉️</div>
+            <div class="c-text">
+              <strong>Email</strong>
+              <span><a href="mailto:info@cgmhachie.org"
+                  style="color:inherit;text-decoration:none;">info@cgmhachie.org</a></span>
+            </div>
+          </div>
+
+          <div style="margin-top:36px;">
+            <div
+              style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px;">
+              Program Hours</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:15px;line-height:2;">
+              Monday – Friday<br>
+              <strong style="color:var(--teal);">After School through Evening</strong><br>
+              <span style="font-size:13px;opacity:.6">Summer programming available — contact us for details</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form reveal">
+          <div class="form-row">
+            <label>Your Name</label>
+            <input type="text" placeholder="First and last name">
+          </div>
+          <div class="form-row">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-row">
+            <label>I'm interested in...</label>
+            <select>
+              <option>Enrolling my child in the program</option>
+              <option>Volunteering</option>
+              <option>Donating to the Building Fund</option>
+              <option>Becoming a sponsor / partner</option>
+              <option>General information</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Message</label>
+            <textarea placeholder="Tell us a little about yourself and how you'd like to get involved…"></textarea>
+          </div>
+          <button class="btn btn-secondary btn-full" onclick="handleSubmit(this)">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+  <footer>
+    <div class="footer-logo">
+      <img src="CGM_Logo_Transparent.png" alt="Common Ground Ministries"
+        style="height:52px; width:auto; display:block; object-fit:contain;">
+      <div class="footer-logo-text">
+        <div class="name">Common Ground Ministries</div>
+        <div class="sub">604 E Parks Ave · Waxahachie, TX 75165 · (972) 923-2224</div>
+      </div>
+    </div>
+
+    <ul class="footer-links">
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="team.html">Leadership & Team</a></li>
+      <li><a href="#campaign">Building Fund</a></li>
+      <li><a href="#christmas">Christmas with Dignity</a></li>
+      <li><a href="#volunteer">Volunteer</a></li>
+      <li><a href="#give">Give</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="board.html" style="color:var(--teal);font-weight:700;">🔒 Board Portal</a></li>
+    </ul>
+
+    <div class="footer-social">
+      <a href="https://www.facebook.com/Common-Ground-Ministries-321287526730/" target="_blank" class="social-btn" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+      </a>
+      <a href="https://www.instagram.com/cgmhachie/" target="_blank" class="social-btn" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      </a>
+      <a href="mailto:info@cgmhachie.org" class="social-btn" aria-label="Email">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      </a>
+    </div>
+
+    <div class="footer-copy">© 2026 Common Ground Ministries · Waxahachie, Texas · Designed by EVOBRAND Concepts</div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+     JS
+═══════════════════════════════════════ -->
+  <script>
+    // Nav scroll shadow
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ── Mobile Navigation ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    function openNav() {
+      navLinks.classList.add('open');
+      hamburger.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+    }
+    function closeNav() {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+    function toggleMenu() {
+      navLinks.classList.contains('open') ? closeNav() : openNav();
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+
+    // Mobile dropdown toggle & close
+    document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        if (window.innerWidth <= 900) {
+          e.preventDefault();
+          trigger.closest('.nav-item-dropdown').classList.toggle('open');
+        }
+      });
+    });
+
+    // Close on any final nav link click
+    document.querySelectorAll('.nav-links a:not(.nav-dropdown-trigger)').forEach(link => {
+      link.addEventListener('click', closeNav);
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        closeNav();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeNav();
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Animate thermometer when in view
+    const thermoObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setTimeout(() => {
+          document.getElementById('thermoBar').style.width = '2%';
+        }, 400);
+        thermoObserver.disconnect();
+      }
+    }, { threshold: 0.5 });
+
+    const thermoEl = document.getElementById('thermoBar');
+    if (thermoEl) {
+      thermoEl.style.width = '0%';
+      thermoObserver.observe(thermoEl);
+    }
+
+    // Hero cursor spotlight
+    (function () {
+      const heroEl = document.querySelector('.hero');
+      const spotlight = document.getElementById('heroSpotlight');
+      if (!heroEl || !spotlight) return;
+      heroEl.addEventListener('mousemove', (e) => {
+        const r = heroEl.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%';
+        const y = ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%';
+        spotlight.style.setProperty('--mx', x);
+        spotlight.style.setProperty('--my', y);
+      });
+    })();
+
+    // Contact form — sends submission directly to info@cgmhachie.org
+    async function handleSubmit(btn) {
+      const formBox = btn.closest('.contact-form');
+      const inputs = formBox.querySelectorAll('input, select, textarea');
+      const name = (inputs[0]?.value || '').trim();
+      const email = (inputs[1]?.value || '').trim();
+      const topic = inputs[2]?.value || '';
+      const message = (inputs[3]?.value || '').trim();
+
+      if (!name || !email) {
+        alert('Please enter your name and email address.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      const html = `
+    <div style="font-family:sans-serif;max-width:500px;margin:0 auto;padding:20px;border:1px solid #eee;border-radius:12px;">
+      <h3 style="color:#1a1a2e;margin-top:0;">📩 New Contact Inquiry — Website</h3>
+      <p><strong>From:</strong> ${name} (&lt;${email}&gt;)</p>
+      <p><strong>Interest:</strong> ${topic}</p>
+      <p><strong>Message:</strong></p>
+      <div style="background:#f4f2ee;padding:12px 16px;border-radius:8px;line-height:1.6;">
+        ${message.replace(/\n/g, '<br>') || '<em>(No message text provided)</em>'}
+      </div>
+    </div>`;
+
+      try {
+        const res = await fetch('send-email.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Portal-Secret': 'f440b95422cbf4bd6e967f0088f2064a6898acc48500a427'
+          },
+          body: JSON.stringify({
+            to: 'info@cgmhachie.org',
+            subject: `Website Inquiry: ${name} (${topic})`,
+            html: html
+          })
+        });
+        if (!res.ok) throw new Error('Email delivery failed');
+        btn.textContent = '✓ Message Sent!';
+        btn.style.background = 'var(--green)';
+      } catch (e) {
+        // Fallback: mailto link if API server is offline
+        window.location.href = `mailto:info@cgmhachie.org?bcc=ksolomon@cgmhachie.org&subject=${encodeURIComponent('Website Inquiry: ' + name)}&body=${encodeURIComponent('From: ' + name + ' (' + email + ')\nInterest: ' + topic + '\n\n' + message)}`;
+        btn.textContent = '✓ Message Sent!';
+        btn.style.background = 'var(--green)';
+      }
+    }
+  </script>
+  <!-- ═══════════════════════════════════════
+     MODAL IFRAME OVERLAY
+═══════════════════════════════════════ -->
+  <div id="cgmModal" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999;
+  background:rgba(10,10,20,0.85);
+  backdrop-filter:blur(8px);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+">
+    <div style="
+    background:#1a1a2e;
+    border-radius:24px;
+    width:100%;
+    max-width:560px;
+    max-height:90vh;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 24px 80px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.08);
+    animation:modalIn .3s ease;
+  ">
+      <!-- Modal header bar -->
+      <div style="
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 20px;
+      border-bottom:1px solid rgba(255,255,255,0.07);
+      flex-shrink:0;
+    ">
+        <span id="modalTitle" style="
+        font-family:'Nunito',sans-serif;
+        font-weight:900;
+        font-size:14px;
+        color:rgba(255,255,255,0.5);
+        letter-spacing:2px;
+        text-transform:uppercase;
+      ">Common Ground Ministries</span>
+        <button onclick="closeModal()" style="
+        background:rgba(255,255,255,0.08);
+        border:none;
+        color:rgba(255,255,255,0.6);
+        width:32px; height:32px;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:16px;
+        display:flex; align-items:center; justify-content:center;
+        transition:background .2s;
+      " onmouseover="this.style.background='rgba(255,255,255,0.15)'"
+          onmouseout="this.style.background='rgba(255,255,255,0.08)'">✕</button>
+      </div>
+      <!-- The iframe -->
+      <iframe id="cgmIframe" src="" style="flex:1; border:none; width:100%; min-height:500px; overflow-y:auto;"
+        scrolling="yes"></iframe>
+    </div>
+  </div>
+
+  <style>
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+  </style>
+
+  <script>
+    function openModal(page, title) {
+      const modal = document.getElementById('cgmModal');
+      document.getElementById('cgmIframe').src = page;
+      document.getElementById('modalTitle').textContent = title;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('cgmModal').style.display = 'none';
+      document.getElementById('cgmIframe').src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click
+    document.getElementById('cgmModal').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+
+    // ── Concept D: Floating Particles ──
+    (function () {
+      const canvas = document.getElementById('heroCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const COLORS = ['#1BC4C4', '#FF6633', '#FFCC00', '#FF3399', '#44BB33', '#9933CC', '#2299EE'];
+      const COUNT = 55;
+      let particles = [];
+      let W, H;
+
+      function resize() {
+        W = canvas.width = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+
+      function makeParticle() {
+        return {
+          x: Math.random() * W,
+          y: H + Math.random() * H,
+          r: Math.random() * 5.5 + 2.5,
+          c: COLORS[Math.floor(Math.random() * COLORS.length)],
+          speed: Math.random() * 0.7 + 0.25,
+          dx: (Math.random() - 0.5) * 0.55,
+          alpha: Math.random() * 0.30 + 0.50
+        };
+      }
+
+      function init() {
+        resize();
+        particles = [];
+        for (let i = 0; i < COUNT; i++) {
+          const p = makeParticle();
+          p.y = Math.random() * (H + 100);
+          particles.push(p);
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.c;
+          ctx.globalAlpha = p.alpha;
+          ctx.fill();
+          p.y -= p.speed;
+          p.x += p.dx;
+          if (p.y < -p.r * 2) { Object.assign(p, makeParticle()); p.y = H + p.r; }
+          if (p.x < -p.r) p.x = W + p.r;
+          if (p.x > W + p.r) p.x = -p.r;
+        });
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(draw);
+      }
+
+      let resizeTimer;
+      window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(init, 150); });
+
+      init();
+      draw();
+    })();
+  </script>
+
+  <!-- ═══════════════════════════════════════
+     VIDEO MODAL
+═══════════════════════════════════════ -->
+  <div id="videoModal" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  background:rgba(0,0,0,0.88);
+  backdrop-filter:blur(10px);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+">
+    <div style="
+    position:relative;
+    width:100%;
+    max-width:860px;
+    animation:modalIn .3s ease;
+  ">
+      <!-- Close button -->
+      <button onclick="closeVideoModal()" style="
+      position:absolute;
+      top:-44px; right:0;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.2);
+      border-radius:8px;
+      color:white;
+      width:36px; height:36px;
+      font-size:16px;
+      cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .2s;
+    " onmouseover="this.style.background='rgba(255,255,255,0.22)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.12)'">✕</button>
+
+      <!-- 16:9 responsive iframe wrapper -->
+      <div
+        style="position:relative; padding-bottom:56.25%; height:0; border-radius:14px; overflow:hidden; box-shadow:0 24px 80px rgba(0,0,0,0.6);">
+        <iframe id="videoFrame" src="" title="Common Ground Ministries — Our Story" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:14px;">
+        </iframe>
+      </div>
+
+      <p style="text-align:center; margin-top:16px; font-size:13px; color:rgba(255,255,255,0.4); letter-spacing:1px;">
+        Common Ground Ministries · Est. 1991 · Waxahachie, TX</p>
+    </div>
+  </div>
+
+  <script>
+    function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      // Use embed URL with autoplay
+      document.getElementById('videoFrame').src = 'https://www.youtube.com/embed/oIl8JjfhK9U?autoplay=1&rel=0&modestbranding=1';
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+      document.getElementById('videoModal').style.display = 'none';
+      // Stop video by clearing src
+      document.getElementById('videoFrame').src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click
+    document.getElementById('videoModal').addEventListener('click', function (e) {
+      if (e.target === this) closeVideoModal();
+    });
+
+    // Escape key closes video modal too
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+
+    // ════════════════════════════════════════════════════════════════════════════
+    //  PORTAL CALENDAR FRONTEND INTEGRATION
+    // ════════════════════════════════════════════════════════════════════════════
+    let pCalYear = new Date().getFullYear();
+    let pCalMonth = new Date().getMonth();
+    let pCalSelected = null;
+    let pCalEvents = [];
+
+    const P_MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const P_EVT_COLORS = {
+      'Board Meeting': '#1BC4C4',
+      'Fundraiser': '#FF6633',
+      'Community Event': '#9933CC',
+      'Training': '#44BB33',
+      'Other': '#2299EE'
+    };
+
+    function escHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function formatTime12(timeStr) {
+      if (!timeStr) return '';
+      const parts = timeStr.split(':');
+      if (parts.length < 2) return timeStr;
+      let hrs = parseInt(parts[0], 10);
+      const mins = parts[1];
+      const ampm = hrs >= 12 ? 'PM' : 'AM';
+      hrs = hrs % 12;
+      if (hrs === 0) hrs = 12;
+      return `${hrs}:${mins} ${ampm}`;
+    }
+
+    async function fetchPortalEvents() {
+      try {
+        const res = await fetch('api.php?action=get_public_events');
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data)) {
+            pCalEvents = data;
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load portal calendar events:', err);
+      }
+      renderPortalCalendar();
+    }
+
+    function portalCalNav(dir) {
+      pCalMonth += dir;
+      if (pCalMonth > 11) { pCalMonth = 0; pCalYear++; }
+      if (pCalMonth < 0) { pCalMonth = 11; pCalYear--; }
+      pCalSelected = null;
+      renderPortalCalendar();
+    }
+
+    function portalCalToday() {
+      const now = new Date();
+      pCalYear = now.getFullYear();
+      pCalMonth = now.getMonth();
+      pCalSelected = null;
+      renderPortalCalendar();
+    }
+
+    function selectPortalCalDay(dateStr) {
+      pCalSelected = (pCalSelected === dateStr) ? null : dateStr;
+      renderPortalCalendar();
+    }
+
+    function renderPortalCalendar() {
+      const monthLabelEl = document.getElementById('portal-cal-month-label');
+      const gridEl = document.getElementById('portal-cal-grid');
+      if (!monthLabelEl || !gridEl) return;
+
+      monthLabelEl.textContent = `${P_MONTH_NAMES[pCalMonth]} ${pCalYear}`;
+
+      const today = new Date();
+      const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+      const evtMap = {};
+      pCalEvents.forEach(e => {
+        if (e.date) {
+          const end = e.end_date || e.date;
+          let cur = new Date(e.date + 'T00:00:00');
+          const stop = new Date(end + 'T00:00:00');
+          while (cur <= stop) {
+            const dStr = cur.toISOString().split('T')[0];
+            if (!evtMap[dStr]) evtMap[dStr] = [];
+            if (!evtMap[dStr].find(x => x.id === e.id)) {
+              evtMap[dStr].push(e);
+            }
+            cur.setDate(cur.getDate() + 1);
+          }
+        }
+      });
+
+      const firstDay = new Date(pCalYear, pCalMonth, 1).getDay();
+      const daysInMonth = new Date(pCalYear, pCalMonth + 1, 0).getDate();
+      const prevDays = new Date(pCalYear, pCalMonth, 0).getDate();
+      let cellsHtml = '';
+
+      // Previous month trailing days
+      for (let i = firstDay - 1; i >= 0; i--) {
+        cellsHtml += `<div class="portal-cal-cell other-month"><div class="portal-cal-day-num">${prevDays - i}</div></div>`;
+      }
+
+      // Current month days
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = `${pCalYear}-${String(pCalMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const isToday = dateStr === todayStr;
+        const isSelected = dateStr === pCalSelected;
+        const dayEvts = evtMap[dateStr] || [];
+
+        cellsHtml += `
+      <div class="portal-cal-cell ${isToday ? 'today' : ''} ${isSelected ? 'selected' : ''}" onclick="selectPortalCalDay('${dateStr}')">
+        <div class="portal-cal-day-num">${d}</div>
+        ${dayEvts.slice(0, 3).map(e => {
+          const color = P_EVT_COLORS[e.type] || '#2299EE';
+          return `
+            <div class="portal-cal-event-dot" style="background:${color}1e; color:${color}; border-left:3px solid ${color};" title="${escHtml(e.name)}">
+              ${escHtml(e.name.length > 14 ? e.name.slice(0, 14) + '…' : e.name)}
+            </div>
+          `;
+        }).join('')}
+        ${dayEvts.length > 3 ? `<div style="font-size:10px; color:#777; margin-top:2px; font-weight:600;">+${dayEvts.length - 3} more</div>` : ''}
+      </div>
+    `;
+      }
+
+      // Next month padding days
+      const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+      let nextDay = 1;
+      for (let i = firstDay + daysInMonth; i < totalCells; i++) {
+        cellsHtml += `<div class="portal-cal-cell other-month"><div class="portal-cal-day-num">${nextDay++}</div></div>`;
+      }
+
+      gridEl.innerHTML = cellsHtml;
+      renderPortalEventsList();
+    }
+
+    function renderPortalEventsList() {
+      const titleEl = document.getElementById('portal-events-title');
+      const listEl = document.getElementById('portal-events-list');
+      if (!titleEl || !listEl) return;
+
+      let filtered = [];
+      if (pCalSelected) {
+        filtered = pCalEvents.filter(e => e.date && pCalSelected >= e.date && pCalSelected <= (e.end_date || e.date));
+        const dParts = pCalSelected.split('-');
+        const dObj = new Date(parseInt(dParts[0]), parseInt(dParts[1]) - 1, parseInt(dParts[2]));
+        titleEl.textContent = `Events on ${P_MONTH_NAMES[dObj.getMonth()]} ${dObj.getDate()}, ${dObj.getFullYear()}`;
+      } else {
+        const prefix = `${pCalYear}-${String(pCalMonth + 1).padStart(2, '0')}`;
+        filtered = pCalEvents.filter(e => {
+          if (!e.date) return false;
+          const end = e.end_date || e.date;
+          const startOfMonth = `${pCalYear}-${String(pCalMonth + 1).padStart(2, '0')}-01`;
+          const lastDay = new Date(pCalYear, pCalMonth + 1, 0).getDate();
+          const endOfMonth = `${pCalYear}-${String(pCalMonth + 1).padStart(2, '0')}-${String(lastDay).padStart(2, '0')}`;
+          return e.date <= endOfMonth && end >= startOfMonth;
+        });
+        titleEl.textContent = `All Events — ${P_MONTH_NAMES[pCalMonth]} ${pCalYear}`;
+      }
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = `
+      <div class="portal-events-empty">
+        <div style="font-size:32px; margin-bottom:8px;">📅</div>
+        <div>No events scheduled ${pCalSelected ? 'for this day.' : 'this month.'}</div>
+      </div>
+    `;
+        return;
+      }
+
+      filtered.sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+
+      listEl.innerHTML = filtered.map(e => {
+        const color = P_EVT_COLORS[e.type] || '#2299EE';
+        const formattedTime = e.time ? formatTime12(e.time) : '';
+
+        // Format date string for display
+        let dateDisplay = e.date || 'No Date';
+        if (e.date) {
+          const formatSingle = (dStr) => {
+            const parts = dStr.split('-');
+            if (parts.length === 3) {
+              const dObj = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+              return `${P_MONTH_NAMES[dObj.getMonth()]} ${dObj.getDate()}, ${dObj.getFullYear()}`;
+            }
+            return dStr;
+          };
+          dateDisplay = formatSingle(e.date);
+          if (e.end_date && e.end_date !== e.date) {
+            dateDisplay += ` to ${formatSingle(e.end_date)}`;
+          }
+        }
+
+        return `
+      <div class="portal-event-card" style="border-left-color:${color};">
+        <div class="portal-event-title">${escHtml(e.name)}</div>
+        <div class="portal-event-meta">
+          <span class="portal-event-badge" style="background:${color}1e; color:${color};">${escHtml(e.type || 'Event')}</span>
+          <span>📅 ${dateDisplay}${formattedTime ? ' at ' + formattedTime : ''}</span>
+          ${e.loc ? `<span>📍 ${escHtml(e.loc)}</span>` : ''}
+        </div>
+        ${e.description ? `<div class="portal-event-desc">${e.description}</div>` : ''}
+      </div>
+    `;
+      }).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchPortalEvents);
+  </script>
+
+</body>
+
+</html>

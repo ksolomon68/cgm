@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate — Common Ground Ministries</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="analytics.js" defer></script>
+<style>
+:root {
+  --teal:#1BC4C4; --orange:#FF6633; --navy:#1a1a2e;
+  --green:#44BB33; --light:#f0eeea; --mid:#888;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Nunito Sans',sans-serif;
+  background: var(--navy);
+  color:white;
+  min-height:100vh;
+  padding:40px 32px 60px;
+}
+
+.top-bar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:36px;
+}
+.cgm-label {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--teal);
+}
+.secure-badge {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  color:rgba(255,255,255,0.4);
+  letter-spacing:1px;
+}
+
+h1 {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:32px;
+  line-height:1.2;
+  margin-bottom:8px;
+}
+h1 span { color:var(--teal); }
+
+.sub {
+  font-size:15px;
+  color:rgba(255,255,255,0.6);
+  margin-bottom:32px;
+  line-height:1.6;
+}
+
+/* Progress */
+.progress-card {
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:28px;
+}
+.prog-label {
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:12px;
+}
+.prog-bar-wrap {
+  background:rgba(255,255,255,0.08);
+  border-radius:30px;
+  height:22px;
+  overflow:hidden;
+  margin-bottom:8px;
+}
+.prog-bar {
+  height:100%;
+  border-radius:30px;
+  background:linear-gradient(90deg,var(--teal),var(--green));
+  width:2%;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding-right:8px;
+}
+.prog-bar span { font-size:10px; font-weight:700; color:white; }
+.prog-amounts {
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:rgba(255,255,255,0.45);
+}
+.prog-amounts strong { color:white; }
+
+/* Amount selector */
+.amount-label {
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.45);
+  margin-bottom:12px;
+  font-weight:700;
+}
+
+.amount-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.amt-btn {
+  background:rgba(255,255,255,0.06);
+  border:2px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+  padding:14px 8px;
+  text-align:center;
+  cursor:pointer;
+  transition:all .2s;
+  color:white;
+}
+.amt-btn:hover { border-color:var(--teal); background:rgba(27,196,196,0.08); }
+.amt-btn.active { border-color:var(--teal); background:rgba(27,196,196,0.15); }
+.amt-btn .amount {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:20px;
+  display:block;
+  margin-bottom:3px;
+}
+.amt-btn .impact {
+  font-size:10px;
+  color:rgba(255,255,255,0.45);
+  line-height:1.3;
+}
+.amt-btn.active .impact { color:rgba(27,196,196,0.8); }
+
+.custom-wrap {
+  display:flex;
+  align-items:center;
+  background:rgba(255,255,255,0.06);
+  border:2px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+  padding:0 16px;
+  margin-bottom:28px;
+  transition:border-color .2s;
+}
+.custom-wrap:focus-within { border-color:var(--teal); }
+.custom-wrap span { color:rgba(255,255,255,0.4); font-size:18px; margin-right:8px; }
+.custom-wrap input {
+  flex:1;
+  background:transparent;
+  border:none;
+  outline:none;
+  color:white;
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:20px;
+  padding:14px 0;
+}
+.custom-wrap input::placeholder { color:rgba(255,255,255,0.2); }
+
+/* Frequency */
+.freq-wrap {
+  display:flex;
+  gap:10px;
+  margin-bottom:28px;
+}
+.freq-btn {
+  flex:1;
+  padding:12px;
+  border-radius:10px;
+  border:2px solid rgba(255,255,255,0.1);
+  background:transparent;
+  color:rgba(255,255,255,0.5);
+  font-family:'Nunito Sans',sans-serif;
+  font-weight:700;
+  font-size:13px;
+  cursor:pointer;
+  transition:all .2s;
+  text-align:center;
+}
+.freq-btn.active {
+  border-color:var(--orange);
+  background:rgba(255,102,51,0.12);
+  color:var(--orange);
+}
+
+/* Donor info */
+.form-row { margin-bottom:16px; }
+.form-row label {
+  display:block;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.4);
+  margin-bottom:6px;
+}
+.form-row input {
+  width:100%;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  padding:13px 16px;
+  color:white;
+  font-family:'Nunito Sans',sans-serif;
+  font-size:14px;
+  outline:none;
+  transition:border-color .2s;
+}
+.form-row input::placeholder { color:rgba(255,255,255,0.25); }
+.form-row input:focus { border-color:var(--teal); }
+.form-row-2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+.donate-btn {
+  width:100%;
+  background:var(--teal);
+  color:var(--navy);
+  border:none;
+  border-radius:14px;
+  padding:18px;
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:17px;
+  cursor:pointer;
+  margin-top:8px;
+  transition:background .2s, transform .15s;
+  letter-spacing:.5px;
+}
+.donate-btn:hover { background:#14a8a8; transform:translateY(-1px); }
+.donate-btn:active { transform:translateY(0); }
+
+.fine-print {
+  text-align:center;
+  font-size:11px;
+  color:rgba(255,255,255,0.25);
+  margin-top:14px;
+  line-height:1.6;
+}
+
+.divider {
+  height:1px;
+  background:rgba(255,255,255,0.07);
+  margin:24px 0;
+}
+
+.section-title {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:14px;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:16px;
+  letter-spacing:1px;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <img src="CGM_Logo_Transparent.png" alt="Common Ground Ministries" style="height:52px;width:auto;display:block;object-fit:contain;">
+  <div class="secure-badge">🔒 Secure Donation</div>
+</div>
+
+<h1>Give to <span>Common Ground</span></h1>
+<p class="sub">Every gift directly serves at-risk children in East Waxahachie — snacks, tutoring, faith, and a future permanent home.</p>
+
+<div class="progress-card">
+  <div class="prog-label">🏗️ Building Fund Progress</div>
+  <div class="prog-bar-wrap">
+    <div class="prog-bar"><span>2%</span></div>
+  </div>
+  <div class="prog-amounts">
+    <span><strong>$10,000</strong> raised</span>
+    <span>Goal: <strong>$500,000</strong></span>
+  </div>
+</div>
+
+<!-- Frequency -->
+<div class="amount-label">Give</div>
+<div class="freq-wrap">
+  <button class="freq-btn" onclick="setFreq(this,'once')">One Time</button>
+  <button class="freq-btn active" onclick="setFreq(this,'monthly')">Monthly</button>
+  <button class="freq-btn" onclick="setFreq(this,'annual')">Annually</button>
+</div>
+
+<!-- Amounts -->
+<div class="amount-label">Select Amount</div>
+<div class="amount-grid">
+  <div class="amt-btn" onclick="setAmt(this,'25')">
+    <span class="amount">$25</span>
+    <span class="impact">School supplies for one child</span>
+  </div>
+  <div class="amt-btn active" onclick="setAmt(this,'50')">
+    <span class="amount">$50</span>
+    <span class="impact">Two weeks of daily snacks</span>
+  </div>
+  <div class="amt-btn" onclick="setAmt(this,'100')">
+    <span class="amount">$100</span>
+    <span class="impact">One month of snacks</span>
+  </div>
+  <div class="amt-btn" onclick="setAmt(this,'250')">
+    <span class="amount">$250</span>
+    <span class="impact">Tutoring session series</span>
+  </div>
+  <div class="amt-btn" onclick="setAmt(this,'500')">
+    <span class="amount">$500</span>
+    <span class="impact">Month of full programming</span>
+  </div>
+  <div class="amt-btn" onclick="setAmt(this,'1000')">
+    <span class="amount">$1,000</span>
+    <span class="impact">Named brick in new building</span>
+  </div>
+</div>
+
+<div class="custom-wrap">
+  <span>$</span>
+  <input type="number" id="customAmt" placeholder="Custom amount" oninput="clearActive()">
+</div>
+
+<div class="divider"></div>
+<div class="section-title">Your Information</div>
+
+<div class="form-row-2">
+  <div class="form-row">
+    <label>First Name</label>
+    <input type="text" placeholder="First">
+  </div>
+  <div class="form-row">
+    <label>Last Name</label>
+    <input type="text" placeholder="Last">
+  </div>
+</div>
+<div class="form-row">
+  <label>Email Address</label>
+  <input type="email" placeholder="your@email.com">
+</div>
+
+<button class="donate-btn" onclick="handleDonate(this)">❤️ Donate $50 / Month</button>
+<p class="fine-print">Processed securely via Stripe · Common Ground Ministries is a registered nonprofit · Your donation may be tax-deductible</p>
+
+<script>
+let selectedAmt = '50';
+let selectedFreq = 'monthly';
+
+function setAmt(el, val) {
+  document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  selectedAmt = val;
+  document.getElementById('customAmt').value = '';
+  updateBtn();
+}
+
+function clearActive() {
+  document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
+  selectedAmt = document.getElementById('customAmt').value;
+  updateBtn();
+}
+
+function setFreq(el, val) {
+  document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  selectedFreq = val;
+  updateBtn();
+}
+
+function updateBtn() {
+  const amt = document.getElementById('customAmt').value || selectedAmt;
+  const freq = selectedFreq === 'once' ? 'One Time' : selectedFreq === 'monthly' ? '/ Month' : '/ Year';
+  document.querySelector('.donate-btn').textContent = `❤️ Donate $${amt} ${freq}`;
+}
+
+function handleDonate(btn) {
+  btn.textContent = '✓ Redirecting to secure payment…';
+  btn.style.background = '#44BB33';
+  setTimeout(() => {
+    window.open('https://donate.stripe.com/4gw4jJgEteQ9dQA9AA', '_blank');
+    btn.textContent = `❤️ Donate $${selectedAmt}`;
+    btn.style.background = '';
+  }, 800);
+}
+</script>
+</body>
+</html>

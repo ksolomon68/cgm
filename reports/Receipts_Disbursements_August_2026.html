@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Ground Ministries — August 2026 Receipts & Disbursements</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1BC4C4;
+    --orange: #FF6633;
+    --navy: #1a1a2e;
+    --bg: #f4f2ee;
+    --white: #ffffff;
+    --border: #e8e5e0;
+    --mid: #888;
+    --dark: #2d2d2d;
+    --green: #44BB33;
+    --light-teal: rgba(27, 196, 196, 0.08);
+    --F: 'Nunito', sans-serif;
+    --FB: 'Nunito Sans', sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--FB);
+    background-color: var(--bg);
+    color: var(--dark);
+    padding: 40px 20px;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 50px 60px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .top-stripe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--teal), var(--navy), var(--orange));
+  }
+
+  .meta-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--mid);
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .report-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .org-name {
+    font-family: var(--F);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--navy);
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+  }
+
+  .report-title {
+    font-family: var(--F);
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--teal);
+    margin-bottom: 5px;
+  }
+
+  .report-date {
+    font-size: 16px;
+    color: var(--mid);
+    font-weight: 600;
+  }
+
+  .actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 15px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-family: var(--F);
+    font-weight: 800;
+    font-size: 13px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-print {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  .btn-print:hover {
+    background: var(--teal);
+    transform: translateY(-1px);
+  }
+
+  .btn-back {
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
+  }
+
+  .btn-back:hover {
+    background: rgba(26, 26, 46, 0.05);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  th {
+    font-family: var(--F);
+    font-weight: 800;
+    border-bottom: 2px solid var(--navy);
+    color: var(--navy);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .amount-col {
+    text-align: right;
+    width: 150px;
+  }
+
+  .category-header {
+    font-family: var(--F);
+    font-weight: 900;
+    color: var(--navy);
+    font-size: 15px;
+    padding-top: 20px;
+    padding-bottom: 6px;
+    letter-spacing: 0.2px;
+  }
+
+  .subcategory-header {
+    font-weight: 700;
+    color: var(--dark);
+    padding-left: 20px;
+    font-size: 14px;
+    padding-top: 10px;
+  }
+
+  .item-row td {
+    color: var(--dark);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.04);
+  }
+
+  .indent-1 td:first-child {
+    padding-left: 30px;
+  }
+
+  .indent-2 td:first-child {
+    padding-left: 45px;
+  }
+
+  .subtotal-row {
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.01);
+  }
+
+  .subtotal-row td {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .subtotal-row.indent-1 td:first-child {
+    padding-left: 30px;
+  }
+
+  .total-row {
+    font-family: var(--F);
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--navy);
+    background: var(--light-teal);
+  }
+
+  .total-row td {
+    border-top: 1.5px solid var(--navy);
+    border-bottom: 1.5px solid var(--navy);
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .net-row {
+    font-family: var(--F);
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--white);
+    background: var(--navy);
+  }
+
+  .net-row.negative {
+    background: #e0533c;
+  }
+
+  .net-row td {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 4px double var(--white);
+  }
+
+  @media print {
+    body {
+      background-color: var(--white);
+      padding: 0;
+    }
+    .container {
+      box-shadow: none;
+      border: none;
+      padding: 0;
+    }
+    .actions-bar {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="top-stripe"></div>
+
+  <div class="meta-header">
+    <div>
+      2:29 PM<br>
+      09/11/26
+    </div>
+    <div style="text-align: right;">
+      Common Ground Ministries<br>
+      Cash Basis
+    </div>
+  </div>
+
+  <div class="report-header">
+    <div class="org-name">Common Ground Ministries</div>
+    <div class="report-title">Receipts & Disbursements</div>
+    <div class="report-date">August 2026</div>
+  </div>
+
+  <div class="actions-bar">
+    <button class="btn btn-back" onclick="history.back() || window.close()">← Return to Portal</button>
+    <button class="btn btn-print" onclick="window.print()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      Print Report
+    </button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Account / Description</th>
+        <th class="amount-col">Aug 26</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Ordinary Income/Expense -->
+      <tr class="category-header">
+        <td colspan="2">Ordinary Income/Expense</td>
+      </tr>
+
+      <!-- Income Category -->
+      <tr class="subcategory-header">
+        <td colspan="2">Income</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Church Donation</td>
+        <td class="amount-col">1,325.00</td>
+      </tr>
+      <tr class="item-row indent-1" style="font-weight: 700; color: var(--navy)">
+        <td colspan="2">Enrollment/Program Fees</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Fall</td>
+        <td class="amount-col">800.00</td>
+      </tr>
+      <tr class="subtotal-row indent-1">
+        <td>Total Enrollment/Program Fees</td>
+        <td class="amount-col">800.00</td>
+      </tr>
+      <tr class="item-row indent-1" style="font-weight: 700; color: var(--navy)">
+        <td colspan="2">Grant</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Hillco Electric</td>
+        <td class="amount-col">1,500.00</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Waxahachie Foundation</td>
+        <td class="amount-col">2,000.00</td>
+      </tr>
+      <tr class="subtotal-row indent-1">
+        <td>Total Grant</td>
+        <td class="amount-col">3,500.00</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Individual Donations</td>
+        <td class="amount-col">200.00</td>
+      </tr>
+      <tr class="item-row indent-1">
+        <td>Organization Donation</td>
+        <td class="amount-col">2,700.45</td>
+      </tr>
+      <tr class="total-row">
+        <td>Total Income</td>
+        <td class="amount-col">8,525.45</td>
+      </tr>
+      <tr class="subtotal-row" style="font-weight: 800; background: rgba(0,0,0,0.02)">
+        <td>Gross Profit</td>
+        <td class="amount-col">8,525.45</td>
+      </tr>
+
+      <!-- Expense Category -->
+      <tr class="subcategory-header">
+        <td colspan="2">Expense</td>
+      </tr>
+
+      <!-- Auto Subcategory -->
+      <tr class="item-row indent-1" style="font-weight: 700; color: var(--navy)">
+        <td colspan="2">Auto</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Fuel</td>
+        <td class="amount-col">171.78</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Registration & Tags</td>
+        <td class="amount-col">81.72</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Repairs & Maintenance</td>
+        <td class="amount-col">207.45</td>
+      </tr>
+      <tr class="subtotal-row indent-1">
+        <td>Total Auto</td>
+        <td class="amount-col">460.95</td>
+      </tr>
+
+      <!-- Insurance -->
+      <tr class="item-row indent-1" style="font-weight: 700; color: var(--navy)">
+        <td colspan="2">Insurance</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Workmen's Comp</td>
+        <td class="amount-col">479.00</td>
+      </tr>
+      <tr class="subtotal-row indent-1">
+        <td>Total Insurance</td>
+        <td class="amount-col">479.00</td>
+      </tr>
+
+      <!-- Payroll Expenses -->
+      <tr class="item-row indent-1" style="font-weight: 700; color: var(--navy)">
+        <td colspan="2">Payroll Expenses</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Payroll Expenses- Payroll Expen</td>
+        <td class="amount-col">0.00</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Payroll Expenses-Salaries</td>
+        <td class="amount-col">2,108.34</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Payroll Taxes</td>
+        <td class="amount-col">251.94</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Payroll Expenses - Other</td>
+        <td class="amount-col">1,185.00</td>
+      </tr>
+      <tr class="subtotal-row indent-1">
+        <td>Total Payroll Expenses</td>
+        <td class="amount-col">3,545.28</td>
+      </tr>
+
+      <!-- Reading and Math Improvement -->
+      <tr class="item-row indent-1">
+        <td>Reading and Math Improvement</td>
+        <td class="amount-col">151.53</td>
+      </tr>
+
+      <!-- Supplies -->
+      <tr class="item-row indent-1" style="font-weight: 700; color: var(--navy)">
+        <td colspan="2">Supplies</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Afterschool</td>
+        <td class="amount-col">740.12</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Janitorial</td>
+        <td class="amount-col">179.37</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Kitchen</td>
+        <td class="amount-col">87.34</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Office</td>
+        <td class="amount-col">206.87</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Snacks</td>
+        <td class="amount-col">1,087.61</td>
+      </tr>
+      <tr class="subtotal-row indent-1">
+        <td>Total Supplies</td>
+        <td class="amount-col">2,301.31</td>
+      </tr>
+
+      <!-- Utilities -->
+      <tr class="item-row indent-1" style="font-weight: 700; color: var(--navy)">
+        <td colspan="2">Utilities</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Electric</td>
+        <td class="amount-col">414.99</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Internet</td>
+        <td class="amount-col">75.27</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Sanitation</td>
+        <td class="amount-col">67.02</td>
+      </tr>
+      <tr class="item-row indent-2">
+        <td>Water</td>
+        <td class="amount-col">59.85</td>
+      </tr>
+      <tr class="subtotal-row indent-1">
+        <td>Total Utilities</td>
+        <td class="amount-col">617.13</td>
+      </tr>
+
+      <!-- Totals -->
+      <tr class="total-row" style="background: rgba(255, 102, 51, 0.05);">
+        <td>Total Expense</td>
+        <td class="amount-col" style="color: var(--orange)">7,555.20</td>
+      </tr>
+
+      <tr class="subtotal-row" style="font-weight: 800; background: rgba(0,0,0,0.02)">
+        <td>Net Ordinary Income</td>
+        <td class="amount-col" style="color: var(--green)">970.25</td>
+      </tr>
+
+      <tr class="net-row">
+        <td>Net Income</td>
+        <td class="amount-col">970.25</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

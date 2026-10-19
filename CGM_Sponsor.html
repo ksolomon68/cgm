@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become a Sponsor — Common Ground Ministries</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="analytics.js" defer></script>
+<style>
+:root {
+  --teal:#1BC4C4; --orange:#FF6633; --navy:#1a1a2e;
+  --purple:#9933CC; --yellow:#FFCC00;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Nunito Sans',sans-serif;
+  background:var(--navy);
+  color:white;
+  min-height:100vh;
+  padding:40px 32px 60px;
+}
+
+.top-bar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:36px;
+}
+.cgm-label {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--orange);
+}
+
+h1 {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:30px;
+  line-height:1.2;
+  margin-bottom:8px;
+}
+h1 span { color:var(--orange); }
+
+.sub {
+  font-size:14px;
+  color:rgba(255,255,255,0.6);
+  margin-bottom:32px;
+  line-height:1.7;
+}
+
+/* Tier cards */
+.tier-card {
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:16px;
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:all .2s;
+  position:relative;
+}
+
+.tier-card:hover { transform:translateX(4px); }
+
+.tier-card.selected { border-color:var(--teal) !important; }
+
+.tier-card.bronze  { background:rgba(205,127,50,0.12); border-color:rgba(205,127,50,0.3); }
+.tier-card.silver  { background:rgba(192,192,192,0.10); border-color:rgba(192,192,192,0.25); }
+.tier-card.gold    { background:rgba(255,204,0,0.10);  border-color:rgba(255,204,0,0.3); }
+.tier-card.diamond { background:rgba(27,196,196,0.12); border-color:rgba(27,196,196,0.3); }
+
+.tier-top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.tier-name {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:18px;
+}
+.tier-card.bronze  .tier-name { color:#cd7f32; }
+.tier-card.silver  .tier-name { color:#c0c0c0; }
+.tier-card.gold    .tier-name { color:#FFCC00; }
+.tier-card.diamond .tier-name { color:var(--teal); }
+
+.tier-price {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:22px;
+  color:white;
+}
+.tier-price span { font-size:12px; color:rgba(255,255,255,0.4); font-family:'Nunito Sans',sans-serif; font-weight:400; }
+
+.tier-perks {
+  list-style:none;
+  font-size:13px;
+  color:rgba(255,255,255,0.65);
+  line-height:1.9;
+}
+.tier-perks li::before { content:'✓  '; color:var(--teal); font-weight:700; }
+
+.selected-check {
+  position:absolute;
+  top:16px; right:16px;
+  width:24px; height:24px;
+  background:var(--teal);
+  border-radius:50%;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+}
+.tier-card.selected .selected-check { display:flex; }
+
+.divider { height:1px; background:rgba(255,255,255,0.07); margin:24px 0; }
+
+.section-title {
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:14px;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:16px;
+}
+
+.form-row { margin-bottom:14px; }
+.form-row label {
+  display:block;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.4);
+  margin-bottom:6px;
+}
+.form-row input, .form-row select {
+  width:100%;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  padding:12px 16px;
+  color:white;
+  font-family:'Nunito Sans',sans-serif;
+  font-size:14px;
+  outline:none;
+  transition:border-color .2s;
+}
+.form-row input::placeholder { color:rgba(255,255,255,0.25); }
+.form-row input:focus, .form-row select:focus { border-color:var(--teal); }
+.form-row select { background:#2a2d45; cursor:pointer; }
+.form-row select option { background:#2a2d45; color:white; }
+
+.form-row-2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+.sponsor-btn {
+  width:100%;
+  background:var(--orange);
+  color:white;
+  border:none;
+  border-radius:14px;
+  padding:18px;
+  font-family:'Nunito',sans-serif;
+  font-weight:900;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:8px;
+  transition:background .2s, transform .15s;
+}
+.sponsor-btn:hover { background:#e5551f; transform:translateY(-1px); }
+
+.fine-print {
+  text-align:center;
+  font-size:11px;
+  color:rgba(255,255,255,0.25);
+  margin-top:14px;
+  line-height:1.6;
+}
+
+.type-toggle {
+  display:flex;
+  gap:10px;
+  margin-bottom:24px;
+}
+.type-btn {
+  flex:1;
+  padding:11px;
+  border-radius:10px;
+  border:2px solid rgba(255,255,255,0.1);
+  background:transparent;
+  color:rgba(255,255,255,0.45);
+  font-family:'Nunito Sans',sans-serif;
+  font-weight:700;
+  font-size:13px;
+  cursor:pointer;
+  transition:all .2s;
+}
+.type-btn.active {
+  border-color:var(--orange);
+  background:rgba(255,102,51,0.12);
+  color:var(--orange);
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <img src="CGM_Logo_Transparent.png" alt="Common Ground Ministries" style="height:52px;width:auto;display:block;object-fit:contain;background:rgba(255,255,255,0.9);border-radius:10px;padding:6px 12px;">
+  <div style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px;">Sponsorship</div>
+</div>
+
+<h1>Partner With <span>Common Ground</span></h1>
+<p class="sub">Your organization's investment reaches the most vulnerable children in Ellis County. Choose a level that works for you — every partnership matters.</p>
+
+<!-- Sponsor type -->
+<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);font-weight:700;margin-bottom:12px;">Organization Type</div>
+<div class="type-toggle">
+  <button class="type-btn active" onclick="setType(this)">🏢 Business / Corporate</button>
+  <button class="type-btn" onclick="setType(this)">⛪ Church / Faith Org</button>
+  <button class="type-btn" onclick="setType(this)">👤 Individual</button>
+</div>
+
+<!-- Tiers -->
+<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);font-weight:700;margin-bottom:12px;">Select a Level</div>
+
+<div class="tier-card bronze" onclick="selectTier(this,'Bronze','500')">
+  <div class="selected-check">✓</div>
+  <div class="tier-top">
+    <div class="tier-name">🥉 Bronze</div>
+    <div class="tier-price">$500 <span>/ year</span></div>
+  </div>
+  <ul class="tier-perks">
+    <li>Name listed on CGM website sponsor wall</li>
+    <li>Mention in monthly newsletter</li>
+    <li>Certificate of partnership</li>
+  </ul>
+</div>
+
+<div class="tier-card silver" onclick="selectTier(this,'Silver','1500')">
+  <div class="selected-check">✓</div>
+  <div class="tier-top">
+    <div class="tier-name">🥈 Silver</div>
+    <div class="tier-price">$1,500 <span>/ year</span></div>
+  </div>
+  <ul class="tier-perks">
+    <li>Logo on website + all printed materials</li>
+    <li>Social media spotlight (quarterly)</li>
+    <li>Recognition at all CGM events</li>
+    <li>All Bronze benefits</li>
+  </ul>
+</div>
+
+<div class="tier-card gold selected" onclick="selectTier(this,'Gold','5000')">
+  <div class="selected-check">✓</div>
+  <div class="tier-top">
+    <div class="tier-name">🥇 Gold</div>
+    <div class="tier-price">$5,000 <span>/ year</span></div>
+  </div>
+  <ul class="tier-perks">
+    <li>Named room sponsor in new building</li>
+    <li>Premium logo placement — all materials</li>
+    <li>Monthly social media spotlight</li>
+    <li>Speaking opportunity at annual event</li>
+    <li>All Silver benefits</li>
+  </ul>
+</div>
+
+<div class="tier-card diamond" onclick="selectTier(this,'Diamond','10000')">
+  <div class="selected-check">✓</div>
+  <div class="tier-top">
+    <div class="tier-name">💎 Diamond</div>
+    <div class="tier-price">$10,000+ <span>/ year</span></div>
+  </div>
+  <ul class="tier-perks">
+    <li>Title sponsor of Building Campaign</li>
+    <li>Building named in your honor</li>
+    <li>Board recognition + private impact briefing</li>
+    <li>All Gold benefits + custom partnership plan</li>
+  </ul>
+</div>
+
+<div class="divider"></div>
+<div class="section-title">Your Organization</div>
+
+<div class="form-row">
+  <label>Organization / Business Name</label>
+  <input type="text" placeholder="e.g. First Baptist Waxahachie">
+</div>
+<div class="form-row-2">
+  <div class="form-row">
+    <label>Contact First Name</label>
+    <input type="text" placeholder="First">
+  </div>
+  <div class="form-row">
+    <label>Contact Last Name</label>
+    <input type="text" placeholder="Last">
+  </div>
+</div>
+<div class="form-row">
+  <label>Email Address</label>
+  <input type="email" placeholder="your@organization.com">
+</div>
+<div class="form-row">
+  <label>Phone (optional)</label>
+  <input type="tel" placeholder="(555) 000-0000">
+</div>
+
+<button class="sponsor-btn" id="sponsorBtn" onclick="handleSponsor(this)">🤝 Submit Gold Sponsorship — $5,000</button>
+<p class="fine-print">A CGM team member will follow up within 2 business days to confirm your partnership and discuss recognition details.</p>
+
+<script>
+let selectedLevel = 'Gold';
+let selectedPrice = '5000';
+
+function selectTier(el, level, price) {
+  document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedLevel = level;
+  selectedPrice = price;
+  const price_display = parseInt(price).toLocaleString();
+  document.getElementById('sponsorBtn').textContent = `🤝 Submit ${level} Sponsorship — $${price_display}`;
+}
+
+function setType(el) {
+  document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function handleSponsor(btn) {
+  btn.textContent = '✓ Submitting…';
+  btn.style.background = '#44BB33';
+  setTimeout(() => {
+    window.open('https://buy.stripe.com/9AQ4jJewlbDX7sceUV', '_blank');
+    btn.textContent = `🤝 Submit ${selectedLevel} Sponsorship — $${parseInt(selectedPrice).toLocaleString()}`;
+    btn.style.background = '';
+  }, 800);
+}
+</script>
+</body>
+</html>
