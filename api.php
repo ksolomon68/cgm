@@ -8,6 +8,7 @@
  */
 
 require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/notifications.php';
 
 // ── Session hardening ────────────────────────────────────────────────────────
 ini_set('session.cookie_httponly', '1');
@@ -25,6 +26,16 @@ $action = trim($input['action'] ?? ($_GET['action'] ?? ''));
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function respond(mixed $data, int $status = 200): never {
+    global $action, $input;
+    if ($status < 300 && in_array($action, ['save_doc', 'save_event', 'save_meeting', 'save_finance', 'delete_finance', 'import_monthly_report'], true)) {
+        try {
+            $data['notifications_queued'] = queueBoardChange($action, $input, $data);
+            if (!$data['notifications_queued']) $data['notification_warning'] = 'Saved, but no valid board member email addresses were found.';
+        } catch (Throwable $e) {
+            error_log('CGM notification queue failed for ' . $action);
+            $data['notification_warning'] = 'Saved, but email alerts could not be queued. Ask an administrator to check the notification worker setup.';
+        }
+    }
     http_response_code($status);
     echo json_encode($data, JSON_UNESCAPED_UNICODE);
     exit;

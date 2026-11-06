@@ -1461,6 +1461,7 @@ async function api(action, data = {}) {
   });
   const json = await res.json().catch(() => ({ error: 'Server returned invalid JSON' }));
   if (!res.ok) throw new Error(json.error || `Server error (${res.status})`);
+  if (json.notification_warning) alert(json.notification_warning);
   return json;
 }
 
@@ -3621,23 +3622,8 @@ async function sendViaResend(s, to, subject, html) {
   }
 }
 
-async function sendNotification(type, title, details) {
-  try {
-    const s = await getEmailSettings();
-    if (!s.endpoint || !s.secret) return;
-    const members    = await loadMembers();
-    if (!members.length) return;
-    const portalUrl  = s.url || window.location.href;
-    const addedBy    = currentUser ? currentUser.first + ' ' + currentUser.last : 'A board member';
-    const recipients = members.filter(m => m.id !== (currentUser ? currentUser.id : null));
-    recipients.forEach((m, i) => {
-      setTimeout(() => {
-        const html = buildNotificationEmail({ toName: m.first, type, title, details, addedBy, portalUrl });
-        sendViaResend(s, m.email, `CGM Board Portal — ${title}`, html).catch(() => {});
-      }, i * 300);
-    });
-  } catch {}
-}
+// Changes are queued by api.php, including imports and changes made by other clients.
+async function sendNotification() {}
 
 async function testEmail() {
   try {
