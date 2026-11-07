@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /board.html
+Disallow: /api.php
+Disallow: /uploads/
+Disallow: /reports/
+Disallow: /CGM_Brand_Guidelines.html
+Disallow: /CGM_Digital_Growth_Plan.html
+
+Sitemap: https://cgmhachie.org/sitemap.xml
